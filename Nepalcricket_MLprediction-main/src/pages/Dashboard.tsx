@@ -39,9 +39,7 @@ const Dashboard = () => {
         <Sidebar className="border-r">
           <SidebarHeader className="p-4 border-b">
             <div className="flex items-center gap-3">
-              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">
-                NC
-              </div>
+              <img src={`${import.meta.env.BASE_URL}can-logo.png`} alt="CAN Logo" className="h-8 w-auto object-contain" />
               <span className="font-bold text-lg text-primary">Nepal Cricket</span>
             </div>
           </SidebarHeader>
@@ -61,7 +59,10 @@ const Dashboard = () => {
               ))}
             </SidebarMenu>
           </SidebarContent>
-          <SidebarFooter className="p-4 border-t">
+          <SidebarFooter className="p-4 border-t flex flex-col gap-4">
+            <div className="text-xs text-center text-gray-500 font-medium">
+              Designed and created by <span className="text-primary">Aadarsh Pandit</span>
+            </div>
             <button
               onClick={() => window.open('/', '_blank')}
               className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary transition-colors w-full px-2 py-1.5 rounded-md hover:bg-gray-100"
@@ -95,14 +96,6 @@ const Dashboard = () => {
                     <SelectItem value="Both">All Formats</SelectItem>
                   </SelectContent>
                 </Select>
-              </div>
-
-              <div className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 cursor-pointer transition-colors relative">
-                <Bell size={18} />
-                <span className="absolute top-2 right-2 w-2 h-2 bg-accent rounded-full border-2 border-white"></span>
-              </div>
-              <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                A
               </div>
             </div>
           </header>

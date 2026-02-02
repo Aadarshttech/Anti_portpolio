@@ -1,98 +1,121 @@
 import { useState } from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarTrigger, SidebarFooter } from '@/components/ui/sidebar';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
 import { Format } from '@/types/cricket';
 import DataOverview from '@/components/DataOverview';
 import MLPredictions from '@/components/MLPredictions';
 import OppositionAnalysis from '@/components/OppositionAnalysis';
 import BestPlayingXI from '@/components/BestPlayingXI';
 import PlayerComparison from '@/components/PlayerComparison';
-import { Trophy, ExternalLink } from 'lucide-react';
+import { LayoutDashboard, Brain, Trophy, Users, BarChart2, ExternalLink, Menu, Search, Bell } from 'lucide-react';
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Dashboard = () => {
   const [selectedFormat, setSelectedFormat] = useState<Format>('Both');
+  const [activeTab, setActiveTab] = useState('overview');
+
+  const menuItems = [
+    { id: 'overview', label: 'Data Overview', icon: LayoutDashboard },
+    { id: 'predictions', label: 'ML Predictions', icon: Brain },
+    { id: 'opposition', label: 'Opposition Analysis', icon: Users },
+    { id: 'playingxi', label: 'Best Playing XI', icon: Trophy },
+    { id: 'comparison', label: 'Player Comparison', icon: BarChart2 },
+  ];
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case 'overview': return <DataOverview format={selectedFormat} />;
+      case 'predictions': return <MLPredictions format={selectedFormat} />;
+      case 'opposition': return <OppositionAnalysis format={selectedFormat} />;
+      case 'playingxi': return <BestPlayingXI format={selectedFormat} />;
+      case 'comparison': return <PlayerComparison format={selectedFormat} />;
+      default: return <DataOverview format={selectedFormat} />;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="gradient-cricket text-white py-8 px-4 shadow-lg">
-        <div className="container mx-auto">
-          <div className="flex items-center justify-between flex-wrap gap-4">
+    <SidebarProvider>
+      <div className="flex min-h-screen w-full bg-background text-foreground font-sans">
+        <Sidebar className="border-r">
+          <SidebarHeader className="p-4 border-b">
             <div className="flex items-center gap-3">
-              <img
-                src={`${import.meta.env.BASE_URL}can-logo.png`}
-                alt="CAN Logo"
-                className="h-16 w-auto object-contain bg-white/10 rounded-lg p-1"
-              />
-              <div className="hidden md:block w-px h-12 bg-white/20 mx-2"></div>
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Nepal Cricket Analytics</h1>
-                <p className="text-white/90 mt-1">Powered by AI & Machine Learning</p>
+              <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold">
+                NC
               </div>
+              <span className="font-bold text-lg text-primary">Nepal Cricket</span>
+            </div>
+          </SidebarHeader>
+          <SidebarContent className="p-2">
+            <SidebarMenu>
+              {menuItems.map((item) => (
+                <SidebarMenuItem key={item.id}>
+                  <SidebarMenuButton
+                    onClick={() => setActiveTab(item.id)}
+                    isActive={activeTab === item.id}
+                    className="w-full justify-start gap-3 px-3 py-2 text-sm font-medium transition-colors hover:bg-accent/10 hover:text-accent data-[active=true]:bg-primary data-[active=true]:text-white rounded-lg"
+                  >
+                    <item.icon size={18} />
+                    {item.label}
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarContent>
+          <SidebarFooter className="p-4 border-t">
+            <button
+              onClick={() => window.open('/', '_blank')}
+              className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary transition-colors w-full px-2 py-1.5 rounded-md hover:bg-gray-100"
+            >
+              <ExternalLink size={16} />
+              <span>Back to Portfolio</span>
+            </button>
+          </SidebarFooter>
+        </Sidebar>
+
+        <main className="flex-1 flex flex-col h-screen overflow-hidden">
+          {/* Top Header */}
+          <header className="h-16 border-b bg-white flex items-center justify-between px-6 shrink-0 z-10 sticky top-0">
+            <div className="flex items-center gap-4">
+              <SidebarTrigger className="-ml-2 md:hidden" />
+              <h1 className="text-xl font-bold text-gray-800">
+                {menuItems.find(i => i.id === activeTab)?.label}
+              </h1>
             </div>
 
             <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <label className="text-white font-medium">Format:</label>
+              <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-lg border">
+                <span className="text-sm font-medium text-gray-600">Format:</span>
                 <Select value={selectedFormat} onValueChange={(value) => setSelectedFormat(value as Format)}>
-                  <SelectTrigger className="w-[140px] bg-white/20 border-white/30 text-white backdrop-blur-sm">
+                  <SelectTrigger className="h-8 w-[120px] border-none bg-transparent shadow-none focus:ring-0 p-0 text-sm font-bold text-primary">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="T20I">T20I</SelectItem>
                     <SelectItem value="ODI">ODI</SelectItem>
-                    <SelectItem value="Both">Both Formats</SelectItem>
+                    <SelectItem value="Both">All Formats</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
-              <Button
-                variant="outline"
-                className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover:text-white"
-                onClick={() => window.open('/', '_blank')}
-              >
-                <ExternalLink className="h-4 w-4 mr-2" />
-                My Portfolio
-              </Button>
+              <div className="h-9 w-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200 cursor-pointer transition-colors relative">
+                <Bell size={18} />
+                <span className="absolute top-2 right-2 w-2 h-2 bg-accent rounded-full border-2 border-white"></span>
+              </div>
+              <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                A
+              </div>
+            </div>
+          </header>
+
+          <div className="flex-1 overflow-y-auto p-6 bg-gray-50/50">
+            <div className="max-w-7xl mx-auto space-y-6">
+              {/* Main Content Area */}
+              {renderContent()}
             </div>
           </div>
-        </div>
+        </main>
       </div>
-
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-8">
-        <Tabs defaultValue="overview" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-5 mb-8">
-            <TabsTrigger value="overview">Data Overview</TabsTrigger>
-            <TabsTrigger value="predictions">ML Predictions</TabsTrigger>
-            <TabsTrigger value="opposition">Opposition Analysis</TabsTrigger>
-            <TabsTrigger value="playingxi">Best Playing XI</TabsTrigger>
-            <TabsTrigger value="comparison">Player Comparison</TabsTrigger>
-          </TabsList>
-
-          <TabsContent value="overview">
-            <DataOverview format={selectedFormat} />
-          </TabsContent>
-
-          <TabsContent value="predictions">
-            <MLPredictions format={selectedFormat} />
-          </TabsContent>
-
-          <TabsContent value="opposition">
-            <OppositionAnalysis format={selectedFormat} />
-          </TabsContent>
-
-          <TabsContent value="playingxi">
-            <BestPlayingXI format={selectedFormat} />
-          </TabsContent>
-
-          <TabsContent value="comparison">
-            <PlayerComparison format={selectedFormat} />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </div>
+    </SidebarProvider>
   );
 };
 

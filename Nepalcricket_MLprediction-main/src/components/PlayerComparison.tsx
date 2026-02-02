@@ -197,31 +197,40 @@ const PlayerComparison = ({ format }: PlayerComparisonProps) => {
     });
   };
 
-  // Prepare grouped bar data for side-by-side comparison
+  // Prepare grouped bar data for side-by-side comparison (NORMALIZED)
   const prepareBarData = () => {
-    const categories = ['Runs', 'Wickets', 'Matches', 'Average', 'Economy'];
+    const categories = [
+      { key: 'Runs', label: 'Runs' },
+      { key: 'Wickets', label: 'Wickets' },
+      { key: 'Matches', label: 'Matches' },
+      { key: 'Average', label: 'Average' },
+      { key: 'Economy', label: 'Economy' },
+    ];
 
-    return categories.map(category => {
-      const data: any = { category };
+    return categories.map(({ key, label }) => {
+      const data: any = { category: label };
       compareData.forEach(player => {
         const shortName = player.Player.split(' ').pop() || player.Player;
-        switch (category) {
+        let normalizedValue = 0;
+        switch (key) {
           case 'Runs':
-            data[shortName] = player.Runs || 0;
+            normalizedValue = normalize(player.Runs || 0, BENCHMARKS.runs.max);
             break;
           case 'Wickets':
-            data[shortName] = player.Wickets || 0;
+            normalizedValue = normalize(player.Wickets || 0, BENCHMARKS.wickets.max);
             break;
           case 'Matches':
-            data[shortName] = player.Matches || 0;
+            normalizedValue = normalize(player.Matches || 0, 150); // Max benchmark for matches
             break;
           case 'Average':
-            data[shortName] = player.Average || 0;
+            normalizedValue = normalize(player.Average || 0, BENCHMARKS.battingAvg.max);
             break;
           case 'Economy':
-            data[shortName] = player.Economy || 0;
+            // Economy: lower is better
+            normalizedValue = inverseNormalize(player.Economy || 0, BENCHMARKS.economy.best, BENCHMARKS.economy.worst);
             break;
         }
+        data[shortName] = Math.round(normalizedValue);
       });
       return data;
     });
@@ -314,15 +323,15 @@ const PlayerComparison = ({ format }: PlayerComparisonProps) => {
             <Card>
               <CardHeader>
                 <CardTitle>Statistical Comparison</CardTitle>
-                <CardDescription>Side-by-side stats comparison</CardDescription>
+                <CardDescription>Normalized performance comparison (0-100 scale)</CardDescription>
               </CardHeader>
               <CardContent>
                 <ResponsiveContainer width="100%" height={400}>
                   <BarChart data={prepareBarData()} layout="vertical">
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis type="number" />
+                    <XAxis type="number" domain={[0, 100]} />
                     <YAxis type="category" dataKey="category" width={80} />
-                    <Tooltip />
+                    <Tooltip formatter={(value: number) => [`${value}%`, 'Score']} />
                     <Legend />
                     {compareData.map((player, idx) => {
                       const shortName = player.Player.split(' ').pop() || player.Player;

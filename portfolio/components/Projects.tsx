@@ -13,7 +13,7 @@ const projects = [
         tags: ["Python", "PyTorch", "Whisper", "RLHF", "PPO"],
         image: "/images/asr.png",
         fit: "cover",
-        links: { demo: "#", code: "https://github.com/Aadarshttech" }
+        links: { demo: "", code: "https://github.com/Aadarshttech" }
     },
     {
         title: "Nepal Cricket Score Predictor",
@@ -31,7 +31,8 @@ const projects = [
         tags: ["React", "Tailwind", "Responsive Design", "UI/UX"],
         image: "/images/karyantra_logo.png",
         fit: "contain",
-        links: { demo: "https://karyantrahive.com.np/", code: "https://github.com/Aadarshttech" }
+        links: { demo: "https://karyantrahive.com.np/", code: "https://github.com/Aadarshttech" },
+        demoLabel: "Visit Site"
     }
 ];
 
@@ -95,9 +96,11 @@ export function Projects() {
                                         <a href={project.links.code} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors">
                                             <Github size={18} /> Code
                                         </a>
-                                        <a href={project.links.demo} target={project.links.demo.startsWith('/') ? '_self' : '_blank'} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors">
-                                            <ExternalLink size={18} /> Live Demo
-                                        </a>
+                                        {project.links.demo && project.links.demo !== "#" && (
+                                            <a href={project.links.demo} target={project.links.demo.startsWith('/') ? '_self' : '_blank'} className="flex items-center gap-2 text-sm font-medium text-gray-600 hover:text-primary transition-colors">
+                                                <ExternalLink size={18} /> {project.demoLabel || "Live Demo"}
+                                            </a>
+                                        )}
                                     </div>
                                 </div>
                             </div>

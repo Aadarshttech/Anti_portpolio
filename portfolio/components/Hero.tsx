@@ -54,7 +54,7 @@ export function Hero() {
                             <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
                                 <Brain size={20} />
                             </div>
-                            <span className="font-medium">AI/ML Expert</span>
+                            <span className="font-medium">AI/ML Enthusiast</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="p-2 bg-orange-50 text-orange-600 rounded-lg">

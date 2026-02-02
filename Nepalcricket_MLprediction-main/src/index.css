@@ -16,8 +16,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 84% 5%;
 
-    --primary: 170 48% 23%;
-    /* Deep Green */
+    --primary: 348 83% 47%;
+    /* CAN Red */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96%;
@@ -26,8 +26,8 @@
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 38 92% 50%;
-    /* Orange */
+    --accent: 217 100% 29%;
+    /* CAN Blue */
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;

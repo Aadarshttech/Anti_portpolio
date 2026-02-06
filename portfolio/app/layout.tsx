@@ -82,8 +82,6 @@ export const metadata: Metadata = {
   },
 };
 
-import { Background } from "@/components/Background";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -92,9 +90,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased font-sans bg-gray-50 text-slate-900`}
+        className={`${inter.variable} ${outfit.variable} antialiased font-sans bg-gray-50`}
       >
-        <Background />
         {children}
       </body>
     </html>

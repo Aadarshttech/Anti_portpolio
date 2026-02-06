@@ -7,7 +7,7 @@ import { ArrowRight, Code, Sparkles, Brain } from "lucide-react";
 
 export function Hero() {
     return (
-        <section id="home" className="relative min-h-screen flex pt-48 pb-20 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-blue-50">
+        <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-gradient-to-br from-orange-50 via-white to-blue-50">
 
             {/* Background Blobs */}
             <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl -z-10 animate-pulse" />

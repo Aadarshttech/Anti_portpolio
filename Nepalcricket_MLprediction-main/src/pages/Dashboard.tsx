@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarTrigger, SidebarFooter } from '@/components/ui/sidebar';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Format } from '@/types/cricket';
 import DataOverview from '@/components/DataOverview';
@@ -7,8 +7,8 @@ import MLPredictions from '@/components/MLPredictions';
 import OppositionAnalysis from '@/components/OppositionAnalysis';
 import BestPlayingXI from '@/components/BestPlayingXI';
 import PlayerComparison from '@/components/PlayerComparison';
-import { LayoutDashboard, Brain, Trophy, Users, BarChart2, ExternalLink, Menu, Search, Bell } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { LayoutDashboard, Brain, Trophy, Users, BarChart2 } from 'lucide-react';
+import DashboardSidebar from '@/components/DashboardSidebar';
 
 const Dashboard = () => {
   const [selectedFormat, setSelectedFormat] = useState<Format>('Both');
@@ -36,42 +36,7 @@ const Dashboard = () => {
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-background text-foreground font-sans">
-        <Sidebar className="border-r">
-          <SidebarHeader className="p-4 border-b">
-            <div className="flex items-center gap-3">
-              <img src={`${import.meta.env.BASE_URL}can-logo.png`} alt="CAN Logo" className="h-8 w-auto object-contain" />
-              <span className="font-bold text-lg text-primary">Nepal Cricket</span>
-            </div>
-          </SidebarHeader>
-          <SidebarContent className="p-2">
-            <SidebarMenu>
-              {menuItems.map((item) => (
-                <SidebarMenuItem key={item.id}>
-                  <SidebarMenuButton
-                    onClick={() => setActiveTab(item.id)}
-                    isActive={activeTab === item.id}
-                    className="w-full justify-start gap-3 px-3 py-2 text-sm font-medium transition-colors hover:bg-accent/10 hover:text-accent data-[active=true]:bg-primary data-[active=true]:text-white rounded-lg"
-                  >
-                    <item.icon size={18} />
-                    {item.label}
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
-            </SidebarMenu>
-          </SidebarContent>
-          <SidebarFooter className="p-4 border-t flex flex-col gap-4">
-            <div className="text-xs text-center text-gray-500 font-medium">
-              Designed and created by <span className="text-primary">Aadarsh Pandit</span>
-            </div>
-            <button
-              onClick={() => window.open('/', '_blank')}
-              className="flex items-center gap-2 text-sm text-gray-500 hover:text-primary transition-colors w-full px-2 py-1.5 rounded-md hover:bg-gray-100"
-            >
-              <ExternalLink size={16} />
-              <span>Back to Portfolio</span>
-            </button>
-          </SidebarFooter>
-        </Sidebar>
+        <DashboardSidebar activeTab={activeTab} onTabChange={setActiveTab} />
 
         <main className="flex-1 flex flex-col h-screen overflow-hidden">
           {/* Top Header */}

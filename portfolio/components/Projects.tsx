@@ -20,8 +20,8 @@ const projects = [
         category: "Web App + ML",
         description: "Interactive dashboard comparing Nepal's cricket team performance. Uses Random Forest algorithms to predict match outcomes based on toss, venue, and opposition data with real-time visualization.",
         tags: ["React", "FastAPI", "Scikit Level", "Random Forest", "Data Viz"],
-        image: "/images/cricket.png",
-        fit: "cover",
+        image: "/images/can-logo.png",
+        fit: "contain",
         links: { demo: "/nepal-cricket/index.html", code: "https://github.com/Aadarshttech" }
     },
     {
@@ -48,7 +48,10 @@ export function Projects() {
                             A showcase of my journey in building intelligent systems and web solutions.
                         </p>
                     </div>
-                    <Button variant="outline" className="hidden md:flex" onClick={() => window.open("https://github.com/Aadarshttech", "_blank")}>View Github</Button>
+                    <Button variant="outline" className="hidden md:flex items-center gap-2 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-105" onClick={() => window.open("https://github.com/Aadarshttech", "_blank")}>
+                        <Github size={18} />
+                        View Github
+                    </Button>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -109,7 +112,10 @@ export function Projects() {
                 </div>
 
                 <div className="mt-12 text-center md:hidden">
-                    <Button variant="outline" onClick={() => window.open("https://github.com/Aadarshttech", "_blank")}>View Github</Button>
+                    <Button variant="outline" className="flex items-center gap-2 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-105" onClick={() => window.open("https://github.com/Aadarshttech", "_blank")}>
+                        <Github size={18} />
+                        View Github
+                    </Button>
                 </div>
             </div>
         </section>

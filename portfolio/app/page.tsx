@@ -16,6 +16,33 @@ export default function Home() {
       <Projects />
       <Contact />
       <Footer />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            name: "Aadarsh Pandit",
+            url: "https://aadarshapandit.com.np",
+            image: "https://aadarshapandit.com.np/transparent2.png",
+            jobTitle: "AI & Web Developer",
+            alumniOf: "Nepal",
+            sameAs: [
+              "https://github.com/Aadarshttech",
+              "https://linkedin.com/in/aadarsh-pandit",
+              "https://twitter.com/aadarshapandit",
+            ],
+            knowsAbout: [
+              "Machine Learning",
+              "Web Development",
+              "Next.js",
+              "React",
+              "Python",
+              "Natural Language Processing",
+            ],
+          }),
+        }}
+      />
     </main>
   );
 }

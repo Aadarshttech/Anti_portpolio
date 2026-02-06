@@ -320,78 +320,14 @@ const BestPlayingXI = ({ format }: BestPlayingXIProps) => {
     setManualXI(manualXI.filter((p) => p.Player !== player.Player));
   };
 
-  // Calculate rating based on specific format (T20 vs ODI)
-  const calculateFormatRating = (player: Player, format: 'T20I' | 'ODI'): number => {
-    // Standardize stats lookup
-    const runs = format === 'T20I' ? (player['T20I Runs'] || player.Runs || 0) : (player['ODI Runs'] || player.Runs || 0);
-    const wickets = format === 'T20I' ? (player['T20I Wickets'] || player.Wickets || 0) : (player['ODI Wickets'] || player.Wickets || 0);
-
-    // Use specific stats if available, else fall back to general
-    // For T20I: Strike Rate is King, Economy is Queen
-    // For ODI: Average is King, Wickets/Partnerships are Queen
-
-    const scores: number[] = [];
-
-    if (runs > 0) {
-      let battingScore = 0;
-      const sr = player['Strike Rate'] || 0;
-      const avg = player.Average || 0;
-
-      if (format === 'T20I') {
-        // T20: 45% SR, 30% Avg, 25% Runs
-        const srScore = normalize(sr, 150); // Benchmark 150 SR
-        const avgScore = normalize(avg, 30);
-        const runScore = normalize(runs, 2000); // Lower volume exp in T20
-        battingScore = (srScore * 0.45) + (avgScore * 0.30) + (runScore * 0.25);
-      } else {
-        // ODI: 45% Avg, 30% Runs, 25% SR
-        const avgScore = normalize(avg, 40); // Benchmark 40 Avg
-        const runScore = normalize(runs, 4000);
-        const srScore = normalize(sr, 100);
-        battingScore = (avgScore * 0.45) + (runScore * 0.30) + (srScore * 0.25);
-      }
-      scores.push(Math.min(100, battingScore));
-    }
-
-    if (wickets > 0) {
-      let bowlingScore = 0;
-      const econ = player.Economy || 6;
-
-      if (format === 'T20I') {
-        // T20: 50% Economy, 50% Wickets
-        const econScore = inverseNormalize(econ, 5.0, 9.5);
-        const wktScore = normalize(wickets, 100);
-        bowlingScore = (econScore * 0.50) + (wktScore * 0.50);
-      } else {
-        // ODI: 60% Wickets, 40% Economy
-        const wktScore = normalize(wickets, 150);
-        const econScore = inverseNormalize(econ, 3.5, 7.0);
-        bowlingScore = (wktScore * 0.60) + (econScore * 0.40);
-      }
-      scores.push(Math.min(100, bowlingScore));
-    }
-
-    if (scores.length === 0) return 5.0;
-
-    // Weighting for All-Rounders vs Specialists
-    const maxScore = Math.max(...scores);
-    const avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
-    // T20 favors impact (max potential), ODI favors consistency
-    const finalScore = format === 'T20I'
-      ? (maxScore * 0.7) + (avgScore * 0.3)
-      : (maxScore * 0.5) + (avgScore * 0.5);
-
-    return Math.min(9.9, Math.max(5.0, 5.0 + (finalScore / 100) * 4.9));
-  };
-
   // Auto XI generation - maximize team rating while maintaining balance
   const generateAutoXI = (selectedFormat: 'T20I' | 'ODI') => {
     try {
-      // Score all players based on the SPECIFIC FORMAT
+      // Score all players fairly
       const scoredPlayers = allPlayers.map(p => ({
         ...p,
-        rating: calculateFormatRating(p, selectedFormat),
-        role: getPlayerRole(p), // Role remains constant for now
+        rating: calculatePlayerRating(p),
+        role: getPlayerRole(p),
       })).sort((a, b) => b.rating - a.rating);
 
       // Priority: Take highest rated players while ensuring team balance
@@ -491,7 +427,7 @@ const BestPlayingXI = ({ format }: BestPlayingXIProps) => {
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {selectedXI.map((p, i) => {
-                      const rating = calculateFormatRating(p, manualFormat); // Use format rating for display too
+                      const rating = calculatePlayerRating(p);
                       const role = getPlayerRole(p);
                       // Custom role handling for Aasif Sheikh is done in getPlayerRole now ('WK')
 
@@ -502,9 +438,9 @@ const BestPlayingXI = ({ format }: BestPlayingXIProps) => {
                               <div className="font-semibold">{p.Player}</div>
                               <div className="flex gap-1 mt-1">
                                 <Badge variant="outline" className={`text-[10px] px-1.5 py-0 ${role === 'Bowler' ? 'font-bold border-blue-500 text-blue-600' :
-                                    role === 'All-Rounder' ? 'font-bold border-purple-500 text-purple-600' :
-                                      role === 'WK' ? 'font-bold border-red-500 text-red-600' :
-                                        'font-bold border-green-500 text-green-600'
+                                  role === 'All-Rounder' ? 'font-bold border-purple-500 text-purple-600' :
+                                    role === 'WK' ? 'font-bold border-red-500 text-red-600' :
+                                      'font-bold border-green-500 text-green-600'
                                   }`}>{role}</Badge>
                               </div>
                             </div>

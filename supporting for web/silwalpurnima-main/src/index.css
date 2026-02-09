@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 350 30% 97%;
+    --foreground: 340 30% 20%;
+
+    --card: 350 40% 96%;
+    --card-foreground: 340 30% 20%;
+
+    --popover: 350 30% 97%;
+    --popover-foreground: 340 30% 20%;
+
+    --primary: 340 60% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 340 70% 65%;
+
+    --secondary: 30 40% 85%;
+    --secondary-foreground: 340 30% 25%;
+
+    --muted: 340 20% 92%;
+    --muted-foreground: 340 15% 45%;
+
+    --accent: 20 50% 80%;
+    --accent-foreground: 340 30% 20%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 340 25% 88%;
+    --input: 340 25% 88%;
+    --ring: 340 60% 55%;
+
+    --radius: 0.75rem;
+
+    --rose-gold: 20 45% 75%;
+    --rose-gold-light: 20 50% 85%;
+    --blush: 350 50% 90%;
+    --blush-deep: 350 55% 85%;
+    --cream: 40 30% 95%;
+    --parchment: 38 40% 90%;
+    --gold: 38 70% 55%;
+    --warm-white: 40 40% 98%;
+
+    --shadow-romantic: 0 20px 60px -15px hsla(340, 60%, 55%, 0.2);
+    --shadow-glow: 0 0 40px -10px hsla(340, 60%, 55%, 0.3);
+    --shadow-card: 0 10px 40px -10px hsla(340, 30%, 50%, 0.15);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Quicksand', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.01em;
+  }
+
+  /* Smooth scroll for the entire page */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+
+  /* Selection color */
+  ::selection {
+    background: hsl(var(--primary) / 0.2);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .font-handwritten {
+    font-family: 'Dancing Script', cursive;
+  }
+
+  .text-gradient-romantic {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--rose-gold)), hsl(var(--primary)));
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer-text 4s ease-in-out infinite;
+  }
+
+  .glass-card {
+    background: hsla(var(--card), 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsla(var(--border), 0.5);
+  }
+
+  .romantic-glow {
+    box-shadow: var(--shadow-romantic);
+  }
+
+  .btn-romantic {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .btn-romantic:hover {
+    box-shadow: 0 8px 30px -5px hsl(var(--primary) / 0.4);
+    transform: translateY(-2px);
+  }
+  .btn-romantic:active {
+    transform: translateY(0) scale(0.98);
+  }
+
+  .section-divider {
+    position: relative;
+  }
+  .section-divider::after {
+    content: '💕';
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 1rem 0;
+    opacity: 0.6;
+  }
+}
+
+@keyframes shimmer-text {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+@keyframes gentle-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px -5px hsl(var(--primary) / 0.3); }
+  50% { box-shadow: 0 0 40px -5px hsl(var(--primary) / 0.5); }
+}

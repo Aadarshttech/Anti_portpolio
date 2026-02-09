@@ -5,13 +5,21 @@ import { Heart, Camera } from "lucide-react";
 import Image from "next/image";
 
 const memories = [
-    { src: "/memories/IMG_20241215_215532_352.webp", date: "December 2024", caption: "Every moment with you is magic ✨", orientation: "portrait" },
-    { src: "/memories/IMG_20241220_152842.webp", date: "December 2024", caption: "Just happy to be yours ❤️", orientation: "portrait" },
-    { src: "/memories/IMG_20250103_165355.webp", date: "January 2025", caption: "My favorite hello and hardest goodbye 💑", orientation: "portrait" },
-    { src: "/memories/IMG_20250124_120103.webp", date: "January 2025", caption: "You make my heart smile 😊", orientation: "portrait" },
-    { src: "/memories/IMG_20250202_160151.webp", date: "February 2025", caption: "Better together, always 🌟", orientation: "portrait" },
-    { src: "/memories/IMG_20250719_185706.webp", date: "July 2025", caption: "Lost in your eyes 👀", orientation: "landscape" },
-    { src: "/memories/Screenshot_2024-12-01-19-16-28-48_1c337646f29875672b5a61192b9010f9.webp", date: "December 2024", caption: "Collecting beautiful moments 📸", orientation: "portrait" },
+    { src: "/memories/IMG_20241215_215532_352.webp", date: "December 2024", caption: "Simply us 💕", orientation: "portrait" },
+    { src: "/memories/IMG_20241220_152842.webp", date: "December 2024", caption: "Creating memories one day at a time 🗓️", orientation: "portrait" },
+    { src: "/memories/IMG_20250103_165355.webp", date: "January 2025", caption: "Love you to the moon and back 🌙", orientation: "landscape" },
+    { src: "/memories/IMG_20250124_120103.webp", date: "January 2025", caption: "Simply us 💕", orientation: "portrait" },
+    { src: "/memories/IMG_20250124_120339.webp", date: "January 2025", caption: "My favorite hello and hardest goodbye 💑", orientation: "portrait" },
+    { src: "/memories/IMG_20250202_160151.webp", date: "February 2025", caption: "Your laugh is my favorite sound 🎶", orientation: "portrait" },
+    { src: "/memories/IMG_20250227_140706.webp", date: "February 2025", caption: "My forever valentine 💘", orientation: "landscape" },
+    { src: "/memories/IMG_20250712_123519.webp", date: "July 2025", caption: "Love you to the moon and back 🌙", orientation: "portrait" },
+    { src: "/memories/IMG_20250719_185706.webp", date: "July 2025", caption: "You complete me 🧩", orientation: "landscape" },
+    { src: "/memories/IMG_20250801_191104.webp", date: "August 2025", caption: "Adventures with you are the best 🌍", orientation: "landscape" },
+    { src: "/memories/IMG_20250815_125716.webp", date: "August 2025", caption: "Life is better with you by my side 🌈", orientation: "portrait" },
+    { src: "/memories/IMG_20260130_114113.webp", date: "January 2026", caption: "Creating memories one day at a time 🗓️", orientation: "portrait" },
+    { src: "/memories/IMG_4945.webp", date: "2024-2025", caption: "Every moment with you is magic ✨", orientation: "landscape" },
+    { src: "/memories/IMG_5077.webp", date: "2024-2025", caption: "Collecting beautiful moments with you 📸", orientation: "landscape" },
+    { src: "/memories/Screenshot_2024-12-01-19-16-28-48_1c337646f29875672b5a61192b9010f9.webp", date: "December 2024", caption: "Simply us 💕", orientation: "portrait" },
 ];
 
 const MemoryTimeline = () => (

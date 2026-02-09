@@ -1,0 +1,125 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Pen } from "lucide-react";
+
+const ProposalLetter = () => (
+    <section className="py-24 px-4 bg-gradient-to-b from-pink-100 via-amber-50 to-amber-50">
+        <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="max-w-2xl mx-auto relative"
+        >
+            <motion.div
+                className="flex justify-center mb-8"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+            >
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-pink-100 text-pink-500 text-sm font-medium">
+                    <Pen size={14} />
+                    From My Heart
+                </div>
+            </motion.div>
+
+            <div
+                className="bg-amber-50 rounded-3xl p-8 md:p-14 shadow-2xl border border-amber-200 relative overflow-hidden"
+                style={{
+                    backgroundImage: `repeating-linear-gradient(transparent, transparent 35px, rgba(209, 213, 219, 0.4) 35px, rgba(209, 213, 219, 0.4) 36px)`,
+                    boxShadow: "0 25px 80px -20px rgba(236, 72, 153, 0.15), 0 10px 30px -10px rgba(236, 72, 153, 0.1)",
+                }}
+            >
+                <div className="absolute left-16 md:left-20 top-0 bottom-0 w-px bg-rose-200" />
+
+                <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10 relative">
+                    A Letter For You 💌
+                </h2>
+
+                <div className="text-xl md:text-2xl leading-[2.2] text-gray-700 space-y-6 relative" style={{ fontFamily: "'Dancing Script', cursive" }}>
+                    <motion.p
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-pink-500 font-bold text-2xl md:text-3xl"
+                    >
+                        My Dearest Babe,
+                    </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.4 }}
+                    >
+                        From the very first moment I met you, I knew my life was about to change
+                        forever. You walked in and everything just made sense — like the world was
+                        finally in color.
+                    </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 }}
+                    >
+                        Every day with you is a gift I never want to take for granted. Your laugh is
+                        my favorite song, your smile is my morning sun, and your love is the greatest
+                        treasure I&apos;ve ever known.
+                    </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.8 }}
+                    >
+                        I know I&apos;m not perfect, but with you, I want to be the best version of myself.
+                        You inspire me, challenge me, and love me in ways I never knew were possible.
+                    </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1.0 }}
+                    >
+                        So on this Valentine&apos;s Day, I want you to know — there is no one else I&apos;d
+                        rather share this beautiful, crazy, wonderful life with. It&apos;s you. It&apos;s always
+                        been you. And it will always be you.
+                    </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1.2 }}
+                        className="italic text-pink-400"
+                    >
+                        Will you continue to be mine? Not just today, but every day after? 💕
+                    </motion.p>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 10 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 1.4 }}
+                        className="text-right mt-10 pt-4"
+                    >
+                        Forever Yours,
+                        <br />
+                        <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-pink-500 via-rose-400 to-pink-500 bg-clip-text text-transparent inline-block mt-2">
+                            Sanu Pu
+                        </span>
+                        <br />
+                        <span className="text-2xl mt-1 inline-block">💘</span>
+                    </motion.p>
+                </div>
+            </div>
+        </motion.div>
+    </section>
+);
+
+export default ProposalLetter;

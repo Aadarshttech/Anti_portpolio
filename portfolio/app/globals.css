@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -6,12 +7,13 @@
 
   --color-primary: #ff7e33;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #f3f4f6; 
+  --color-secondary: #f3f4f6;
   --color-secondary-foreground: #1f2937;
   --color-background: #ffffff;
   --color-foreground: #0f172a;
-  
+
   --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
+  --animate-float-heart: float-heart linear forwards;
 }
 
 @keyframes fade-in-up {
@@ -19,23 +21,57 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes float-heart {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+    transform: translateY(80vh) rotate(15deg) scale(0.5);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: translateY(40vh) rotate(-10deg) scale(0.8);
+  }
+
+  90% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(-10vh) rotate(20deg) scale(1);
+    opacity: 0;
+  }
+}
+
+.animate-float-heart {
+  animation: float-heart linear forwards;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background: #94a3b8;
 }
@@ -44,6 +80,11 @@ body {
   font-family: var(--font-inter);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-outfit);
 }

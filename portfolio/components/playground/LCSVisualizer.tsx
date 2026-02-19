@@ -34,7 +34,7 @@ function Tooltip({
         <span className="relative group inline-flex items-center">
             {children}
             <span
-                className={`pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-50 shadow-lg max-w-xs ${dark
+                className={`pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-1.5 text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap z-50 shadow-lg max-w-xs ${dark
                         ? "text-gray-200 bg-gray-800 border border-gray-700"
                         : "text-white bg-gray-900 border border-gray-700"
                     }`}
@@ -49,7 +49,7 @@ function InfoBadge({ text, dark }: { text: string; dark?: boolean }) {
     return (
         <Tooltip text={text} dark={dark}>
             <span
-                className={`inline-flex items-center justify-center w-4 h-4 ml-1 text-[10px] font-bold rounded-full cursor-help select-none border ${dark
+                className={`inline-flex items-center justify-center w-4 h-4 ml-1 text-[10px] font-bold rounded-full cursor-help select-none border transition-all duration-500 ${dark
                         ? "text-violet-300 bg-violet-500/20 border-violet-500/30"
                         : "text-indigo-600 bg-indigo-100 border-indigo-200"
                     }`}
@@ -71,19 +71,19 @@ function ThemeToggle({
     return (
         <button
             onClick={toggle}
-            className={`relative w-9 h-9 rounded-xl flex items-center justify-center transition-all active:scale-90 ${dark
+            className={`relative w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 active:scale-90 ${dark
                     ? "bg-gray-800 border border-gray-700 hover:bg-gray-700 text-yellow-400"
                     : "bg-gray-100 border border-gray-200 hover:bg-gray-200 text-gray-700"
                 }`}
             aria-label="Toggle theme"
         >
             {dark ? (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="5" />
                     <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
                 </svg>
             ) : (
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
             )}
@@ -271,8 +271,8 @@ export default function LCSVisualizer() {
                 ? "bg-amber-500/80 text-gray-950 font-semibold ring-1 ring-amber-400/40"
                 : "bg-amber-400/80 text-gray-900 ring-1 ring-amber-300";
         if (!isFilled(i, j))
-            return dark ? "bg-gray-800/40 text-gray-600" : "bg-gray-100/50 text-gray-300";
-        return dark ? "bg-gray-800/60 text-gray-300" : "bg-white text-gray-700";
+            return dark ? "bg-gray-800/40 text-gray-600 transition-all duration-300" : "bg-gray-100/50 text-gray-300 transition-all duration-300";
+        return dark ? "bg-gray-800/60 text-gray-300 transition-all duration-300" : "bg-white text-gray-700 transition-all duration-300";
     };
 
     // ─── Theme-aware style helpers ────────────────────────────────────────────
@@ -294,30 +294,27 @@ export default function LCSVisualizer() {
 
     // ─── Render ───────────────────────────────────────────────────────────────
     return (
-        <div className={`min-h-screen ${bg} selection:bg-violet-500/30 overflow-x-hidden`}>
+        <div className={`min-h-screen ${bg} selection:bg-violet-500/30 overflow-x-hidden transition-all duration-500 ease-in-out`}>
             {/* Animated background — dark only */}
-            {dark && (
-                <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-                    <div className="absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full bg-violet-600/8 blur-[120px] animate-pulse" />
-                    <div className="absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-cyan-600/8 blur-[120px] animate-pulse" style={{ animationDelay: "2s" }} />
-                    <div className="absolute top-[40%] left-[50%] w-[30vw] h-[30vw] rounded-full bg-emerald-600/5 blur-[100px] animate-pulse" style={{ animationDelay: "4s" }} />
-                </div>
-            )}
+            <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+                <div className={`absolute top-[-20%] left-[-10%] w-[60vw] h-[60vw] rounded-full blur-[120px] transition-all duration-1000 ease-in-out ${dark ? "bg-violet-600/8 opacity-100" : "bg-indigo-400/5 opacity-40 animate-pulse"}`} />
+                <div className={`absolute bottom-[-20%] right-[-10%] w-[50vw] h-[50vw] rounded-full blur-[120px] transition-all duration-1000 ease-in-out ${dark ? "bg-cyan-600/8 opacity-100" : "bg-purple-400/5 opacity-40 animate-pulse"}`} style={{ animationDelay: "2s" }} />
+            </div>
 
             {/* Header */}
-            <header className={`border-b ${headerBg} backdrop-blur-xl sticky top-0 z-40`}>
+            <header className={`border-b ${headerBg} backdrop-blur-xl sticky top-0 z-40 transition-all duration-500 ease-in-out`}>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                        <a href="/playground" className={`text-sm transition-colors ${dark ? "text-gray-500 hover:text-violet-400" : "text-gray-500 hover:text-indigo-600"}`}>
+                        <a href="/playground" className={`text-sm transition-colors duration-300 ${dark ? "text-gray-500 hover:text-violet-400" : "text-gray-500 hover:text-indigo-600"}`}>
                             ← Playground
                         </a>
-                        <span className={dark ? "text-gray-700" : "text-gray-300"}>/</span>
+                        <span className={`transition-colors duration-500 ${dark ? "text-gray-700" : "text-gray-300"}`}>/</span>
                         <h1 className={`text-lg sm:text-xl font-bold font-heading bg-gradient-to-r ${accentText} bg-clip-text text-transparent`}>
                             LCS Algorithm
                         </h1>
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className={`hidden sm:inline text-[11px] px-2.5 py-1 rounded-full border ${dark ? "text-gray-500 bg-gray-800/80 border-gray-700/50" : "text-gray-500 bg-gray-100 border-gray-200"}`}>
+                        <span className={`hidden sm:inline text-[11px] px-2.5 py-1 rounded-full border transition-all duration-500 ${dark ? "text-gray-500 bg-gray-800/80 border-gray-700/50" : "text-gray-500 bg-gray-100 border-gray-200"}`}>
                             Dynamic Programming
                         </span>
                         <InfoBadge text="Longest Common Subsequence — finds the longest sequence appearing in both strings in the same order." dark={dark} />
@@ -329,26 +326,26 @@ export default function LCSVisualizer() {
             <main className="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8">
                 {/* Intro */}
                 <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-                    <p className={dark ? "text-gray-400 leading-relaxed" : "text-gray-600 leading-relaxed"}>
-                        The <strong className={dark ? "text-gray-200" : "text-gray-800"}>Longest Common Subsequence (LCS)</strong> problem finds the longest sequence of characters common to two strings, preserving order but not contiguity. Solved with <strong className={dark ? "text-gray-200" : "text-gray-800"}>bottom-up DP</strong> in O(m×n) time.
+                    <p className={`transition-colors duration-500 ${dark ? "text-gray-400 leading-relaxed" : "text-gray-600 leading-relaxed"}`}>
+                        The <strong className={`transition-colors duration-500 ${dark ? "text-gray-200" : "text-gray-800"}`}>Longest Common Subsequence (LCS)</strong> problem finds the longest sequence of characters common to two strings, preserving order but not contiguity. Solved with <strong className={`transition-colors duration-500 ${dark ? "text-gray-200" : "text-gray-800"}`}>bottom-up DP</strong> in O(m×n) time.
                     </p>
                 </motion.section>
 
                 {/* Input Card */}
-                <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className={`rounded-2xl border p-6 space-y-5 ${cardBg}`}>
+                <motion.section initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }} className={`rounded-2xl border p-6 space-y-5 transition-all duration-500 ${cardBg}`}>
                     <div className="grid sm:grid-cols-2 gap-4">
                         <div>
-                            <label className={`block text-sm font-semibold mb-1.5 ${dark ? "text-gray-300" : "text-gray-700"}`}>Sequence X</label>
+                            <label className={`block text-sm font-semibold mb-1.5 transition-colors duration-500 ${dark ? "text-gray-300" : "text-gray-700"}`}>Sequence X</label>
                             <input
                                 id="seq-x-input" type="text" value={seqX}
                                 onChange={(e) => { if (statusRef.current !== "idle") handleReset(); setSeqX(e.target.value); }}
                                 placeholder="e.g. ABCBDAB"
-                                className={`w-full rounded-xl border px-4 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 transition-all ${inputCls}`}
+                                className={`w-full rounded-xl border px-4 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 transition-all duration-500 ${inputCls}`}
                             />
                             {status === "done" && seqX && (
                                 <div className="mt-2 flex flex-wrap gap-0.5 font-mono text-sm">
                                     {seqX.split("").map((ch, idx) => (
-                                        <span key={idx} className={`px-1.5 py-0.5 rounded transition-colors ${matchedX.has(idx)
+                                        <span key={idx} className={`px-1.5 py-0.5 rounded transition-all duration-500 ${matchedX.has(idx)
                                                 ? dark ? "bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30" : "bg-emerald-100 text-emerald-700 font-bold"
                                                 : dark ? "text-gray-600" : "text-gray-400"
                                             }`}>{ch}</span>
@@ -357,17 +354,17 @@ export default function LCSVisualizer() {
                             )}
                         </div>
                         <div>
-                            <label className={`block text-sm font-semibold mb-1.5 ${dark ? "text-gray-300" : "text-gray-700"}`}>Sequence Y</label>
+                            <label className={`block text-sm font-semibold mb-1.5 transition-colors duration-500 ${dark ? "text-gray-300" : "text-gray-700"}`}>Sequence Y</label>
                             <input
                                 id="seq-y-input" type="text" value={seqY}
                                 onChange={(e) => { if (statusRef.current !== "idle") handleReset(); setSeqY(e.target.value); }}
                                 placeholder="e.g. BDCAB"
-                                className={`w-full rounded-xl border px-4 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 transition-all ${inputCls}`}
+                                className={`w-full rounded-xl border px-4 py-2.5 text-sm font-mono focus:outline-none focus:ring-2 transition-all duration-500 ${inputCls}`}
                             />
                             {status === "done" && seqY && (
                                 <div className="mt-2 flex flex-wrap gap-0.5 font-mono text-sm">
                                     {seqY.split("").map((ch, idx) => (
-                                        <span key={idx} className={`px-1.5 py-0.5 rounded transition-colors ${matchedY.has(idx)
+                                        <span key={idx} className={`px-1.5 py-0.5 rounded transition-all duration-500 ${matchedY.has(idx)
                                                 ? dark ? "bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30" : "bg-emerald-100 text-emerald-700 font-bold"
                                                 : dark ? "text-gray-600" : "text-gray-400"
                                             }`}>{ch}</span>
@@ -380,22 +377,22 @@ export default function LCSVisualizer() {
                     {/* Controls */}
                     <div className="flex flex-wrap items-center gap-3">
                         <button id="compute-btn" onClick={handleComputeAll} disabled={!seqX || !seqY || status === "running"}
-                            className={`px-5 py-2.5 text-sm font-semibold rounded-xl hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-95 ${btnPrimary}`}>
+                            className={`px-5 py-2.5 text-sm font-semibold rounded-xl hover:brightness-110 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-500 active:scale-95 ${btnPrimary}`}>
                             ⚡ Compute LCS
                         </button>
                         <button id="step-btn" onClick={handleStep} disabled={!seqX || !seqY || status === "done"}
-                            className={`px-4 py-2.5 text-sm font-semibold rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all active:scale-95 ${btnSecondary}`}>
+                            className={`px-4 py-2.5 text-sm font-semibold rounded-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-500 active:scale-95 ${btnSecondary}`}>
                             👣 Step
                         </button>
                         <button id="autorun-btn" onClick={handleAutoRun} disabled={!seqX || !seqY || status === "done"}
-                            className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all active:scale-95 ${status === "running"
+                            className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-500 active:scale-95 ${status === "running"
                                     ? "bg-amber-500 text-gray-950 shadow-lg shadow-amber-500/25 hover:bg-amber-400"
                                     : `${btnSecondary} disabled:opacity-40 disabled:cursor-not-allowed`
                                 }`}>
                             {status === "running" ? "⏸ Pause" : "▶ Auto-run"}
                         </button>
                         <button id="reset-btn" onClick={() => { handleReset(); setSeqX(""); setSeqY(""); }}
-                            className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all active:scale-95 ${dark
+                            className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-500 active:scale-95 ${dark
                                     ? "bg-gray-800/80 border border-gray-700/60 text-red-400 hover:bg-red-500/10 hover:border-red-500/30"
                                     : "bg-white border border-gray-200 text-red-500 hover:bg-red-50 hover:border-red-200"
                                 }`}>
@@ -405,7 +402,7 @@ export default function LCSVisualizer() {
                         {/* Example dropdown — opens UPWARD */}
                         <div className="relative">
                             <button id="example-btn" onClick={() => setShowExamples(!showExamples)}
-                                className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all active:scale-95 ${btnSecondary}`}>
+                                className={`px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-500 active:scale-95 ${btnSecondary}`}>
                                 📝 Example
                             </button>
                             <AnimatePresence>
@@ -414,12 +411,12 @@ export default function LCSVisualizer() {
                                         initial={{ opacity: 0, y: 4, scale: 0.95 }}
                                         animate={{ opacity: 1, y: 0, scale: 1 }}
                                         exit={{ opacity: 0, y: 4, scale: 0.95 }}
-                                        className={`absolute bottom-full mb-2 left-0 rounded-xl shadow-2xl border py-1.5 z-50 min-w-[280px] ${dark ? "bg-gray-900 border-gray-700/60 backdrop-blur-xl" : "bg-white border-gray-200 shadow-xl"
+                                        className={`absolute bottom-full mb-2 left-0 rounded-xl shadow-2xl border py-1.5 z-50 min-w-[280px] transition-all duration-500 ${dark ? "bg-gray-900 border-gray-700/60 backdrop-blur-xl" : "bg-white border-gray-200 shadow-xl"
                                             }`}
                                     >
                                         {EXAMPLES.map((ex) => (
                                             <button key={ex.label} onClick={() => handleExample(ex)}
-                                                className={`w-full text-left px-4 py-2.5 text-sm transition-colors ${dark ? "hover:bg-violet-500/10" : "hover:bg-indigo-50"
+                                                className={`w-full text-left px-4 py-2.5 text-sm transition-colors duration-300 ${dark ? "hover:bg-violet-500/10" : "hover:bg-indigo-50"
                                                     }`}>
                                                 <span className={`font-mono font-medium ${dark ? "text-violet-400" : "text-indigo-600"}`}>{ex.x}</span>
                                                 <span className={`mx-1.5 ${dark ? "text-gray-600" : "text-gray-400"}`}>/</span>
@@ -435,10 +432,10 @@ export default function LCSVisualizer() {
                         {/* Speed slider */}
                         {(status === "running" || status === "stepping") && (
                             <div className="flex items-center gap-2 ml-auto">
-                                <span className={`text-xs ${dark ? "text-gray-500" : "text-gray-500"}`}>Speed</span>
+                                <span className={`text-xs transition-colors duration-500 ${dark ? "text-gray-500" : "text-gray-500"}`}>Speed</span>
                                 <input type="range" min={10} max={500} value={510 - speed} onChange={(e) => setSpeed(510 - Number(e.target.value))}
-                                    className={`w-24 ${dark ? "accent-violet-500" : "accent-indigo-500"}`} />
-                                <span className={`text-xs w-12 tabular-nums font-mono ${dark ? "text-gray-500" : "text-gray-400"}`}>{speed}ms</span>
+                                    className={`w-24 transition-all duration-500 ${dark ? "accent-violet-500" : "accent-indigo-500"}`} />
+                                <span className={`text-xs w-12 tabular-nums font-mono transition-colors duration-500 ${dark ? "text-gray-500" : "text-gray-400"}`}>{speed}ms</span>
                             </div>
                         )}
                     </div>
@@ -449,27 +446,27 @@ export default function LCSVisualizer() {
                     {status === "done" && (
                         <motion.section initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.3 }}
                             className="grid sm:grid-cols-4 gap-4">
-                            <div className={`rounded-2xl border p-5 text-center shadow-lg ${cardBg}`}>
-                                <p className={`text-[11px] font-medium uppercase tracking-wider mb-1 ${dark ? "text-gray-500" : "text-gray-400"}`}>LCS Length</p>
+                            <div className={`rounded-2xl border p-5 text-center shadow-lg transition-all duration-500 ${cardBg}`}>
+                                <p className={`text-[11px] font-medium uppercase tracking-wider mb-1 transition-colors duration-500 ${dark ? "text-gray-500" : "text-gray-400"}`}>LCS Length</p>
                                 <p className={`text-4xl font-bold bg-gradient-to-r ${accentText} bg-clip-text text-transparent`}>{lcsString.length}</p>
                             </div>
-                            <div className={`rounded-2xl border p-5 text-center sm:col-span-2 shadow-lg ${cardBg}`}>
-                                <p className={`text-[11px] font-medium uppercase tracking-wider mb-1 ${dark ? "text-gray-500" : "text-gray-400"}`}>
+                            <div className={`rounded-2xl border p-5 text-center sm:col-span-2 shadow-lg transition-all duration-500 ${cardBg}`}>
+                                <p className={`text-[11px] font-medium uppercase tracking-wider mb-1 transition-colors duration-500 ${dark ? "text-gray-500" : "text-gray-400"}`}>
                                     LCS String <InfoBadge text="One possible LCS. There may be others of the same length." dark={dark} />
                                 </p>
                                 <p className="text-2xl font-bold font-mono text-emerald-500 tracking-widest">{lcsString || "∅"}</p>
                             </div>
-                            <div className={`rounded-2xl border p-5 text-center shadow-lg ${cardBg}`}>
-                                <p className={`text-[11px] font-medium uppercase tracking-wider mb-1 ${dark ? "text-gray-500" : "text-gray-400"}`}>Table Size</p>
-                                <p className={`text-sm ${dark ? "text-gray-400" : "text-gray-600"}`}>
-                                    <span className={`font-mono font-bold ${dark ? "text-gray-200" : "text-gray-800"}`}>{m}</span>
-                                    <span className={dark ? "text-gray-600" : "text-gray-400"}> × </span>
-                                    <span className={`font-mono font-bold ${dark ? "text-gray-200" : "text-gray-800"}`}>{n}</span>
-                                    <span className={dark ? "text-gray-600" : "text-gray-400"}> = </span>
-                                    <span className={`font-mono font-bold ${dark ? "text-violet-400" : "text-indigo-600"}`}>{(m * n).toLocaleString()}</span>
+                            <div className={`rounded-2xl border p-5 text-center shadow-lg transition-all duration-500 ${cardBg}`}>
+                                <p className={`text-[11px] font-medium uppercase tracking-wider mb-1 transition-colors duration-500 ${dark ? "text-gray-500" : "text-gray-400"}`}>Table Size</p>
+                                <p className={`text-sm transition-colors duration-500 ${dark ? "text-gray-400" : "text-gray-600"}`}>
+                                    <span className={`font-mono font-bold transition-colors duration-500 ${dark ? "text-gray-200" : "text-gray-800"}`}>{m}</span>
+                                    <span className={`transition-colors duration-500 ${dark ? "text-gray-600" : "text-gray-400"}`}> × </span>
+                                    <span className={`font-mono font-bold transition-colors duration-500 ${dark ? "text-gray-200" : "text-gray-800"}`}>{n}</span>
+                                    <span className={`transition-colors duration-500 ${dark ? "text-gray-600" : "text-gray-400"}`}> = </span>
+                                    <span className={`font-mono font-bold transition-colors duration-500 ${dark ? "text-violet-400" : "text-indigo-600"}`}>{(m * n).toLocaleString()}</span>
                                 </p>
-                                {computeTimeMs > 0 && <p className={`text-xs mt-1 font-mono ${dark ? "text-gray-600" : "text-gray-400"}`}>{computeTimeMs.toFixed(1)}ms</p>}
-                                <p className={`text-[11px] mt-0.5 ${dark ? "text-gray-600" : "text-gray-400"}`}>O(m×n) time &amp; space</p>
+                                {computeTimeMs > 0 && <p className={`text-xs mt-1 font-mono transition-colors duration-500 ${dark ? "text-gray-600" : "text-gray-400"}`}>{computeTimeMs.toFixed(1)}ms</p>}
+                                <p className={`text-[11px] mt-0.5 transition-colors duration-500 ${dark ? "text-gray-600" : "text-gray-400"}`}>O(m×n) time &amp; space</p>
                             </div>
                         </motion.section>
                     )}
@@ -479,7 +476,7 @@ export default function LCSVisualizer() {
                 {dp.length > 0 && (
                     <section className="space-y-3">
                         <div className="flex items-center gap-2">
-                            <h2 className={`text-lg font-bold font-heading ${dark ? "text-gray-200" : "text-gray-800"}`}>DP Table</h2>
+                            <h2 className={`text-lg font-bold font-heading transition-colors duration-500 ${dark ? "text-gray-200" : "text-gray-800"}`}>DP Table</h2>
                             <InfoBadge text="Each cell c[i][j] stores the LCS length of X[1..i] and Y[1..j]." dark={dark} />
                             {status !== "idle" && status !== "done" && (
                                 <span className="text-xs bg-cyan-500/15 text-cyan-500 px-2.5 py-0.5 rounded-full font-medium border border-cyan-500/20 animate-pulse">
@@ -488,27 +485,27 @@ export default function LCSVisualizer() {
                             )}
                         </div>
                         {tooLarge ? (
-                            <div className={`rounded-2xl p-6 text-center space-y-2 border ${dark ? "bg-amber-500/10 border-amber-500/20" : "bg-amber-50 border-amber-200"}`}>
+                            <div className={`rounded-2xl p-6 text-center space-y-2 border transition-all duration-500 ${dark ? "bg-amber-500/10 border-amber-500/20" : "bg-amber-50 border-amber-200"}`}>
                                 <p className="text-amber-500 font-semibold text-lg">⚠ Table too large to render</p>
-                                <p className={`text-sm max-w-md mx-auto ${dark ? "text-amber-400/60" : "text-amber-700/70"}`}>
+                                <p className={`text-sm max-w-md mx-auto transition-colors duration-500 ${dark ? "text-amber-400/60" : "text-amber-700/70"}`}>
                                     <span className="font-mono font-bold">{(m * n).toLocaleString()}</span> cells (m={m}, n={n}) exceeds the 250K limit. LCS was still computed above.
                                 </p>
                             </div>
                         ) : (
-                            <div className={`overflow-x-auto rounded-2xl border shadow-lg ${dark ? "border-gray-800/60 bg-gray-900/40 backdrop-blur-md shadow-black/20" : "border-gray-200/60 bg-white shadow-sm"}`}>
+                            <div className={`overflow-x-auto rounded-2xl border shadow-lg transition-all duration-500 ${dark ? "border-gray-800/60 bg-gray-900/40 backdrop-blur-md shadow-black/20" : "border-gray-200/60 bg-white shadow-sm"}`}>
                                 <div className="p-4 min-w-fit">
                                     <div className="grid gap-[2px]" style={{ gridTemplateColumns: `40px repeat(${n + 1}, minmax(36px, 1fr))` }}>
                                         <div className="h-9" />
-                                        <div className={`h-9 flex items-center justify-center text-[10px] font-mono ${dark ? "text-gray-600" : "text-gray-400"}`}>ε</div>
+                                        <div className={`h-9 flex items-center justify-center text-[10px] font-mono transition-colors duration-500 ${dark ? "text-gray-600" : "text-gray-400"}`}>ε</div>
                                         {seqY.split("").map((ch, j) => (
-                                            <div key={j} className={`h-9 flex items-center justify-center text-xs font-mono font-bold rounded-lg ${status === "done" && matchedY.has(j)
+                                            <div key={j} className={`h-9 flex items-center justify-center text-xs font-mono font-bold rounded-lg transition-all duration-500 ${status === "done" && matchedY.has(j)
                                                     ? dark ? "text-emerald-400 bg-emerald-500/10" : "text-emerald-600 bg-emerald-50"
                                                     : dark ? "text-cyan-400 bg-cyan-500/5" : "text-purple-600 bg-purple-50/50"
                                                 }`}>{ch}</div>
                                         ))}
                                         {dp.map((row, i) => (
                                             <React.Fragment key={i}>
-                                                <div className={`h-9 flex items-center justify-center text-xs font-mono font-bold rounded-lg ${i === 0
+                                                <div className={`h-9 flex items-center justify-center text-xs font-mono font-bold rounded-lg transition-all duration-500 ${i === 0
                                                         ? dark ? "text-gray-600" : "text-gray-400"
                                                         : status === "done" && matchedX.has(i - 1)
                                                             ? dark ? "text-emerald-400 bg-emerald-500/10" : "text-emerald-600 bg-emerald-50"
@@ -526,7 +523,7 @@ export default function LCSVisualizer() {
                             </div>
                         )}
                         {status === "done" && !tooLarge && (
-                            <div className={`flex flex-wrap gap-4 text-xs ${dark ? "text-gray-500" : "text-gray-500"}`}>
+                            <div className={`flex flex-wrap gap-4 text-xs transition-colors duration-500 ${dark ? "text-gray-500" : "text-gray-500"}`}>
                                 <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-emerald-500 inline-block" /> Match</span>
                                 <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-amber-500/80 inline-block" /> Backtrack path</span>
                                 <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded bg-cyan-400 inline-block" /> Current cell</span>
@@ -536,29 +533,29 @@ export default function LCSVisualizer() {
                 )}
 
                 {/* How it works */}
-                <section className={`rounded-2xl border overflow-hidden shadow-lg ${cardBg}`}>
+                <section className={`rounded-2xl border overflow-hidden shadow-lg transition-all duration-500 ${cardBg}`}>
                     <button id="how-it-works-toggle" onClick={() => setHowOpen(!howOpen)}
-                        className={`w-full px-6 py-4 flex items-center justify-between text-left transition-colors ${dark ? "hover:bg-gray-800/30" : "hover:bg-gray-50/50"}`}>
-                        <h2 className={`text-lg font-bold font-heading flex items-center gap-2 ${dark ? "text-gray-200" : "text-gray-800"}`}>
+                        className={`w-full px-6 py-4 flex items-center justify-between text-left transition-all duration-500 ${dark ? "hover:bg-gray-800/30" : "hover:bg-gray-50/50"}`}>
+                        <h2 className={`text-lg font-bold font-heading flex items-center gap-2 transition-colors duration-500 ${dark ? "text-gray-200" : "text-gray-800"}`}>
                             📖 How It Works
                             <InfoBadge text="Full DP recurrence and pseudocode" dark={dark} />
                         </h2>
-                        <span className={`transition-transform duration-200 ${howOpen ? "rotate-180" : ""} ${dark ? "text-gray-500" : "text-gray-400"}`}>▼</span>
+                        <span className={`transition-all duration-500 ${howOpen ? "rotate-180" : ""} ${dark ? "text-gray-500" : "text-gray-400"}`}>▼</span>
                     </button>
                     <AnimatePresence>
                         {howOpen && (
                             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2 }} className="overflow-hidden">
                                 <div className="px-6 pb-6 space-y-5">
                                     <div className="space-y-3">
-                                        <h3 className={`text-sm font-bold ${dark ? "text-gray-300" : "text-gray-700"}`}>The Recurrence</h3>
-                                        <p className={`text-sm leading-relaxed ${dark ? "text-gray-400" : "text-gray-600"}`}>
-                                            Given <code className={`px-1.5 py-0.5 rounded text-xs font-mono border ${dark ? "bg-gray-800 text-violet-400 border-gray-700/50" : "bg-gray-100 text-indigo-600 border-gray-200"}`}>X[1..m]</code> and{" "}
-                                            <code className={`px-1.5 py-0.5 rounded text-xs font-mono border ${dark ? "bg-gray-800 text-cyan-400 border-gray-700/50" : "bg-gray-100 text-purple-600 border-gray-200"}`}>Y[1..n]</code>,
-                                            build table <code className={`px-1.5 py-0.5 rounded text-xs font-mono border ${dark ? "bg-gray-800 text-gray-300 border-gray-700/50" : "bg-gray-100 text-gray-700 border-gray-200"}`}>c[0..m][0..n]</code> where{" "}
-                                            <code className={`px-1.5 py-0.5 rounded text-xs font-mono border ${dark ? "bg-gray-800 text-gray-300 border-gray-700/50" : "bg-gray-100 text-gray-700 border-gray-200"}`}>c[i][j]</code> = LCS length of X[1..i] and Y[1..j].
+                                        <h3 className={`text-sm font-bold transition-colors duration-500 ${dark ? "text-gray-300" : "text-gray-700"}`}>The Recurrence</h3>
+                                        <p className={`text-sm leading-relaxed transition-colors duration-500 ${dark ? "text-gray-400" : "text-gray-600"}`}>
+                                            Given <code className={`px-1.5 py-0.5 rounded text-xs font-mono border transition-all duration-500 ${dark ? "bg-gray-800 text-violet-400 border-gray-700/50" : "bg-gray-100 text-indigo-600 border-gray-200"}`}>X[1..m]</code> and{" "}
+                                            <code className={`px-1.5 py-0.5 rounded text-xs font-mono border transition-all duration-500 ${dark ? "bg-gray-800 text-cyan-400 border-gray-700/50" : "bg-gray-100 text-purple-600 border-gray-200"}`}>Y[1..n]</code>,
+                                            build table <code className={`px-1.5 py-0.5 rounded text-xs font-mono border transition-all duration-500 ${dark ? "bg-gray-800 text-gray-300 border-gray-700/50" : "bg-gray-100 text-gray-700 border-gray-200"}`}>c[0..m][0..n]</code> where{" "}
+                                            <code className={`px-1.5 py-0.5 rounded text-xs font-mono border transition-all duration-500 ${dark ? "bg-gray-800 text-gray-300 border-gray-700/50" : "bg-gray-100 text-gray-700 border-gray-200"}`}>c[i][j]</code> = LCS length of X[1..i] and Y[1..j].
                                         </p>
                                     </div>
-                                    <pre className={`rounded-xl p-5 text-sm font-mono leading-relaxed overflow-x-auto border ${dark ? "bg-gray-950 text-gray-300 border-gray-800/60" : "bg-gray-900 text-gray-100 border-gray-700"}`}>
+                                    <pre className={`rounded-xl p-5 text-sm font-mono leading-relaxed overflow-x-auto border transition-all duration-500 ${dark ? "bg-gray-950 text-gray-300 border-gray-800/60" : "bg-gray-900 text-gray-100 border-gray-700"}`}>
                                         <code>{`// Base cases
 c[i][0] = 0    for all i
 c[0][j] = 0    for all j
@@ -584,26 +581,26 @@ while i > 0 and j > 0:
     j--                              `}<span className="text-gray-500">// go left</span></code>
                                     </pre>
                                     <div className="grid sm:grid-cols-2 gap-4">
-                                        <div className={`rounded-xl p-4 space-y-2 border ${dark ? "bg-violet-500/10 border-violet-500/20" : "bg-indigo-50/50 border-indigo-100"}`}>
-                                            <h4 className={`text-sm font-bold ${dark ? "text-violet-300" : "text-indigo-700"}`}>⏱ Time Complexity</h4>
-                                            <p className={`text-sm ${dark ? "text-violet-400/80" : "text-indigo-600"}`}>
+                                        <div className={`rounded-xl p-4 space-y-2 border transition-all duration-500 ${dark ? "bg-violet-500/10 border-violet-500/20" : "bg-indigo-50/50 border-indigo-100"}`}>
+                                            <h4 className={`text-sm font-bold transition-colors duration-500 ${dark ? "text-violet-300" : "text-indigo-700"}`}>⏱ Time Complexity</h4>
+                                            <p className={`text-sm transition-colors duration-500 ${dark ? "text-violet-400/80" : "text-indigo-600"}`}>
                                                 <strong className={dark ? "text-violet-300" : "text-indigo-700"}>O(m × n)</strong> — fill every cell once; backtrack in O(m + n).
                                             </p>
                                         </div>
-                                        <div className={`rounded-xl p-4 space-y-2 border ${dark ? "bg-cyan-500/10 border-cyan-500/20" : "bg-purple-50/50 border-purple-100"}`}>
-                                            <h4 className={`text-sm font-bold ${dark ? "text-cyan-300" : "text-purple-700"}`}>💾 Space Complexity</h4>
-                                            <p className={`text-sm ${dark ? "text-cyan-400/80" : "text-purple-600"}`}>
+                                        <div className={`rounded-xl p-4 space-y-2 border transition-all duration-500 ${dark ? "bg-cyan-500/10 border-cyan-500/20" : "bg-purple-50/50 border-purple-100"}`}>
+                                            <h4 className={`text-sm font-bold transition-colors duration-500 ${dark ? "text-cyan-300" : "text-purple-700"}`}>💾 Space Complexity</h4>
+                                            <p className={`text-sm transition-colors duration-500 ${dark ? "text-cyan-400/80" : "text-purple-600"}`}>
                                                 <strong className={dark ? "text-cyan-300" : "text-purple-700"}>O(m × n)</strong> — full table. Reducible to O(min(m,n)) for length only.
                                             </p>
                                         </div>
                                     </div>
-                                    <div className={`rounded-xl p-4 space-y-2 border ${dark ? "bg-gray-800/40 border-gray-700/40" : "bg-gray-50 border-gray-200"}`}>
-                                        <h4 className={`text-sm font-bold ${dark ? "text-gray-300" : "text-gray-700"}`}>
+                                    <div className={`rounded-xl p-4 space-y-2 border transition-all duration-500 ${dark ? "bg-gray-800/40 border-gray-700/40" : "bg-gray-50 border-gray-200"}`}>
+                                        <h4 className={`text-sm font-bold transition-colors duration-500 ${dark ? "text-gray-300" : "text-gray-700"}`}>
                                             🔍 What is Backtracking?
                                             <InfoBadge text="Reconstructs the LCS string by tracing decisions in the filled table." dark={dark} />
                                         </h4>
-                                        <p className={`text-sm leading-relaxed ${dark ? "text-gray-400" : "text-gray-600"}`}>
-                                            Starting at <code className={`px-1 py-0.5 rounded text-xs font-mono border ${dark ? "bg-gray-800 text-gray-300 border-gray-700/50" : "bg-gray-100 text-gray-700 border-gray-200"}`}>c[m][n]</code>,
+                                        <p className={`text-sm leading-relaxed transition-colors duration-500 ${dark ? "text-gray-400" : "text-gray-600"}`}>
+                                            Starting at <code className={`px-1 py-0.5 rounded text-xs font-mono border transition-all duration-500 ${dark ? "bg-gray-800 text-gray-300 border-gray-700/50" : "bg-gray-100 text-gray-700 border-gray-200"}`}>c[m][n]</code>,
                                             trace back: on a match (diagonal), that character joins the LCS. Otherwise move to the larger neighbor (up or left). The amber path shows this trace.
                                         </p>
                                     </div>
@@ -614,9 +611,9 @@ while i > 0 and j > 0:
                 </section>
 
                 {/* Footer */}
-                <footer className={`text-center text-xs py-6 border-t ${dark ? "text-gray-600 border-gray-800/40" : "text-gray-400 border-gray-200/40"}`}>
+                <footer className={`text-center text-xs py-6 border-t transition-all duration-500 ${dark ? "text-gray-600 border-gray-800/40" : "text-gray-400 border-gray-200/40"}`}>
                     Built by{" "}
-                    <a href="/" className={`font-medium transition-colors ${dark ? "text-violet-400 hover:text-violet-300" : "text-indigo-500 hover:text-indigo-600"}`}>Aadarsh Pandit</a>
+                    <a href="/" className={`font-medium transition-colors duration-300 ${dark ? "text-violet-400 hover:text-violet-300" : "text-indigo-500 hover:text-indigo-600"}`}>Aadarsh Pandit</a>
                     {" "}· Algorithm Playground
                 </footer>
             </main>

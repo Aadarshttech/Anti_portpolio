@@ -36,12 +36,12 @@ export function Hero() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-gray-600 max-w-lg">
-                        BTech AI Student & Machine Learning Enthusiast.
-                        Building intelligent systems that solve real-world problems.
+                        AI & Web Developer building websites, apps & intelligent systems
+                        that help businesses grow.
                     </p>
 
                     <div className="flex flex-wrap gap-4 pt-4">
-                        <Button size="lg" className="rounded-full px-8 text-lg" onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}>
+                        <Button size="lg" className="rounded-full px-8 text-lg" onClick={() => window.location.href = '/works'}>
                             View My Work
                         </Button>
                         <Button variant="outline" size="lg" className="rounded-full px-8 text-lg group" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>

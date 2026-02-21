@@ -14,25 +14,25 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "Aadarsh Pandit | AI & Web Developer",
+    default: "Aadarsh Pandit | Freelance AI & Web Developer",
     template: "%s | Aadarsh Pandit",
   },
-  description: "Portfolio of Aadarsh Pandit - AI Student & Developer specializing in Machine Learning, NLP, and Full Stack Web Development (Next.js, React, Python).",
+  description: "Hire Aadarsh Pandit — Freelance developer specializing in websites, mobile apps, AI/ML solutions, and automation. Based in Nepal.",
   applicationName: "Aadarsh Pandit Portfolio",
   authors: [{ name: "Aadarsh Pandit", url: "https://aadarshapandit.com.np" }],
   generator: "Next.js",
   keywords: [
     "Aadarsh Pandit",
-    "AI Developer",
-    "Web Developer",
-    "Full Stack Developer",
-    "Machine Learning Engineer",
-    "Nepal",
+    "Hire Developer Nepal",
+    "Freelance Web Developer",
+    "Custom AI Model",
+    "Mobile App Developer",
+    "Full Stack Freelancer",
+    "Nepal Freelance Developer",
     "React",
     "Next.js",
     "Python",
-    "NLP",
-    "Portfolio"
+    "Web Automation"
   ],
   referrer: "origin-when-cross-origin",
   creator: "Aadarsh Pandit",
@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Aadarsh Pandit | AI & Web Developer",
-    description: "Portfolio of Aadarsh Pandit - AI Student & Developer from Nepal. Exploring the intersection of AI and Web Technologies.",
+    title: "Aadarsh Pandit | Freelance AI & Web Developer",
+    description: "Hire Aadarsh Pandit — Freelance developer specializing in websites, mobile apps, AI/ML solutions, and automation.",
     url: "https://aadarshapandit.com.np",
     siteName: "Aadarsh Pandit Portfolio",
     locale: "en_US",

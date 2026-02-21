@@ -27,20 +27,27 @@ export function Contact() {
                 <div className="max-w-4xl mx-auto bg-white rounded-[40px] shadow-2xl p-8 md:p-12 overflow-hidden flex flex-col md:flex-row gap-12">
 
                     <motion.div
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.5 }}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: { staggerChildren: 0.1 }
+                            }
+                        }}
                         className="flex-1 space-y-6"
                     >
-                        <div>
+                        <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}>
                             <span className="text-primary font-semibold tracking-wider uppercase text-sm">Contact Me</span>
                             <h2 className="text-3xl md:text-4xl font-bold font-heading mt-2">Let's Work Together!</h2>
                             <p className="text-gray-600 mt-4">
                                 "Let's build something amazing together. Start by saying hi!"
                             </p>
-                        </div>
+                        </motion.div>
 
-                        <div className="space-y-4">
+                        <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="space-y-4">
                             <a href="mailto:aadarshapandit@gmail.com" className="flex items-center gap-4 p-4 rounded-2xl bg-gray-50 hover:bg-orange-50 transition-colors group">
                                 <div className="bg-white p-3 rounded-full shadow-sm text-primary group-hover:scale-110 transition-transform">
                                     <Mail size={20} />
@@ -70,9 +77,9 @@ export function Contact() {
                                     <p className="font-semibold text-gray-900">Kathmandu, Nepal</p>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className="pt-6">
+                        <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }} className="pt-6">
                             <p className="text-sm text-gray-500 mb-4">Follow Me</p>
                             <div className="flex items-center gap-4">
                                 <a href="https://github.com/Aadarshttech" target="_blank" rel="noopener noreferrer" className="p-3 bg-gray-900 text-white rounded-full hover:bg-primary transition-colors">
@@ -85,7 +92,7 @@ export function Contact() {
                                     <Instagram size={20} />
                                 </a>
                             </div>
-                        </div>
+                        </motion.div>
                     </motion.div>
 
                     {/* Contact Form */}

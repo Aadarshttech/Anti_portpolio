@@ -41,13 +41,25 @@ export function Projects() {
         <section id="projects" className="py-20 bg-gray-50">
             <div className="container mx-auto px-6">
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-                    <div className="max-w-2xl">
-                        <span className="text-primary font-semibold tracking-wider uppercase text-sm">Portfolio</span>
-                        <h2 className="text-3xl md:text-4xl font-bold font-heading mt-2">Recent Projects</h2>
-                        <p className="text-gray-600 mt-4">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={{
+                            hidden: { opacity: 0 },
+                            visible: {
+                                opacity: 1,
+                                transition: { staggerChildren: 0.1 }
+                            }
+                        }}
+                        className="max-w-2xl"
+                    >
+                        <motion.span variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="text-primary font-semibold tracking-wider uppercase text-sm">Portfolio</motion.span>
+                        <motion.h2 variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="text-3xl md:text-4xl font-bold font-heading mt-2">Recent Projects</motion.h2>
+                        <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }} className="text-gray-600 mt-4">
                             A showcase of my journey in building intelligent systems and web solutions.
-                        </p>
-                    </div>
+                        </motion.p>
+                    </motion.div>
                     <Button variant="outline" className="hidden md:flex items-center gap-2 hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 hover:scale-105" onClick={() => window.open("https://github.com/Aadarshttech", "_blank")}>
                         <Github size={18} />
                         View Github

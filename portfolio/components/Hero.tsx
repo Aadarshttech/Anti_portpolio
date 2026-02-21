@@ -17,39 +17,62 @@ export function Hero() {
 
                 {/* Text Content */}
                 <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2
+                            }
+                        }
+                    }}
                     className="space-y-6"
                 >
-                    <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-orange-100">
+                    <motion.div
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                        className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-orange-100"
+                    >
                         <span className="relative flex h-3 w-3">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
                         </span>
                         <span className="text-sm font-medium text-gray-600">Available for projects</span>
-                    </div>
+                    </motion.div>
 
-                    <h1 className="text-5xl md:text-7xl font-bold font-heading leading-tight text-gray-900">
+                    <motion.h1
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                        className="text-5xl md:text-7xl font-bold font-heading leading-tight text-gray-900"
+                    >
                         Hy! I Am <br />
                         <span className="text-primary">Aadarsh Pandit</span>
-                    </h1>
+                    </motion.h1>
 
-                    <p className="text-lg md:text-xl text-gray-600 max-w-lg">
+                    <motion.p
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                        className="text-lg md:text-xl text-gray-600 max-w-lg"
+                    >
                         AI & Web Developer building websites, apps & intelligent systems
                         that help businesses grow.
-                    </p>
+                    </motion.p>
 
-                    <div className="flex flex-wrap gap-4 pt-4">
+                    <motion.div
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                        className="flex flex-wrap gap-4 pt-4"
+                    >
                         <Button size="lg" className="rounded-full px-8 text-lg" onClick={() => window.location.href = '/works'}>
                             View My Work
                         </Button>
                         <Button variant="outline" size="lg" className="rounded-full px-8 text-lg group" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                             Contact Me <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </Button>
-                    </div>
+                    </motion.div>
 
-                    <div className="pt-8 flex items-center gap-8 text-gray-500">
+                    <motion.div
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                        className="pt-8 flex items-center gap-8 text-gray-500"
+                    >
                         <div className="flex items-center gap-2">
                             <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
                                 <Brain size={20} />
@@ -62,7 +85,7 @@ export function Hero() {
                             </div>
                             <span className="font-medium">Full Stack Dev</span>
                         </div>
-                    </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Image / Visuals */}

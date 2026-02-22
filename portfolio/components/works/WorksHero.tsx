@@ -77,7 +77,7 @@ export function WorksHero() {
                         className="relative hidden lg:flex justify-center items-center"
                     >
                         {/* Image Backdrop Glow */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 blur-3xl rounded-full scale-90" />
+                        <div className="absolute inset-0 bg-white/[0.07] blur-3xl rounded-full scale-90" />
 
                         <div className="relative w-full max-w-md xl:max-w-lg aspect-[3/4] z-10">
                             <Image

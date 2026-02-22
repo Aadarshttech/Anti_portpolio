@@ -43,13 +43,13 @@ function getLocalResponse(userMessage: string): string {
         return "Pricing depends on the project scope and complexity. I'd recommend reaching out directly to discuss your requirements:\n\n📧 aadarshapandit@gmail.com\n📱 WhatsApp: +977 9860334317\n\nAadarsh offers free consultations!";
     }
 
-    // About / Who
-    if (msg.includes("who") || msg.includes("about") || msg.includes("tell me about") || msg.includes("yourself") || msg.includes("aadarsh")) {
+    // About Aadarsh specifically
+    if ((msg.includes("who") && (msg.includes("aadarsh") || msg.includes("you") || msg.includes("are you"))) || msg.includes("about aadarsh") || msg.includes("tell me about you") || msg.includes("yourself")) {
         return "Aadarsh Pandit is a Freelance AI & Web Developer and AI student based in Kathmandu, Nepal. He's deeply passionate about building impactful software using modern tech like Next.js, React, Python, and TensorFlow.\n\nWant to know about his services or projects?";
     }
 
     // Timeline
-    if (msg.includes("time") || msg.includes("how long") || msg.includes("deadline") || msg.includes("timeline")) {
+    if (msg.includes("how long") || msg.includes("deadline") || msg.includes("timeline") || msg.includes("duration")) {
         return "Typical timelines:\n\n🌐 Websites: 2-4 weeks\n🤖 AI/ML Models: 4-8 weeks\n📱 Mobile Apps: 4-10 weeks\n📝 WordPress: 1-3 weeks\n⚡ Automation: 1-2 weeks\n\nExact timelines depend on your project scope!";
     }
 
@@ -58,8 +58,13 @@ function getLocalResponse(userMessage: string): string {
         return "You're welcome! 😊 Feel free to reach out anytime. If you'd like to start a project, contact Aadarsh via WhatsApp (+977 9860334317) or email at aadarshapandit@gmail.com.";
     }
 
+    // Off-topic / General knowledge questions
+    if (msg.includes("prime minister") || msg.includes("president") || msg.includes("capital") || msg.includes("grandfather") || msg.includes("grandmother") || msg.includes("weather") || msg.includes("joke") || msg.includes("who is") || msg.includes("what is the") || msg.includes("how old") || msg.includes("where is") || msg.includes("when was") || msg.includes("why is") || msg.includes("tell me a")) {
+        return "Great question, but I'm only Aadarsh's portfolio assistant 😄 I specialize in answering questions about his services, projects, and how to work with him.\n\nTry asking me things like:\n• What services does Aadarsh offer?\n• Show me his projects\n• How can I contact him?\n• How long does a website take?";
+    }
+
     // Default
-    return "That's an interesting question! I don't have specific information about that, but Aadarsh would love to help directly.\n\nReach out via:\n📧 aadarshapandit@gmail.com\n📱 WhatsApp: +977 9860334317";
+    return "I'm Aadarsh's portfolio assistant, so I'm best at answering questions about his services, projects, and how to reach him!\n\nTry asking:\n• What services do you offer?\n• Tell me about your projects\n• How can I hire Aadarsh?";
 }
 
 export async function POST(req: Request) {

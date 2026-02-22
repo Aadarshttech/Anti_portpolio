@@ -1,12 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export function WhatsAppButton() {
+    const pathname = usePathname();
     const phoneNumber = "9779860334317";
     const message = "Hi Aadarsh, I'm interested in working with you!";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+
+    // Use white style ONLY for the works site
+    const isWorksPage = pathname?.startsWith('/works');
 
     return (
         <motion.div
@@ -27,10 +31,13 @@ export function WhatsAppButton() {
                 rel="noopener noreferrer"
                 whileHover={{
                     scale: 1.1,
-                    boxShadow: "0 0 30px rgba(255, 255, 255, 0.2)",
+                    boxShadow: isWorksPage ? "0 0 30px rgba(255, 255, 255, 0.2)" : "0 0 30px rgba(37, 211, 102, 0.3)",
                 }}
                 whileTap={{ scale: 0.9 }}
-                className="flex items-center justify-center w-14 h-14 bg-white text-black rounded-full shadow-2xl transition-colors hover:bg-gray-100 group"
+                className={`flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-all duration-300 group ${isWorksPage
+                    ? "bg-white text-black hover:bg-gray-100"
+                    : "bg-[#25D366] text-white hover:bg-[#22c35e]"
+                    }`}
                 aria-label="Contact on WhatsApp"
             >
                 {/* Custom minimalist WhatsApp SVG */}
@@ -44,7 +51,7 @@ export function WhatsAppButton() {
                 </svg>
 
                 {/* Tooltip */}
-                <div className="absolute right-full mr-4 bg-white text-black px-3 py-1.5 rounded-lg text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-xl">
+                <div className={`absolute right-full mr-4 px-3 py-1.5 rounded-lg text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-xl ${isWorksPage ? "bg-white text-black" : "bg-[#25D366] text-white"}`}>
                     Message me on WhatsApp
                 </div>
             </motion.a>

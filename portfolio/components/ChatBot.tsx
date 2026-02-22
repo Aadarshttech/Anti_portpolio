@@ -64,7 +64,7 @@ export function ChatBot() {
     };
 
     return (
-        <div className="fixed bottom-24 right-5 md:bottom-[7rem] md:right-8 z-[9998] flex flex-col items-end">
+        <div className="hidden md:flex fixed bottom-24 right-5 md:bottom-[7rem] md:right-8 z-[9998] flex flex-col items-end">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div

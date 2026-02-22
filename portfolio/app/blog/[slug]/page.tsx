@@ -10,7 +10,7 @@ import type { Metadata } from "next";
 
 // 1. Generate Static Params (SSG for all blog posts)
 export async function generateStaticParams() {
-    const slugs = getPostSlugs();
+    const slugs = await getPostSlugs();
     return slugs.map((slug) => ({
         slug: slug.replace(/\.mdx$/, ""),
     }));
@@ -19,7 +19,7 @@ export async function generateStaticParams() {
 // 2. Dynamic SEO Metadata per post
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
-    const post = getPostBySlug(slug);
+    const post = await getPostBySlug(slug);
     if (!post) {
         return { title: 'Post Not Found' };
     }
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // 3. Page Component
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
-    const post = getPostBySlug(slug);
+    const post = await getPostBySlug(slug);
 
     if (!post) {
         notFound();

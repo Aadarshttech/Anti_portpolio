@@ -1,18 +1,14 @@
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import readingTime from 'reading-time';
-
-const postsDirectory = path.join(process.cwd(), 'content/blog');
+import { supabase } from '@/lib/supabase'
 
 export type PostMeta = {
     title: string;
     description: string;
-    date: string;
+    created_at: string;
+    date: string; // added for backwards compatibility with UI
     tags: string[];
     image: string;
     slug: string;
-    readTime: string;
+    readTime: string; // added for backwards compatibility with UI
 };
 
 export type Post = {
@@ -20,46 +16,69 @@ export type Post = {
     content: string;
 };
 
-export function getPostSlugs(): string[] {
-    if (!fs.existsSync(postsDirectory)) {
-        return [];
-    }
-    return fs.readdirSync(postsDirectory);
+export async function getPostSlugs(): Promise<string[]> {
+    const { data } = await supabase
+        .from('posts')
+        .select('slug')
+        .eq('is_published', true)
+
+    return (data || []).map(p => p.slug)
 }
 
-export function getPostBySlug(slug: string): Post | null {
-    const realSlug = slug.replace(/\.mdx$/, '');
-    const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
+export async function getPostBySlug(slug: string): Promise<Post | null> {
+    const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .eq('slug', slug)
+        .single();
 
-    if (!fs.existsSync(fullPath)) {
+    if (error || !data) {
         return null;
     }
-
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data, content } = matter(fileContents);
-    const textStats = readingTime(content);
 
     return {
         meta: {
             title: data.title,
             description: data.description,
-            date: data.date,
+            created_at: data.created_at,
+            date: new Date(data.created_at).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }),
             tags: data.tags || [],
             image: data.image || '/images/blog-default.jpg',
-            slug: realSlug,
-            readTime: textStats.text,
+            slug: data.slug,
+            readTime: data.read_time || '5 min read',
         },
-        content,
+        content: data.content,
     };
 }
 
-export function getAllPosts(): PostMeta[] {
-    const slugs = getPostSlugs();
-    const posts = slugs
-        .map((slug) => getPostBySlug(slug))
-        .filter((post): post is Post => post !== null)
-        .map((post) => post.meta)
-        // Sort posts by date in descending order
-        .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
-    return posts;
+export async function getAllPosts(): Promise<PostMeta[]> {
+    const { data, error } = await supabase
+        .from('posts')
+        .select('*')
+        .eq('is_published', true)
+        .order('created_at', { ascending: false });
+
+    if (error || !data) {
+        console.error("Error fetching posts from Supabase:", error)
+        return []
+    }
+
+    return data.map(post => ({
+        title: post.title,
+        description: post.description,
+        created_at: post.created_at,
+        date: new Date(post.created_at).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }),
+        tags: post.tags || [],
+        image: post.image || '/images/blog-default.jpg',
+        slug: post.slug,
+        readTime: post.read_time || '5 min read',
+    }))
 }

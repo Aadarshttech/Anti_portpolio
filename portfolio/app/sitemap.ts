@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next'
 import { getPostSlugs } from '@/lib/blog'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-    const slugs = getPostSlugs().map((slug) => slug.replace(/\.mdx$/, ''))
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+    const rawSlugs = await getPostSlugs()
+    const slugs = rawSlugs.map((slug) => slug.replace(/\.mdx$/, ''))
     const blogEntries = slugs.map((slug) => ({
         url: `https://aadarshapandit.com.np/blog/${slug}`,
         lastModified: new Date(),

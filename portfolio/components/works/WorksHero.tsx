@@ -122,11 +122,11 @@ export function WorksHero() {
                             <h1 className="text-5xl sm:text-6xl md:text-7xl xl:text-[5.5rem] font-bold font-heading leading-[1.05] tracking-tight">
                                 <span className="text-white block">Let&apos;s Build</span>
                                 <span className="relative inline-block mt-2">
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400">
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-white to-gray-300">
                                         Something Great
                                     </span>
                                     {/* Glow behind the gradient text */}
-                                    <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-cyan-400 blur-2xl opacity-30 pointer-events-none" aria-hidden="true">
+                                    <span className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-gray-100 via-white to-gray-300 blur-2xl opacity-20 pointer-events-none" aria-hidden="true">
                                         Something Great
                                     </span>
                                 </span>

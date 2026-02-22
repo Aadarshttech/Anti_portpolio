@@ -191,7 +191,7 @@ export function ServiceShowcase() {
                                         <motion.div
                                             animate={{ rotate: isExpanded ? 135 : 0 }}
                                             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                                            className={`p-3 rounded-full transition-all duration-300 ${isExpanded ? 'bg-gradient-to-br ' + service.gradient + ' text-white shadow-lg' : 'bg-white/5 border border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white'}`}
+                                            className={`p-3 rounded-full transition-all duration-300 ${isExpanded ? 'bg-white text-black shadow-lg' : 'bg-white/5 border border-white/10 text-gray-400 group-hover:bg-white/10 group-hover:text-white'}`}
                                         >
                                             <Plus size={20} strokeWidth={2.5} />
                                         </motion.div>
@@ -213,7 +213,7 @@ export function ServiceShowcase() {
                                                     {/* Features */}
                                                     <div>
                                                         <h4 className="font-semibold text-white mb-5 text-lg flex items-center gap-2">
-                                                            <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${service.gradient}`} />
+                                                            <div className="w-2 h-2 rounded-full bg-white/40" />
                                                             What&apos;s Included
                                                         </h4>
                                                         <ul className="space-y-4">
@@ -251,9 +251,9 @@ export function ServiceShowcase() {
                                                         </div>
 
                                                         <motion.button
-                                                            whileHover={{ scale: 1.02, y: -2 }}
+                                                            whileHover={{ scale: 1.02, y: -2, boxShadow: "0 0 30px rgba(255, 255, 255, 0.1)" }}
                                                             whileTap={{ scale: 0.98 }}
-                                                            className={`w-full py-4 rounded-xl text-white font-semibold bg-gradient-to-r ${service.gradient} flex items-center justify-center gap-2 group transition-all duration-300 shadow-xl ${service.shadow}`}
+                                                            className="w-full py-4 rounded-xl text-black font-semibold bg-white hover:bg-gray-100 flex items-center justify-center gap-2 group transition-all duration-300 shadow-xl shadow-white/10"
                                                             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                                                         >
                                                             Get Started <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

@@ -103,7 +103,7 @@ export function ChatBot() {
                                         <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs ${m.role === "user" ? "bg-white/10 text-white" : (isWorksPage ? "bg-white text-black" : "bg-indigo-600 text-white")}`}>
                                             {m.role === "user" ? <User size={14} /> : <Bot size={14} />}
                                         </div>
-                                        <div className={`p-3 rounded-2xl text-sm leading-relaxed ${m.role === "user" ? "bg-white/10 text-white rounded-tr-none" : "bg-white/[0.04] text-gray-200 border border-white/5 rounded-tl-none"}`}>
+                                        <div className={`p-3 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${m.role === "user" ? "bg-white/10 text-white rounded-tr-none" : "bg-white/[0.04] text-gray-200 border border-white/5 rounded-tl-none"}`}>
                                             {m.content}
                                         </div>
                                     </div>

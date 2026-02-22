@@ -64,14 +64,14 @@ export function ChatBot() {
     };
 
     return (
-        <div className="hidden md:flex fixed bottom-24 right-5 md:bottom-[7rem] md:right-8 z-[9998] flex flex-col items-end">
+        <div className="hidden md:flex fixed bottom-[5.5rem] right-6 z-[9998] flex flex-col items-end">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: "bottom right" }}
-                        animate={{ opacity: 1, scale: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.8, y: 20 }}
-                        className="mb-4 fixed bottom-[6rem] right-4 left-4 sm:relative sm:bottom-0 sm:right-0 sm:left-auto w-auto sm:w-[400px] max-w-[400px] h-[70vh] max-h-[600px] bg-[#0A0A0A]/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ring-1 ring-white/5"
+                        initial={{ opacity: 0, scale: 0.8, transformOrigin: "bottom right" }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.8 }}
+                        className="mb-4 w-auto sm:w-[400px] max-w-[400px] h-[70vh] max-h-[600px] bg-[#0A0A0A]/95 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-[0_0_40px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col ring-1 ring-white/5"
                     >
                         {/* Header */}
                         <div className={`p-4 flex items-center justify-between border-b border-white/5 shrink-0 ${isWorksPage ? 'bg-white/5' : 'bg-gradient-to-r from-indigo-500/10 to-purple-500/10'}`}>

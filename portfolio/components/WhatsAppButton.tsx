@@ -14,16 +14,16 @@ export function WhatsAppButton() {
 
     return (
         <motion.div
-            initial={{ opacity: 0, scale: 0.5, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
             transition={{
-                delay: 2,
-                duration: 0.5,
+                delay: 0.5,
+                duration: 0.4,
                 type: "spring",
                 stiffness: 260,
                 damping: 20
             }}
-            className="fixed bottom-5 right-5 md:bottom-8 md:right-8 z-[9999]"
+            className="fixed bottom-6 right-6 z-[9999]"
         >
             <motion.a
                 href={whatsappUrl}

@@ -23,7 +23,7 @@ export function WhatsAppButton() {
                 stiffness: 260,
                 damping: 20
             }}
-            className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50"
+            className="fixed bottom-8 right-4 md:bottom-8 md:right-8 z-50"
         >
             <motion.a
                 href={whatsappUrl}

@@ -81,7 +81,7 @@ export function WorksHero() {
 
                         <div className="relative w-full max-w-md xl:max-w-lg aspect-[3/4] z-10">
                             <Image
-                                src="/images/works-hero-trans.png"
+                                src="/images/new-hero.png"
                                 alt="Aadarsh Pandit pointing"
                                 fill
                                 priority

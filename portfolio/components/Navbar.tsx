@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 
@@ -10,13 +11,22 @@ const navLinks = [
     { name: "About", href: "/#about" },
     { name: "Services", href: "/#services" },
     { name: "Projects", href: "/#projects" },
-    { name: "Blog", href: "/blog" },
+    { name: "Blogs", href: "/blog" },
     { name: "Works", href: "/works" },
 ];
 
 export function Navbar() {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const pathname = usePathname();
+
+    const handleContactClick = () => {
+        if (pathname === '/') {
+            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.location.href = '/#contact';
+        }
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -50,7 +60,7 @@ export function Navbar() {
                             {link.name}
                         </Link>
                     ))}
-                    <Button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                    <Button onClick={handleContactClick}>
                         Contact Me
                     </Button>
                 </div>
@@ -79,7 +89,7 @@ export function Navbar() {
                     ))}
                     <Button className="w-full" onClick={() => {
                         setIsMobileMenuOpen(false);
-                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                        handleContactClick();
                     }}>
                         Contact Me
                     </Button>

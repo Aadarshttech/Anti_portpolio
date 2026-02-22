@@ -25,8 +25,15 @@ export function WorksNavbar() {
     const scrollToSection = (href: string, e?: React.MouseEvent) => {
         e?.preventDefault();
         const id = href.replace("#", "");
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        const wasMobileOpen = isMobileMenuOpen;
         setIsMobileMenuOpen(false);
+        if (wasMobileOpen) {
+            setTimeout(() => {
+                document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+            }, 350);
+        } else {
+            document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     return (

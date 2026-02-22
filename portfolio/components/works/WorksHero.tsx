@@ -12,7 +12,7 @@ const highlights = [
 ];
 
 const stats = [
-    { icon: <Rocket className="w-6 h-6" />, value: "10+", label: "Projects Delivered", color: "text-indigo-400" },
+    { icon: <Rocket className="w-6 h-6" />, value: "10+", label: "Projects Delivered", color: "text-white" },
     { icon: <Star className="w-6 h-6" />, value: "100%", label: "Client Satisfaction", color: "text-amber-500" },
     { icon: <Clock className="w-6 h-6" />, value: "<24h", label: "Response Time", color: "text-emerald-500" },
 ];
@@ -159,7 +159,7 @@ export function WorksHero() {
                                     transition={{ delay: 0.55 + i * 0.1 }}
                                     className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.04] border border-white/[0.08] text-gray-400 text-sm font-medium hover:border-white/20 hover:bg-white/[0.06] transition-all duration-300"
                                 >
-                                    <span className="text-indigo-400">{item.icon}</span>
+                                    <span className="text-white">{item.icon}</span>
                                     <span>{item.text}</span>
                                 </motion.div>
                             ))}

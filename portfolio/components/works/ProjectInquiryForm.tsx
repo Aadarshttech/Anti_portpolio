@@ -40,10 +40,10 @@ export function ProjectInquiryForm() {
                     viewport={{ once: true }}
                     className="text-center mb-16"
                 >
-                    <span className="text-indigo-400 font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
+                    <span className="text-white font-semibold tracking-wider uppercase text-sm">Get In Touch</span>
                     <h2 className="text-4xl md:text-5xl font-bold font-heading mt-3 text-white">
                         Let&apos;s Work{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Together</span>
+                        <span className="text-white">Together</span>
                     </h2>
                     <p className="text-gray-500 mt-5 max-w-lg mx-auto text-lg">
                         Have an idea? Let&apos;s bring it to life. Drop me a message and I&apos;ll get back to you within 24 hours.
@@ -60,14 +60,14 @@ export function ProjectInquiryForm() {
                         className="lg:col-span-2 space-y-6"
                     >
                         <a href="mailto:aadarshapandit@gmail.com" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-indigo-500/20 hover:bg-indigo-500/5 transition-all duration-300 group">
-                            <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 group-hover:scale-110 transition-transform">
+                            <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20 group-hover:scale-110 transition-transform">
                                 <Mail size={20} />
                             </div>
                             <div>
                                 <p className="text-xs text-gray-600 uppercase tracking-wider">Email Me</p>
                                 <p className="font-semibold text-white text-sm">aadarshapandit@gmail.com</p>
                             </div>
-                            <ArrowUpRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-indigo-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                            <ArrowUpRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                         </a>
 
                         <a href="tel:+9779860334317" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-emerald-500/20 hover:bg-emerald-500/5 transition-all duration-300 group">
@@ -82,7 +82,7 @@ export function ProjectInquiryForm() {
                         </a>
 
                         <div className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02]">
-                            <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                            <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20">
                                 <MapPin size={20} />
                             </div>
                             <div>

@@ -74,10 +74,10 @@ export function ProcessTimeline() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <span className="text-cyan-400 font-semibold tracking-wider uppercase text-sm">How I Work</span>
+                    <span className="text-white font-semibold tracking-wider uppercase text-sm">How I Work</span>
                     <h2 className="text-4xl md:text-5xl font-bold font-heading mt-3 text-white">
                         The{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Process</span>
+                        <span className="text-white">Process</span>
                     </h2>
                     <p className="text-gray-500 mt-5 max-w-2xl mx-auto text-lg">
                         A structured approach to guarantee your project is delivered on time, on budget, and exactly as promised.

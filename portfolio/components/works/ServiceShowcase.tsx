@@ -128,9 +128,9 @@ export function ServiceShowcase() {
                     viewport={{ once: true }}
                     className="text-center mb-20"
                 >
-                    <span className="text-cyan-400 font-semibold tracking-wider uppercase text-sm">Services</span>
+                    <span className="text-white font-semibold tracking-wider uppercase text-sm">Services</span>
                     <h2 className="text-4xl md:text-5xl font-bold font-heading mt-3 text-white">
-                        What Can I Build For <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">You?</span>
+                        What Can I Build For <span className="text-white">You?</span>
                     </h2>
                     <p className="text-gray-500 mt-5 max-w-2xl mx-auto text-lg">
                         Select a service below to see exactly what&apos;s included, timeline estimates, and features.

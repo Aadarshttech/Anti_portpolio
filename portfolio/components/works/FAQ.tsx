@@ -51,14 +51,14 @@ export function FAQ() {
                     className="text-center mb-20"
                 >
                     <div className="flex justify-center mb-5">
-                        <div className="p-3.5 bg-indigo-500/10 text-indigo-400 rounded-2xl border border-indigo-500/20">
+                        <div className="p-3.5 bg-white/10 text-white rounded-2xl border border-white/20">
                             <MessageCircleQuestion size={28} />
                         </div>
                     </div>
-                    <span className="text-indigo-400 font-semibold tracking-wider uppercase text-sm">Common Questions</span>
+                    <span className="text-white font-semibold tracking-wider uppercase text-sm">Common Questions</span>
                     <h2 className="text-4xl md:text-5xl font-bold font-heading mt-3 text-white">
                         Freelance{" "}
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">FAQ</span>
+                        <span className="text-white">FAQ</span>
                     </h2>
                     <p className="text-gray-500 mt-5 text-lg">
                         Everything you need to know about working with me.
@@ -85,13 +85,13 @@ export function FAQ() {
                                     onClick={() => toggleFAQ(index)}
                                     className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
                                 >
-                                    <span className={`text-lg font-semibold pr-8 transition-colors duration-300 ${isOpen ? "text-indigo-400" : "text-white group-hover:text-indigo-300"}`}>
+                                    <span className={`text-lg font-semibold pr-8 transition-colors duration-300 ${isOpen ? "text-white font-bold" : "text-white/70 group-hover:text-white"}`}>
                                         {faq.question}
                                     </span>
                                     <motion.div
                                         animate={{ rotate: isOpen ? 45 : 0 }}
                                         transition={{ duration: 0.2 }}
-                                        className={`shrink-0 p-2 rounded-full transition-colors duration-300 ${isOpen ? "bg-indigo-500/20 text-indigo-400" : "bg-white/5 text-gray-500"
+                                        className={`shrink-0 p-2 rounded-full transition-colors duration-300 ${isOpen ? "bg-white/20 text-white" : "bg-white/5 text-gray-500"
                                             }`}
                                     >
                                         <Plus size={20} />

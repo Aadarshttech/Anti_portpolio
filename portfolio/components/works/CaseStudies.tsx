@@ -59,10 +59,10 @@ export function CaseStudies() {
                         viewport={{ once: true }}
                         className="max-w-2xl"
                     >
-                        <span className="text-cyan-400 font-semibold tracking-wider uppercase text-sm">Past Work</span>
+                        <span className="text-white font-semibold tracking-wider uppercase text-sm">Past Work</span>
                         <h2 className="text-4xl md:text-5xl font-bold font-heading mt-3 text-white">
                             Project{" "}
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Gallery</span>
+                            <span className="text-white">Gallery</span>
                         </h2>
                         <p className="text-gray-500 mt-5 text-lg">
                             A curated collection of my recent freelance projects and technical builds. Scalable grid layout ready for more.
@@ -114,10 +114,10 @@ export function CaseStudies() {
                                 {/* Subtle inner glow on hover */}
                                 <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-5 blur-2xl rounded-full transition-opacity duration-700 pointer-events-none`} />
 
-                                <div className="mb-2 text-xs font-semibold text-indigo-400 tracking-wide uppercase">
+                                <div className="mb-2 text-xs font-semibold text-white/60 tracking-wide uppercase">
                                     Client: {project.client}
                                 </div>
-                                <h3 className="text-2xl font-bold font-heading text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-indigo-400 group-hover:to-cyan-400 transition-all duration-300">
+                                <h3 className="text-2xl font-bold font-heading text-white mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-gray-400 transition-all duration-300">
                                     {project.title}
                                 </h3>
 

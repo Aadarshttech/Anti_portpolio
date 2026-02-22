@@ -52,11 +52,11 @@ export function ChatBot() {
             if (data.error) throw new Error(data.error);
 
             setMessages((prev) => [...prev, data]);
-        } catch (error) {
+        } catch (error: any) {
             console.error("Chat Error:", error);
             setMessages((prev) => [...prev, {
                 role: "assistant",
-                content: "Sorry, I encountered an error. Please try again later or reach out to Aadarsh directly."
+                content: `Error: ${error.message || "Something went wrong. Please check your API key and connection."}`
             }]);
         } finally {
             setIsLoading(false);

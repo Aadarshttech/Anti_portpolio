@@ -45,6 +45,9 @@ Assistant:`;
         return NextResponse.json({ role: "assistant", content: responseText });
     } catch (error: any) {
         console.error("Chat API Error:", error);
-        return NextResponse.json({ error: "Something went wrong. Please try again later." }, { status: 500 });
+        return NextResponse.json({
+            error: error.message || "Unknown error",
+            details: error.toString()
+        }, { status: 500 });
     }
 }

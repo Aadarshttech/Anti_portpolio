@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Loader2, Send, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram, Loader2, Send, CheckCircle2, ArrowUpRight, MessageSquare } from "lucide-react";
 import { sendEmail } from "@/app/actions";
 import { useActionState, useEffect, useRef } from "react";
 
@@ -59,34 +59,45 @@ export function ProjectInquiryForm() {
                         viewport={{ once: true }}
                         className="lg:col-span-2 space-y-6"
                     >
-                        <a href="mailto:aadarshapandit@gmail.com" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-indigo-500/20 hover:bg-indigo-500/5 transition-all duration-300 group">
+                        <a href="mailto:aadarshapandit@gmail.com" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 group">
                             <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20 group-hover:scale-110 transition-transform">
                                 <Mail size={20} />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-600 uppercase tracking-wider">Email Me</p>
+                                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Email Me</p>
                                 <p className="font-semibold text-white text-sm">aadarshapandit@gmail.com</p>
                             </div>
                             <ArrowUpRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                         </a>
 
-                        <a href="tel:+9779860334317" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-emerald-500/20 hover:bg-emerald-500/5 transition-all duration-300 group">
-                            <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 group-hover:scale-110 transition-transform">
+                        <a href="https://wa.me/9779860334317" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 group">
+                            <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20 group-hover:scale-110 transition-transform">
+                                <MessageSquare size={20} />
+                            </div>
+                            <div>
+                                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">WhatsApp Me</p>
+                                <p className="font-semibold text-white text-sm">+977 9860334317</p>
+                            </div>
+                            <ArrowUpRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                        </a>
+
+                        <a href="tel:+9779860334317" className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 group">
+                            <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20 group-hover:scale-110 transition-transform">
                                 <Phone size={20} />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-600 uppercase tracking-wider">Call Me</p>
+                                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Call Me</p>
                                 <p className="font-semibold text-white text-sm">+977 9860334317</p>
                             </div>
-                            <ArrowUpRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-emerald-400 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
+                            <ArrowUpRight className="w-4 h-4 text-gray-600 ml-auto group-hover:text-white group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" />
                         </a>
 
-                        <div className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02]">
-                            <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20">
+                        <div className="flex items-center gap-4 p-5 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.05] transition-all duration-300 group">
+                            <div className="p-3 rounded-xl bg-white/10 text-white border border-white/20 group-hover:scale-110 transition-transform">
                                 <MapPin size={20} />
                             </div>
                             <div>
-                                <p className="text-xs text-gray-600 uppercase tracking-wider">Location</p>
+                                <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold mb-1">Location</p>
                                 <p className="font-semibold text-white text-sm">Kathmandu, Nepal</p>
                             </div>
                         </div>

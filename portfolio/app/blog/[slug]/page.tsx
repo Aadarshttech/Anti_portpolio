@@ -8,6 +8,8 @@ import { BlogInteractions } from "@/components/blog/BlogInteractions";
 import { Navbar } from "@/components/Navbar";
 import type { Metadata } from "next";
 
+export const revalidate = 60; // Refresh from Supabase every 60 seconds
+
 // 1. Generate Static Params (SSG for all blog posts)
 export async function generateStaticParams() {
     const slugs = await getPostSlugs();

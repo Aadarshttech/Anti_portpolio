@@ -3,6 +3,8 @@ import { getAllPosts } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/BlogCard";
 import { Navbar } from "@/components/Navbar";
 
+export const revalidate = 60; // Refresh from Supabase every 60 seconds
+
 export const metadata: Metadata = {
     title: "Blog — Articles & Tutorials by Aadarsh Pandit",
     description: "Read the latest articles on web development, AI, machine learning, and workflow automation. Learn how to build high-performance software.",

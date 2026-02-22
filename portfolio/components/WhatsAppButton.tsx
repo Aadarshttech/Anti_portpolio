@@ -13,22 +13,21 @@ export function WhatsAppButton() {
     const isWorksPage = pathname?.startsWith('/works');
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                delay: 0.5,
-                duration: 0.4,
-                type: "spring",
-                stiffness: 260,
-                damping: 20
-            }}
-            className="fixed bottom-6 right-6 z-[9999]"
-        >
+        // Plain div — NO motion/transform here so `fixed` stays rock-solid
+        <div className="fixed bottom-6 right-6 z-[9999]">
             <motion.a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                    delay: 0.5,
+                    duration: 0.4,
+                    type: "spring",
+                    stiffness: 260,
+                    damping: 20
+                }}
                 whileHover={{
                     scale: 1.1,
                     boxShadow: isWorksPage ? "0 0 30px rgba(255, 255, 255, 0.2)" : "0 0 30px rgba(37, 211, 102, 0.3)",
@@ -55,6 +54,6 @@ export function WhatsAppButton() {
                     Message me on WhatsApp
                 </div>
             </motion.a>
-        </motion.div>
+        </div>
     );
 }

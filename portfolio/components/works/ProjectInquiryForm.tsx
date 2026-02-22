@@ -180,9 +180,9 @@ export function ProjectInquiryForm() {
 
                                 <motion.button
                                     disabled={isPending}
-                                    whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(99, 102, 241, 0.25)" }}
+                                    whileHover={{ scale: 1.02, boxShadow: "0 0 40px rgba(255, 255, 255, 0.1)" }}
                                     whileTap={{ scale: 0.98 }}
-                                    className="w-full py-4 rounded-xl text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 shadow-xl shadow-indigo-600/20 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full py-4 rounded-xl text-lg font-semibold text-black bg-white hover:bg-gray-100 transition-all duration-300 shadow-xl shadow-white/10 flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
                                     {isPending ? (
                                         <>

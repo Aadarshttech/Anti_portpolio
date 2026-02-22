@@ -74,10 +74,10 @@ export function WorksNavbar() {
                         </a>
                     ))}
                     <motion.button
-                        whileHover={{ scale: 1.05 }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.1)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={(e) => scrollToSection('#contact', e as React.MouseEvent)}
-                        className="relative px-6 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 transition-all duration-300 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40 flex items-center gap-2"
+                        className="relative px-6 py-2.5 rounded-full text-sm font-semibold text-black bg-white hover:bg-gray-100 transition-all duration-300 shadow-lg shadow-white/10 flex items-center gap-2"
                     >
                         <Sparkles size={14} />
                         Start a Project
@@ -119,7 +119,7 @@ export function WorksNavbar() {
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.2 }}
                                 onClick={(e) => scrollToSection('#contact', e as React.MouseEvent)}
-                                className="mt-4 w-full py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-purple-600 to-pink-500"
+                                className="mt-4 w-full py-3 rounded-full text-sm font-semibold text-black bg-white hover:bg-gray-100 shadow-lg shadow-white/5"
                             >
                                 Start a Project
                             </motion.button>
@@ -127,6 +127,6 @@ export function WorksNavbar() {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </motion.nav>
+        </motion.nav >
     );
 }

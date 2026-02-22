@@ -173,10 +173,10 @@ export function WorksHero() {
                             className="flex flex-col sm:flex-row items-center gap-4 mt-10 w-full sm:w-auto"
                         >
                             <motion.button
-                                whileHover={{ scale: 1.05, boxShadow: "0 0 50px rgba(99, 102, 241, 0.25)" }}
+                                whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(255, 255, 255, 0.1)" }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => scrollToSection('contact')}
-                                className="w-full sm:w-auto px-8 py-4 rounded-full text-lg font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 transition-all duration-300 shadow-xl shadow-indigo-600/20 flex items-center justify-center gap-2"
+                                className="w-full sm:w-auto px-8 py-4 rounded-full text-lg font-semibold text-black bg-white hover:bg-gray-100 transition-all duration-300 shadow-xl shadow-white/10 flex items-center justify-center gap-2"
                             >
                                 Get a Free Consultation
                                 <ArrowRight className="w-5 h-5" />

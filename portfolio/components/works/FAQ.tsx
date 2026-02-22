@@ -127,10 +127,10 @@ export function FAQ() {
                     <h4 className="text-xl font-bold font-heading text-white mb-2">Still have questions?</h4>
                     <p className="text-gray-500 mb-6">I&apos;m happy to answer any specific questions about your project.</p>
                     <motion.button
-                        whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(99,102,241,0.2)" }}
+                        whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,255,255,0.1)" }}
                         whileTap={{ scale: 0.95 }}
                         onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                        className="px-8 py-3 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-indigo-600 to-purple-600 shadow-lg shadow-indigo-500/20"
+                        className="px-8 py-3 rounded-full text-sm font-semibold text-black bg-white hover:bg-gray-100 shadow-lg shadow-white/10 transition-all duration-300"
                     >
                         Reach Out Directly
                     </motion.button>

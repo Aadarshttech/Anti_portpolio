@@ -138,10 +138,10 @@ export function CaseStudies() {
                                 <div className="flex items-center gap-3 mt-auto pt-6 border-t border-white/5">
                                     {project.links.demo && project.links.demo !== "#" && (
                                         <motion.button
-                                            whileHover={{ scale: 1.05 }}
+                                            whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255, 255, 255, 0.1)" }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={() => window.open(project.links.demo!, project.links.demo!.startsWith('/') ? '_self' : '_blank')}
-                                            className={`flex-1 py-2.5 rounded-xl text-sm font-semibold text-white bg-gradient-to-r ${project.gradient} flex items-center justify-center gap-2 shadow-lg hover:shadow-xl transition-all`}
+                                            className={`flex-1 py-2.5 rounded-xl text-sm font-semibold text-black bg-white hover:bg-gray-100 flex items-center justify-center gap-2 shadow-lg transition-all`}
                                         >
                                             {project.demoLabel || "View Live"} <ArrowUpRight className="w-4 h-4" />
                                         </motion.button>

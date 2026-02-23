@@ -28,7 +28,7 @@ export function WorksHero() {
     };
 
     return (
-        <section ref={ref} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-28 pb-20">
+        <section ref={ref} id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0A0A] pt-20 pb-20">
             {/* Animated floating background orbs */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <motion.div
@@ -67,7 +67,7 @@ export function WorksHero() {
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0A0A0A_75%)] pointer-events-none" />
 
             <motion.div style={{ y, opacity }} className="container mx-auto px-6 max-w-7xl relative z-10 w-full">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center pt-8">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
                     {/* Left Column: Image */}
                     <motion.div

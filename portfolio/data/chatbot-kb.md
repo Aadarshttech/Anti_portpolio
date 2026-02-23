@@ -43,6 +43,10 @@ Aadarsh's portfolio is hosted at https://aadarshapandit.com.np. It showcases his
 - Email: aadarshapandit@gmail.com
 - Phone: +977 9860334317
 - WhatsApp: +977 9860334317 (preferred for quick responses)
+- GitHub: https://github.com/Aadarshttech
+- LinkedIn: https://linkedin.com/in/aadarsh-pandit
+- Instagram: https://www.instagram.com/aadarsh_pandit17/
+- Twitter / X: https://twitter.com/aadarshapandit
 - Website: https://aadarshapandit.com.np
 - Aadarsh typically responds within 24 hours.
 - He offers free initial consultations to discuss project requirements.

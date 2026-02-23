@@ -93,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased font-sans bg-gray-50`}
+        className={`${inter.variable} ${outfit.variable} antialiased font-sans bg-gray-50 overflow-x-hidden max-w-full`}
       >
         <ScrollToTop />
         {children}

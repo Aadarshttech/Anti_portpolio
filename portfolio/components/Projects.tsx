@@ -80,7 +80,7 @@ export function Projects() {
                             <div className={`h-48 w-full relative overflow-hidden flex items-center justify-center ${project.fit === 'contain' ? 'p-8 bg-gray-50' : 'bg-black/5'} group-hover:bg-gray-100 transition-colors`}>
                                 <Image
                                     src={project.image}
-                                    alt={project.title}
+                                    alt={`${project.title} — ${project.category} Portfolio Project by Aadarsh Pandit`}
                                     fill
                                     className={`${project.fit === 'contain' ? 'object-contain p-4' : 'object-cover'} group-hover:scale-110 transition-transform duration-500`}
                                 />

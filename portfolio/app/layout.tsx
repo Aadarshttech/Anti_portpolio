@@ -17,25 +17,24 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: "Aadarsh Pandit | Freelance AI & Web Developer",
+    default: "Aadarsh Pandit | Freelance AI & Web Developer Nepal",
     template: "%s | Aadarsh Pandit",
   },
-  description: "Hire Aadarsh Pandit — Freelance developer specializing in websites, mobile apps, AI/ML solutions, and automation. Based in Nepal.",
+  description: "Hire Aadarsh Pandit — Specialized freelance developer for AI/ML solutions, high-performance Next.js websites, and mobile apps. Delivering intelligent systems globally from Nepal.",
   applicationName: "Aadarsh Pandit Portfolio",
   authors: [{ name: "Aadarsh Pandit", url: "https://aadarshapandit.com.np" }],
   generator: "Next.js",
   keywords: [
     "Aadarsh Pandit",
-    "Hire Developer Nepal",
-    "Freelance Web Developer",
-    "Custom AI Model",
-    "Mobile App Developer",
-    "Full Stack Freelancer",
-    "Nepal Freelance Developer",
-    "React",
-    "Next.js",
-    "Python",
-    "Web Automation"
+    "Hire AI Developer",
+    "Freelance Web Developer Nepal",
+    "Custom AI Model Development",
+    "Next.js Freelancer",
+    "Machine Learning Engineer Nepal",
+    "Full Stack Developer Kathmandu",
+    "LLM Fine-Tuning Services",
+    "ASR System Developer",
+    "React Native Freelancer"
   ],
   referrer: "origin-when-cross-origin",
   creator: "Aadarsh Pandit",
@@ -51,25 +50,25 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Aadarsh Pandit | Freelance AI & Web Developer",
-    description: "Hire Aadarsh Pandit — Freelance developer specializing in websites, mobile apps, AI/ML solutions, and automation.",
+    description: "Personal portfolio of Aadarsh Pandit. Building intelligent AI systems and high-scale web applications.",
     url: "https://aadarshapandit.com.np",
     siteName: "Aadarsh Pandit Portfolio",
     locale: "en_US",
     type: "website",
     images: [
       {
-        url: "/hero.jpg", // Fallback to hero image
+        url: "/hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Aadarsh Pandit Portfolio",
+        alt: "Aadarsh Pandit Portfolio — AI & Web Development",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Aadarsh Pandit | AI & Web Developer",
-    description: "AI Student & Developer specializing in ML, NLP, and Full Stack Web Development.",
-    creator: "@aadarsh_pandit", // Placeholder if unknown, or remove
+    description: "Specializing in Machine Learning, NLP, and Full Stack Development.",
+    creator: "@aadarshapandit",
     images: ["/hero.jpg"],
   },
   robots: {

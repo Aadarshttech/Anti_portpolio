@@ -130,7 +130,7 @@ export function Hero() {
                         <div className="relative h-full w-full overflow-hidden rounded-[40px] border-4 border-white shadow-2xl bg-white/50 backdrop-blur-sm">
                             <Image
                                 src="/transparent2.png"
-                                alt="Aadarsh Pandit"
+                                alt="Aadarsh Pandit — Freelance AI Developer and Full Stack Web Engineer in Kathmandu, Nepal"
                                 fill
                                 className="object-cover object-top hover:scale-105 transition-transform duration-700"
                                 priority

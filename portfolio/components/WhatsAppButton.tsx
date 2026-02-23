@@ -14,7 +14,7 @@ export function WhatsAppButton() {
 
     return (
         // Plain div — NO motion/transform here so `fixed` stays rock-solid
-        <div className="fixed bottom-6 right-6 z-[9999]">
+        <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[9999]">
             <motion.a
                 href={whatsappUrl}
                 target="_blank"
@@ -33,7 +33,7 @@ export function WhatsAppButton() {
                     boxShadow: isWorksPage ? "0 0 30px rgba(255, 255, 255, 0.2)" : "0 0 30px rgba(37, 211, 102, 0.3)",
                 }}
                 whileTap={{ scale: 0.9 }}
-                className={`flex items-center justify-center w-14 h-14 rounded-full shadow-2xl transition-all duration-300 group ${isWorksPage
+                className={`flex items-center justify-center w-12 h-12 md:w-14 md:h-14 rounded-full shadow-2xl transition-all duration-300 group ${isWorksPage
                     ? "bg-white text-black hover:bg-gray-100"
                     : "bg-[#25D366] text-white hover:bg-[#22c35e]"
                     }`}

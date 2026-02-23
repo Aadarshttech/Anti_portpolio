@@ -71,19 +71,19 @@ export function Hero() {
 
                     <motion.div
                         variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                        className="pt-8 flex items-center gap-8 text-gray-500"
+                        className="pt-8 flex flex-wrap items-center gap-4 sm:gap-8 text-gray-500"
                     >
                         <div className="flex items-center gap-2">
                             <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
                                 <Brain size={20} />
                             </div>
-                            <span className="font-medium">AI/ML Enthusiast</span>
+                            <span className="font-medium whitespace-nowrap">AI/ML Enthusiast</span>
                         </div>
                         <div className="flex items-center gap-2">
                             <div className="p-2 bg-orange-50 text-orange-600 rounded-lg">
                                 <Code size={20} />
                             </div>
-                            <span className="font-medium">Full Stack Dev</span>
+                            <span className="font-medium whitespace-nowrap">Full Stack Dev</span>
                         </div>
                     </motion.div>
                 </motion.div>
@@ -114,7 +114,7 @@ export function Hero() {
                         <motion.div
                             animate={{ y: [10, -10, 10] }}
                             transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute bottom-20 -right-5 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-gray-100"
+                            className="absolute bottom-20 right-0 sm:-right-5 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center flex-wrap gap-2 sm:gap-3 border border-gray-100 max-w-[140px] sm:max-w-none"
                         >
                             <div className="bg-green-100 p-2 rounded-lg text-green-600">
                                 <Code size={24} />

@@ -176,16 +176,16 @@ export function WorksHero() {
                                 whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(255, 255, 255, 0.1)" }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => scrollToSection('contact')}
-                                className="w-full sm:w-auto px-8 py-4 rounded-full text-lg font-semibold text-black bg-white hover:bg-gray-100 transition-all duration-300 shadow-xl shadow-white/10 flex items-center justify-center gap-2"
+                                className="w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold text-black bg-white hover:bg-gray-100 transition-all duration-300 shadow-xl shadow-white/10 flex items-center justify-center gap-2"
                             >
-                                Get a Free Consultation
+                                Hire Me
                                 <ArrowRight className="w-5 h-5" />
                             </motion.button>
                             <motion.button
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 onClick={() => scrollToSection('services')}
-                                className="w-full sm:w-auto px-8 py-4 rounded-full text-lg font-semibold text-gray-300 border border-white/10 hover:border-white/25 hover:bg-white/5 backdrop-blur-sm transition-all duration-300 group flex items-center justify-center gap-2"
+                                className="w-auto px-6 py-3 sm:px-8 sm:py-4 rounded-full text-base sm:text-lg font-semibold text-gray-300 border border-white/10 hover:border-white/25 hover:bg-white/5 backdrop-blur-sm transition-all duration-300 group flex items-center justify-center gap-2"
                             >
                                 See Services <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                             </motion.button>

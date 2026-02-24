@@ -22,8 +22,42 @@ export const metadata: Metadata = {
 export default async function BlogListingPage() {
     const posts = await getAllPosts();
 
+    const jsonLd = [
+        {
+            "@context": "https://schema.org",
+            "@type": "ItemList",
+            "itemListElement": posts.map((post, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `https://aadarshapandit.com.np/blog/${post.slug}`
+            }))
+        },
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://aadarshapandit.com.np/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://aadarshapandit.com.np/blog"
+                }
+            ]
+        }
+    ];
+
     return (
         <main className="min-h-screen bg-white text-gray-900 overflow-x-hidden relative selection:bg-orange-200 selection:text-orange-900">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             {/* Ambient Background Styling */}
             <div className="absolute top-0 inset-x-0 h-[800px] bg-gradient-to-b from-[#FAFBFF] to-white pointer-events-none -z-10" />
             <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-gradient-to-bl from-orange-200/40 via-orange-100/10 to-transparent rounded-full blur-[120px] pointer-events-none -z-10" />

@@ -34,7 +34,10 @@ export const metadata: Metadata = {
     "Full Stack Developer Kathmandu",
     "LLM Fine-Tuning Services",
     "ASR System Developer",
-    "React Native Freelancer"
+    "React Native Freelancer",
+    "Software Engineer Nepal",
+    "AI Consultant Nepal",
+    "Python Developer Kathmandu"
   ],
   referrer: "origin-when-cross-origin",
   creator: "Aadarsh Pandit",

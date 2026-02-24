@@ -67,36 +67,57 @@ export const metadata: Metadata = {
 };
 
 // JSON-LD Structured Data for richer Google Search results
-const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Aadarsh Pandit — Freelance AI & Web Developer",
-    url: "https://aadarshapandit.com.np/works",
-    description:
-        "Full-stack freelance developer specializing in AI/ML, web applications, mobile apps, and workflow automation.",
-    provider: {
-        "@type": "Person",
-        name: "Aadarsh Pandit",
-        url: "https://aadarshapandit.com.np",
-        jobTitle: "Freelance AI & Full Stack Developer",
-        address: {
-            "@type": "PostalAddress",
-            addressCountry: "NP",
+const jsonLd = [
+    {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        name: "Aadarsh Pandit — Freelance AI & Web Developer",
+        image: "https://aadarshapandit.com.np/images/asr.png",
+        url: "https://aadarshapandit.com.np/works",
+        description:
+            "Full-stack freelance developer specializing in AI/ML, web applications, mobile apps, and workflow automation.",
+        provider: {
+            "@type": "Person",
+            name: "Aadarsh Pandit",
+            url: "https://aadarshapandit.com.np",
+            jobTitle: "Freelance AI & Full Stack Developer",
+            address: {
+                "@type": "PostalAddress",
+                addressCountry: "NP",
+            },
+        },
+        areaServed: "Worldwide",
+        serviceType: [
+            "Web Development",
+            "AI & Machine Learning",
+            "Mobile App Development",
+            "Workflow Automation",
+        ],
+        offers: {
+            "@type": "Offer",
+            availability: "https://schema.org/InStock",
+            description: "Free initial consultation available",
         },
     },
-    areaServed: "Worldwide",
-    serviceType: [
-        "Web Development",
-        "AI & Machine Learning",
-        "Mobile App Development",
-        "Workflow Automation",
-    ],
-    offers: {
-        "@type": "Offer",
-        availability: "https://schema.org/InStock",
-        description: "Free initial consultation available",
-    },
-};
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+            {
+                "@type": "ListItem",
+                position: 1,
+                name: "Home",
+                item: "https://aadarshapandit.com.np",
+            },
+            {
+                "@type": "ListItem",
+                position: 2,
+                name: "Works",
+                item: "https://aadarshapandit.com.np/works",
+            },
+        ],
+    }
+];
 
 export default function WorksPage() {
     return (

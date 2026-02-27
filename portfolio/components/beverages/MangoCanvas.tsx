@@ -8,7 +8,20 @@ interface MangoCanvasProps {
     className?: string;
 }
 
-const FRAME_COUNT = 194;
+const TOTAL_FRAMES = 194;
+
+/** Determine whether to use mobile-optimized assets */
+function getFrameConfig() {
+    if (typeof window === "undefined") return { count: TOTAL_FRAMES, step: 1, dir: "mango-frames" };
+    const isMobile = window.innerWidth < 768;
+    // Mobile: load every 2nd frame from the smaller directory → 97 frames (~2 MB)
+    // Desktop: load all 194 frames from full-res directory  → 11 MB
+    return {
+        count: isMobile ? Math.ceil(TOTAL_FRAMES / 2) : TOTAL_FRAMES,
+        step: isMobile ? 2 : 1,
+        dir: isMobile ? "mango-frames-mobile" : "mango-frames",
+    };
+}
 
 export const MangoCanvas = ({
     scrollYProgress,
@@ -19,6 +32,7 @@ export const MangoCanvas = ({
     const loadedRef = useRef(false);
     const rafRef = useRef<number>(0);
     const lastFrameRef = useRef(-1);
+    const frameCountRef = useRef(TOTAL_FRAMES);
     const [loadProgress, setLoadProgress] = useState(0);
     const [ready, setReady] = useState(false);
 
@@ -33,7 +47,7 @@ export const MangoCanvas = ({
 
         const dpr = window.devicePixelRatio || 1;
         const rect = canvas.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) return;          // not laid out yet
+        if (rect.width === 0 || rect.height === 0) return;
         const bw = Math.round(rect.width * dpr);
         const bh = Math.round(rect.height * dpr);
 
@@ -64,10 +78,11 @@ export const MangoCanvas = ({
     const updateFrame = useCallback(
         (force = false) => {
             if (!loadedRef.current) return;
+            const count = frameCountRef.current;
             const progress = Math.max(0, Math.min(scrollYProgress.get(), 1));
             const index = Math.min(
-                Math.floor(progress * (FRAME_COUNT - 1)),
-                FRAME_COUNT - 1,
+                Math.floor(progress * (count - 1)),
+                count - 1,
             );
             if (force || index !== lastFrameRef.current) {
                 lastFrameRef.current = index;
@@ -78,23 +93,27 @@ export const MangoCanvas = ({
     );
 
     /* ------------------------------------------------------------------ */
-    /*  Preload every frame                                               */
+    /*  Preload frames (responsive: mobile gets fewer, smaller frames)    */
     /* ------------------------------------------------------------------ */
     useEffect(() => {
-        let count = 0;
-        const images: HTMLImageElement[] = new Array(FRAME_COUNT);
+        const { count, step, dir } = getFrameConfig();
+        frameCountRef.current = count;
 
-        for (let i = 0; i < FRAME_COUNT; i++) {
+        let loaded = 0;
+        const images: HTMLImageElement[] = new Array(count);
+
+        for (let i = 0; i < count; i++) {
+            const originalIndex = i * step; // maps back to original frame number
             const img = new window.Image();
-            img.src = `/projects/beverages/mango-frames/frame_${String(i).padStart(5, "0")}.jpg`;
+            img.src = `/projects/beverages/${dir}/frame_${String(originalIndex).padStart(5, "0")}.jpg`;
 
             const onDone = () => {
-                count++;
-                setLoadProgress(Math.round((count / FRAME_COUNT) * 100));
+                loaded++;
+                setLoadProgress(Math.round((loaded / count) * 100));
 
                 // Draw frame 0 as soon as it arrives so the user sees something immediately
                 if (i === 0 && img.complete && img.naturalWidth > 0) {
-                    imagesRef.current = images;   // partial but index 0 is ready
+                    imagesRef.current = images;
                     const canvas = canvasRef.current;
                     if (canvas) {
                         const ctx = canvas.getContext("2d", { alpha: false });
@@ -115,11 +134,10 @@ export const MangoCanvas = ({
                     }
                 }
 
-                if (count === FRAME_COUNT) {
+                if (loaded === count) {
                     imagesRef.current = images;
                     loadedRef.current = true;
                     setReady(true);
-                    // Force draw on next frame so canvas is definitely populated
                     requestAnimationFrame(() => updateFrame(true));
                 }
             };

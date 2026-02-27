@@ -37,7 +37,7 @@ const services = [
         borderGlow: "hover:border-emerald-500/30",
         iconBg: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
         tags: ["Python", "TensorFlow", "OpenAI", "NLP"],
-        examples: "Like my Nepali ASR System or Cricket Predictor",
+        examples: "Like my Reward-Guided ASR Finetuning or Cricket Predictor",
         timeline: "4-8 weeks",
         features: [
             "Custom workflow automation",

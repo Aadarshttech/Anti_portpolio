@@ -6,13 +6,25 @@ import Image from "next/image";
 
 const caseStudies = [
     {
-        title: "Nepali ASR System",
+        title: "Mango Pandit — Scrollytelling",
+        client: "Personal Project",
+        category: "Creative Dev",
+        challenge: "Creating a scroll-driven product page with cinema-quality frame animation and a full e-commerce UI.",
+        approach: "Rendered 194 frames on HTML5 Canvas synced to scroll via Framer Motion, with cart, toasts, and dark shop section.",
+        tags: ["Next.js", "Framer Motion", "Canvas API"],
+        image: "/projects/beverages/mango-frames/frame_00090.jpg",
+        fit: "cover" as const,
+        gradient: "from-orange-500 to-amber-400",
+        links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
+    },
+    {
+        title: "Reward-Guided Finetuning",
         client: "University AI Research",
         category: "Machine Learning",
-        challenge: "Developing an accurate Automatic Speech Recognition (ASR) system for Nepali, a low-resource language.",
-        approach: "Fine-tuned OpenAI's Whisper model using 50,000+ custom audio pairs and RLHF.",
+        challenge: "Building an accurate Nepali speech-to-text system despite extremely limited labeled training data.",
+        approach: "Fine-tuned OpenAI Whisper on 50k+ custom audio pairs, then applied reward-guided RLHF to boost accuracy.",
         tags: ["Python", "PyTorch", "Whisper"],
-        image: "/images/asr.png",
+        image: "/images/asr-hero.svg",
         fit: "cover" as const,
         gradient: "from-emerald-500 to-teal-400",
         links: { code: "https://github.com/Aadarshttech" }
@@ -21,8 +33,8 @@ const caseStudies = [
         title: "Karyantra Hive",
         client: "Karyantra Corp",
         category: "Corporate Website",
-        challenge: "Karyantra needed a professional, highly performant website managed by their marketing team.",
-        approach: "Built a responsive Next.js frontend integrated with a seamless CMS backend.",
+        challenge: "Karyantra needed a fast, professional website their marketing team could manage independently.",
+        approach: "Built a responsive Next.js frontend with a headless CMS backend for easy content updates.",
         tags: ["Next.js", "React", "CMS"],
         image: "/images/karyantra_logo.png",
         fit: "contain" as const,
@@ -31,12 +43,12 @@ const caseStudies = [
         demoLabel: "Live Site"
     },
     {
-        title: "Cricket Predictor",
+        title: "Nepal Cricket Predictor",
         client: "Sports Analytics",
         category: "Web App + ML",
-        challenge: "Creating an interactive, real-time tool to predict cricket match outcomes based on historical granular data.",
-        approach: "Developed a Random Forest model on the backend with a React dashboard.",
-        tags: ["React", "FastAPI", "Scikit"],
+        challenge: "Predicting Nepal cricket match outcomes in real-time using granular historical match data.",
+        approach: "Trained a Random Forest model served via FastAPI, paired with a React visualization dashboard.",
+        tags: ["React", "FastAPI", "Scikit-learn"],
         image: "/images/can-logo.png",
         fit: "contain" as const,
         gradient: "from-purple-500 to-pink-400",

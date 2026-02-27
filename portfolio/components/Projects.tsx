@@ -7,19 +7,28 @@ import { Button } from "./ui/button";
 
 const projects = [
     {
-        title: "Nepali ASR System with RLHF",
+        title: "Mango Pandit — Scrollytelling",
+        category: "Creative Dev",
+        description: "An Awwwards-inspired scrollytelling product page with 194-frame canvas animation synced to scroll via Framer Motion. Features a full e-commerce UI with cart, toast notifications, and dark-mode shop section.",
+        tags: ["Next.js", "Framer Motion", "Canvas API", "Scroll Animation"],
+        image: "/projects/beverages/mango-frames/frame_00090.jpg",
+        fit: "cover",
+        links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
+    },
+    {
+        title: "Reward-Guided Finetuning for Nepali ASR",
         category: "AI / NLP Research",
-        description: "A pioneering speech-to-text system for Nepali language using OpenAI's Whisper model fine-tuned with 50k+ audio pairs. Implements Reinforcement Learning with Human Feedback (RLHF) to optimize accuracy for low-resource languages.",
+        description: "A speech-to-text pipeline for Nepali built on OpenAI Whisper, fine-tuned with 50k+ audio pairs and optimized through reward-guided RLHF training to push accuracy on a low-resource language.",
         tags: ["Python", "PyTorch", "Whisper", "RLHF", "PPO"],
-        image: "/images/asr.png",
+        image: "/images/asr-hero-light.svg",
         fit: "cover",
         links: { demo: "", code: "https://github.com/Aadarshttech" }
     },
     {
-        title: "Nepal Cricket Score Predictor",
+        title: "Nepal Cricket Match Predictor",
         category: "Web App + ML",
-        description: "Interactive dashboard comparing Nepal's cricket team performance. Uses Random Forest algorithms to predict match outcomes based on toss, venue, and opposition data with real-time visualization.",
-        tags: ["React", "FastAPI", "Scikit Level", "Random Forest", "Data Viz"],
+        description: "Real-time dashboard that predicts Nepal cricket match outcomes using a Random Forest model trained on toss, venue, and opposition stats — paired with interactive data visualizations.",
+        tags: ["React", "FastAPI", "Scikit-learn", "Random Forest", "Data Viz"],
         image: "/images/can-logo.png",
         fit: "contain",
         links: { demo: "/nepal-cricket/index.html", code: "https://github.com/Aadarshttech" }
@@ -27,7 +36,7 @@ const projects = [
     {
         title: "Karyantra Hive",
         category: "Web Development",
-        description: "Professional corporate website for Karyantra, delivering a robust online presence. Features include responsive design, custom CMS integration, and performance-optimized architecture.",
+        description: "Corporate website for Karyantra featuring responsive layouts, custom CMS integration, and performance-optimized architecture for a fast, professional online presence.",
         tags: ["React", "Tailwind", "Responsive Design", "UI/UX"],
         image: "/images/karyantra_logo.png",
         fit: "contain",
@@ -93,8 +102,8 @@ export function Projects() {
                                         {project.category}
                                     </span>
                                 </div>
-                                <h3 className="text-lg font-bold mb-3 font-heading group-hover:text-primary transition-colors line-clamp-1">{project.title}</h3>
-                                <p className="text-gray-600 mb-6 text-sm leading-relaxed line-clamp-3">
+                                <h3 className="text-lg font-bold mb-3 font-heading group-hover:text-primary transition-colors">{project.title}</h3>
+                                <p className="text-gray-600 mb-6 text-sm leading-relaxed">
                                     {project.description}
                                 </p>
 

@@ -42,25 +42,35 @@ export const MangoCanvas = ({
     /* ------------------------------------------------------------------ */
     /*  Draw a single frame (cover-fit) onto the canvas                   */
     /* ------------------------------------------------------------------ */
+    const drawRectRef = useRef<{ bw: number, bh: number, scale: number } | null>(null);
+
     const drawFrame = useCallback((index: number, force = false) => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext("2d", { alpha: false });
         if (!ctx) return;
 
-        const dpr = window.devicePixelRatio || 1;
-        const rect = canvas.getBoundingClientRect();
-        if (rect.width === 0 || rect.height === 0) return;
-        const bw = Math.round(rect.width * dpr);
-        const bh = Math.round(rect.height * dpr);
-
-        if (canvas.width !== bw || canvas.height !== bh) {
-            canvas.width = bw;
-            canvas.height = bh;
-        }
-
         const img = imagesRef.current[index];
         if (!img || !img.complete || img.naturalWidth === 0) return;
+
+        // Only calculate the bounding rect and canvas size if we don't have it, or if forced
+        if (force || !drawRectRef.current) {
+            const dpr = window.devicePixelRatio || 1;
+            const rect = canvas.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) return;
+
+            const bw = Math.round(rect.width * dpr);
+            const bh = Math.round(rect.height * dpr);
+
+            if (canvas.width !== bw || canvas.height !== bh) {
+                canvas.width = bw;
+                canvas.height = bh;
+            }
+
+            drawRectRef.current = { bw, bh, scale: 0 }; // scale calculated per image
+        }
+
+        const { bw, bh } = drawRectRef.current;
 
         // Cover-fit
         const iw = img.naturalWidth;
@@ -164,15 +174,22 @@ export const MangoCanvas = ({
     });
 
     /* ------------------------------------------------------------------ */
-    /*  Re-draw on resize                                                 */
+    /*  Re-draw on resize (Throttled for mobile performance)              */
     /* ------------------------------------------------------------------ */
     useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
         const onResize = () => {
-            lastFrameRef.current = -1;
-            updateFrame(true);
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                lastFrameRef.current = -1;
+                updateFrame(true);
+            }, 100);
         };
         window.addEventListener("resize", onResize);
-        return () => window.removeEventListener("resize", onResize);
+        return () => {
+            window.removeEventListener("resize", onResize);
+            clearTimeout(timeoutId);
+        };
     }, [updateFrame]);
 
     /* ------------------------------------------------------------------ */

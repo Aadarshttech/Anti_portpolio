@@ -210,7 +210,7 @@ export default function OreoChocolateDemo() {
                         </a>
                     </div>
                     <div className="absolute top-1/2 right-5 -translate-y-1/2 z-30 hidden md:block">
-                        <a href="#" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
+                        <a href="/projects/beverages/choco-strawberry-velvet" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
                             <ChevronRight size={24} />
                         </a>
                     </div>
@@ -224,9 +224,9 @@ export default function OreoChocolateDemo() {
                         <button className="px-5 md:px-7 py-2.5 bg-white text-black rounded-full font-semibold text-xs tracking-wide">
                             Oreo Choco
                         </button>
-                        <button className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
-                            Ruby Pom
-                        </button>
+                        <a href="/projects/beverages/choco-strawberry-velvet" className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
+                            Strawberry Velvet
+                        </a>
                     </div>
 
                     {/* ════════════════════════════════════════════════
@@ -448,22 +448,22 @@ export default function OreoChocolateDemo() {
                         </div>
                     </div>
 
-                    {/* Product Card 3 — Ruby Pom */}
+                    {/* Product Card 3 — Choco Strawberry Velvet */}
                     <div className="relative bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 rounded-3xl p-6 md:p-8 flex flex-col items-center hover:border-rose-500/30 hover:shadow-[0_0_40px_rgba(244,63,94,0.08)] transition-all duration-500 group overflow-hidden">
                         {/* New badge */}
                         <div className="absolute top-5 left-5 bg-rose-500 text-white text-[9px] font-bold tracking-[0.15em] uppercase px-3 py-1.5 rounded-full">
                             New
                         </div>
                         <div className="w-full aspect-square max-w-[200px] rounded-2xl mb-6 flex items-center justify-center overflow-hidden" style={{ background: 'radial-gradient(circle at 50% 50%, rgba(244,63,94,0.12) 0%, transparent 70%)' }}>
-                            <span className="text-7xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">🍎</span>
+                            <span className="text-7xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">🍓</span>
                         </div>
                         <div className="flex items-center gap-1 mb-2">
                             {'★★★★★'.split('').map((s, i) => <span key={i} className="text-rose-400 text-xs">{s}</span>)}
                             <span className="text-white/30 text-[10px] ml-1">(42)</span>
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-1">Ruby Pom</h4>
+                        <h4 className="text-xl font-bold text-white mb-1">Choco Strawberry Velvet</h4>
                         <p className="text-white/35 text-center text-sm mb-4 leading-relaxed">
-                            Antioxidant-rich pomegranate juice with a hint of mint.
+                            Decadent dark cocoa mixed with sweet strawberry extracts.
                         </p>
                         <div className="flex gap-2 mb-5">
                             <span className="text-[9px] font-bold tracking-wider uppercase px-3 py-1 rounded-full border border-white/10 text-white/40">250ml</span>
@@ -475,7 +475,7 @@ export default function OreoChocolateDemo() {
                                 <span className="text-2xl font-black text-white">₹140</span>
                                 <span className="text-white/30 text-xs ml-1 line-through">₹170</span>
                             </div>
-                            <button onClick={() => addToCart('Ruby Pom', 140)} className="bg-rose-500 hover:bg-rose-400 text-white px-6 py-2.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-colors cursor-pointer shadow-lg shadow-rose-500/20">
+                            <button onClick={() => addToCart('Strawberry Velvet', 140)} className="bg-rose-500 hover:bg-rose-400 text-white px-6 py-2.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-colors cursor-pointer shadow-lg shadow-rose-500/20">
                                 Add to Cart
                             </button>
                         </div>

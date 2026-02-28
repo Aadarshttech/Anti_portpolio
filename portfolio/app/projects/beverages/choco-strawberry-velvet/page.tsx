@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { MangoCanvas } from "@/components/beverages/MangoCanvas";
+import { StrawberryCanvas } from "@/components/beverages/StrawberryCanvas";
 import { useScroll, motion, useTransform, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ChevronLeft, ChevronRight, ShoppingCart, Zap, Check, Github, Linkedin, Instagram, Twitter } from "lucide-react";
 
@@ -17,7 +17,7 @@ interface CartItem {
     qty: number;
 }
 
-export default function BeveragesDemo() {
+export default function ChocoStrawberryVelvetDemo() {
     const containerRef = useRef<HTMLDivElement>(null);
     const [cart, setCart] = useState<CartItem[]>([]);
     const [showCart, setShowCart] = useState(false);
@@ -93,7 +93,7 @@ export default function BeveragesDemo() {
                         </p>
                         <div className="w-64 h-1.5 overflow-hidden rounded-full bg-white/10">
                             <div
-                                className="h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400 transition-all duration-200 ease-out"
+                                className="h-full rounded-full bg-gradient-to-r from-rose-700 to-rose-500 transition-all duration-200 ease-out"
                                 style={{ width: `${loadProgress}%` }}
                             />
                         </div>
@@ -115,7 +115,7 @@ export default function BeveragesDemo() {
                     <div className="flex items-center gap-2">
                         <Zap className="text-orange-500 fill-orange-500" size={18} />
                         <span className="text-base font-black tracking-tight text-white">
-                            Mango <span className="text-orange-400">Pandit</span>
+                            Strawberry <span className="text-rose-500">Velvet</span>
                         </span>
                     </div>
                 </div>
@@ -149,8 +149,8 @@ export default function BeveragesDemo() {
 
             {/* ── Cart Dropdown ─────────────────────────────────────── */}
             {showCart && (
-                <div className="fixed top-20 right-6 md:right-10 z-[70] w-80 bg-white text-black rounded-2xl shadow-2xl border border-orange-100 overflow-hidden">
-                    <div className="px-5 py-4 border-b border-orange-100 flex items-center justify-between">
+                <div className="fixed top-20 right-6 md:right-10 z-[70] w-80 bg-white text-black rounded-2xl shadow-2xl border border-rose-100 overflow-hidden">
+                    <div className="px-5 py-4 border-b border-rose-100 flex items-center justify-between">
                         <h4 className="font-bold text-lg">Your Cart</h4>
                         <button onClick={() => setShowCart(false)} className="text-xs text-gray-400 hover:text-black">Close</button>
                     </div>
@@ -158,7 +158,7 @@ export default function BeveragesDemo() {
                         <div className="px-5 py-8 text-center text-gray-400 text-sm">Your cart is empty</div>
                     ) : (
                         <>
-                            <ul className="divide-y divide-orange-50">
+                            <ul className="divide-y divide-rose-50">
                                 {cart.map((item) => (
                                     <li key={item.name} className="px-5 py-3 flex items-center justify-between">
                                         <div>
@@ -172,9 +172,9 @@ export default function BeveragesDemo() {
                                     </li>
                                 ))}
                             </ul>
-                            <div className="px-5 py-4 border-t border-orange-100 flex items-center justify-between">
+                            <div className="px-5 py-4 border-t border-rose-100 flex items-center justify-between">
                                 <span className="font-bold">Total: ₹{cartTotal}</span>
-                                <button className="bg-orange-500 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-orange-600 transition-colors">Checkout</button>
+                                <button className="bg-rose-500 text-white px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-rose-600 transition-colors">Checkout</button>
                             </div>
                         </>
                     )}
@@ -192,7 +192,7 @@ export default function BeveragesDemo() {
                 <div className="sticky top-0 left-0 w-full h-screen overflow-hidden">
 
                     {/* Canvas (behind everything) — absolute so it fills the sticky container */}
-                    <MangoCanvas
+                    <StrawberryCanvas
                         scrollYProgress={scrollYProgress}
                         className="absolute top-0 left-0 w-full h-full z-0"
                         onLoadComplete={() => setIsLoaded(true)}
@@ -205,12 +205,12 @@ export default function BeveragesDemo() {
 
                     {/* ── Nav arrows (decorative) ──────────────────── */}
                     <div className="absolute top-1/2 left-5 -translate-y-1/2 z-30 hidden md:block">
-                        <a href="#" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
+                        <a href="/projects/beverages/oreo-chocolate" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
                             <ChevronLeft size={24} />
                         </a>
                     </div>
                     <div className="absolute top-1/2 right-5 -translate-y-1/2 z-30 hidden md:block">
-                        <a href="/projects/beverages/oreo-chocolate" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
+                        <a href="#" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
                             <ChevronRight size={24} />
                         </a>
                     </div>
@@ -218,15 +218,15 @@ export default function BeveragesDemo() {
                     {/* ── Flavor pill selector (bottom) ────────────── */}
                     <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-30
                                     bg-black/40 backdrop-blur-xl rounded-full flex items-center p-1 border border-white/10 shadow-2xl">
-                        <button className="px-5 md:px-7 py-2.5 bg-white text-black rounded-full font-semibold text-xs tracking-wide">
+                        <a href="/projects/beverages" className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
                             Mango Pandit
-                        </button>
+                        </a>
                         <a href="/projects/beverages/oreo-chocolate" className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
                             Oreo Choco
                         </a>
-                        <a href="/projects/beverages/choco-strawberry-velvet" className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
+                        <button className="px-5 md:px-7 py-2.5 bg-white text-black rounded-full font-semibold text-xs tracking-wide">
                             Strawberry Velvet
-                        </a>
+                        </button>
                     </div>
 
                     {/* ════════════════════════════════════════════════
@@ -248,26 +248,26 @@ export default function BeveragesDemo() {
                                 </p>
                                 <h1 className="text-6xl sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] font-black tracking-[-0.04em] leading-[0.82]"
                                     style={{ color: '#fff', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
-                                    <span className="block">Mango</span>
-                                    <span className="block">Pandit</span>
+                                    <span className="block">Choco</span>
+                                    <span className="block">Strawberry</span>
                                 </h1>
                                 <p className="mt-5 md:mt-7 text-base md:text-xl lg:text-2xl font-light tracking-[0.06em] italic"
                                     style={{ color: 'rgba(255,255,255,0.75)', textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
-                                    Where flavor meets purity.
+                                    Rich. Velvety. Irresistible.
                                 </p>
                                 <div className="mt-8 md:mt-10 flex items-center gap-4 md:gap-6 rounded-2xl px-6 md:px-8 py-4 md:py-5 border"
                                     style={{
-                                        background: 'linear-gradient(135deg, rgba(251,191,36,0.15) 0%, rgba(245,158,11,0.08) 100%)',
-                                        borderColor: 'rgba(251,191,36,0.25)',
+                                        background: 'linear-gradient(135deg, rgba(225,29,72,0.15) 0%, rgba(190,18,60,0.08) 100%)',
+                                        borderColor: 'rgba(225,29,72,0.25)',
                                         backdropFilter: 'blur(16px)',
                                         boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
                                     }}>
-                                    <span className="text-3xl md:text-4xl font-extrabold" style={{ color: '#fbbf24' }}>₹120</span>
-                                    <div className="w-px h-12" style={{ background: 'rgba(251,191,36,0.3)' }} />
+                                    <span className="text-3xl md:text-4xl font-extrabold" style={{ color: '#e11d48' }}>₹140</span>
+                                    <div className="w-px h-12" style={{ background: 'rgba(225,29,72,0.3)' }} />
                                     <div className="text-[10px] md:text-xs font-bold text-left space-y-1 uppercase tracking-[0.18em]" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                                        <p>100 % Fruit</p>
-                                        <p>No Preservatives</p>
-                                        <p>Rich in Vitamin C</p>
+                                        <p>Real Cocoa</p>
+                                        <p>Strawberry Extract</p>
+                                        <p>Rich in Antioxidants</p>
                                     </div>
                                 </div>
                             </div>
@@ -280,22 +280,20 @@ export default function BeveragesDemo() {
                         >
                             <div className="max-w-2xl">
                                 <div className="flex items-center gap-3 mb-5">
-                                    <div className="h-px w-8 bg-amber-400/60" />
-                                    <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase" style={{ color: '#fbbf24' }}>
+                                    <div className="h-px w-8 bg-rose-400/60" />
+                                    <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase" style={{ color: '#fb7185' }}>
                                         The Story
                                     </p>
                                 </div>
                                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-[-0.03em] leading-[0.95]"
                                     style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
-                                    Bursting<br />
-                                    <span style={{ color: '#fbbf24' }}>with fresh</span><br />
-                                    mango.
+                                    Decadent<br />
+                                    <span style={{ color: '#e11d48' }}>dark</span><br />
+                                    cocoa.
                                 </h2>
                                 <p className="mt-6 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md"
                                     style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
-                                    Hand-picked Alphonso mangoes, perfectly ripened
-                                    under the summer sun — processed within hours to
-                                    preserve every drop of natural goodness.
+                                    Premium dark cocoa powder blended seamlessly with fresh dairy and sweet strawberry extracts, providing the ultimate chocolate rush.
                                 </p>
                             </div>
                         </motion.div>
@@ -314,13 +312,11 @@ export default function BeveragesDemo() {
                                 </div>
                                 <h2 className="text-5xl md:text-7xl lg:text-8xl font-black tracking-[-0.03em] leading-[0.95]"
                                     style={{ textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
-                                    <span style={{ color: '#34d399' }}>Vitamin</span>-packed<br />refreshment.
+                                    <span style={{ color: '#e11d48' }}>Antioxidant</span>-packed<br />indulgence.
                                 </h2>
                                 <p className="mt-6 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md ml-auto"
                                     style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
-                                    A natural energy boost packed with Vitamin A & C
-                                    that revitalises your body and mind — without a
-                                    single drop of added sugar.
+                                    A natural energy boost packed with rich antioxidants that revitalises your body and mind — a pure guilt-free treat.
                                 </p>
                                 {/* Benefit pills */}
                                 <div className="flex flex-wrap gap-2 mt-6 justify-end">
@@ -339,16 +335,16 @@ export default function BeveragesDemo() {
                             style={{ opacity: op4, y: y4, scale: s4 }}
                             className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
                         >
-                            <p className="text-[10px] md:text-xs font-bold tracking-[0.45em] uppercase mb-5" style={{ color: '#fb923c' }}>
+                            <p className="text-[10px] md:text-xs font-bold tracking-[0.45em] uppercase mb-5" style={{ color: '#fb7185' }}>
                                 Order Now
                             </p>
                             <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-black tracking-[-0.04em] leading-[0.85]">
-                                <span style={{ color: '#fff', textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}>Sip the</span><br />
+                                <span style={{ color: '#fff', textShadow: '0 4px 30px rgba(0,0,0,0.6)' }}>Taste the</span><br />
                                 <span style={{
                                     color: '#fff',
-                                    textShadow: '0 0 40px rgba(255,61,0,0.6), 0 0 80px rgba(255,61,0,0.3), 0 4px 20px rgba(0,0,0,0.5)',
-                                    WebkitTextStroke: '2px #FF3D00',
-                                }}>Revolution.</span>
+                                    textShadow: '0 0 40px rgba(225,29,72,0.6), 0 0 80px rgba(225,29,72,0.3), 0 4px 20px rgba(0,0,0,0.5)',
+                                    WebkitTextStroke: '2px #e11d48',
+                                }}>Romance.</span>
                             </h2>
                             <p className="mt-5 text-base md:text-lg lg:text-xl font-medium max-w-lg"
                                 style={{ color: '#fff', textShadow: '0 2px 16px rgba(0,0,0,0.6)' }}>
@@ -356,9 +352,9 @@ export default function BeveragesDemo() {
                             </p>
                             <a href="#shop" className="pointer-events-auto mt-8 md:mt-10 inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase px-10 py-5 rounded-full transition-all duration-300 hover:scale-105"
                                 style={{
-                                    background: 'linear-gradient(135deg, #f97316 0%, #f59e0b 100%)',
+                                    background: 'linear-gradient(135deg, #f43f5e 0%, #e11d48 100%)',
                                     color: '#fff',
-                                    boxShadow: '0 8px 30px rgba(249,115,22,0.4), 0 2px 8px rgba(0,0,0,0.2)',
+                                    boxShadow: '0 8px 30px rgba(225,29,72,0.4), 0 2px 8px rgba(0,0,0,0.2)',
                                 }}>
                                 <ShoppingCart size={16} />
                                 Shop Now
@@ -505,7 +501,7 @@ export default function BeveragesDemo() {
                             <div className="flex items-center gap-2 mb-4">
                                 <Zap className="text-orange-500 fill-orange-500" size={18} />
                                 <span className="text-lg font-black tracking-tight">
-                                    Mango <span className="text-orange-400">Pandit</span>
+                                    Strawberry <span className="text-rose-500">Velvet</span>
                                 </span>
                             </div>
                             <p className="text-white/40 text-sm leading-relaxed">

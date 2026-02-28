@@ -222,7 +222,7 @@ export default function ChocoStrawberryVelvetDemo() {
                             Mango Pandit
                         </a>
                         <a href="/projects/beverages/oreo-chocolate" className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
-                            Oreo Choco
+                            Silk Oreo
                         </a>
                         <button className="px-5 md:px-7 py-2.5 bg-white text-black rounded-full font-semibold text-xs tracking-wide">
                             Strawberry Velvet
@@ -429,7 +429,7 @@ export default function ChocoStrawberryVelvetDemo() {
                             <span className="text-white/20 text-xs">★</span>
                             <span className="text-white/30 text-[10px] ml-1">(86)</span>
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-1">Aadarsh Pandit Oreo Choco</h4>
+                        <h4 className="text-xl font-bold text-white mb-1">Aadarsh Pandit Silk Oreo</h4>
                         <p className="text-white/35 text-center text-sm mb-4 leading-relaxed">
                             Premium Dutch cocoa blended with rich oat milk and real Oreo crumble.
                         </p>

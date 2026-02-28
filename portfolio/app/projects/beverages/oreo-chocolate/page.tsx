@@ -115,7 +115,7 @@ export default function OreoChocolateDemo() {
                     <div className="flex items-center gap-2">
                         <Zap className="text-orange-500 fill-orange-500" size={18} />
                         <span className="text-base font-black tracking-tight text-white">
-                            Oreo <span className="text-amber-600">Choco</span>
+                            Silk <span className="text-amber-600">Oreo</span>
                         </span>
                     </div>
                 </div>
@@ -222,7 +222,7 @@ export default function OreoChocolateDemo() {
                             Mango Pandit
                         </a>
                         <button className="px-5 md:px-7 py-2.5 bg-white text-black rounded-full font-semibold text-xs tracking-wide">
-                            Oreo Choco
+                            Silk Oreo
                         </button>
                         <a href="/projects/beverages/choco-strawberry-velvet" className="px-5 md:px-7 py-2.5 text-white/60 hover:text-white rounded-full font-semibold text-xs tracking-wide transition-colors">
                             Strawberry Velvet
@@ -248,8 +248,8 @@ export default function OreoChocolateDemo() {
                                 </p>
                                 <h1 className="text-6xl sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] font-black tracking-[-0.04em] leading-[0.82]"
                                     style={{ color: '#fff', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
+                                    <span className="block">Silk</span>
                                     <span className="block">Oreo</span>
-                                    <span className="block">Choco</span>
                                 </h1>
                                 <p className="mt-5 md:mt-7 text-base md:text-xl lg:text-2xl font-light tracking-[0.06em] italic"
                                     style={{ color: 'rgba(255,255,255,0.75)', textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
@@ -429,7 +429,7 @@ export default function OreoChocolateDemo() {
                             <span className="text-white/20 text-xs">★</span>
                             <span className="text-white/30 text-[10px] ml-1">(86)</span>
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-1">Aadarsh Pandit Oreo Choco</h4>
+                        <h4 className="text-xl font-bold text-white mb-1">Aadarsh Pandit Silk Oreo</h4>
                         <p className="text-white/35 text-center text-sm mb-4 leading-relaxed">
                             Premium Dutch cocoa blended with rich oat milk and real Oreo crumble.
                         </p>
@@ -501,7 +501,7 @@ export default function OreoChocolateDemo() {
                             <div className="flex items-center gap-2 mb-4">
                                 <Zap className="text-orange-500 fill-orange-500" size={18} />
                                 <span className="text-lg font-black tracking-tight">
-                                    Oreo <span className="text-amber-600">Choco</span>
+                                    Silk <span className="text-amber-600">Oreo</span>
                                 </span>
                             </div>
                             <p className="text-white/40 text-sm leading-relaxed">

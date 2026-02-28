@@ -116,7 +116,7 @@ export const ChocoCanvas = ({
         const images: HTMLImageElement[] = new Array(count);
 
         for (let i = 0; i < count; i++) {
-            const originalIndex = i * step; // maps back to original frame number
+            const originalIndex = i * step + 1; // ffmpeg frames start at 1
             const img = new window.Image();
             img.src = `/projects/beverages/${dir}/frame_${String(originalIndex).padStart(5, "0")}.jpg`;
 

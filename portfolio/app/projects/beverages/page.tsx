@@ -74,38 +74,6 @@ export default function BeveragesDemo() {
     const y4 = useTransform(scrollYProgress, [0.75, 0.82, 0.90, 0.96], [60, 0, 0, -60]);
     const s4 = useTransform(scrollYProgress, [0.75, 0.82, 0.90, 0.96], [0.92, 1, 1, 0.92]);
 
-    /* ── Navigation Arrow Handlers ─────────────────────────────── */
-    // Helper to jump to specific scroll percentage of the 600vh container
-    const scrollToPhase = (direction: 'next' | 'prev') => {
-        if (!containerRef.current) return;
-
-        // Window height * 6 (600vh total height)
-        const totalScrollHeight = window.innerHeight * 6;
-        const currentScroll = window.scrollY;
-
-        // Phase positions as percentages of the total scrollable area
-        const phasePositions = [
-            0,                          // Phase 1
-            totalScrollHeight * 0.32,   // Phase 2
-            totalScrollHeight * 0.57,   // Phase 3
-            totalScrollHeight * 0.82    // Phase 4
-        ];
-
-        let targetIndex = 0;
-
-        if (direction === 'next') {
-            targetIndex = phasePositions.findIndex(pos => pos > currentScroll + 10);
-            if (targetIndex === -1) targetIndex = phasePositions.length - 1;
-        } else {
-            targetIndex = phasePositions.findLastIndex(pos => pos < currentScroll - 10);
-            if (targetIndex === -1) targetIndex = 0;
-        }
-
-        window.scrollTo({
-            top: phasePositions[targetIndex],
-            behavior: 'smooth'
-        });
-    };
 
     return (
         <main className="w-full bg-black text-white font-sans">
@@ -237,14 +205,14 @@ export default function BeveragesDemo() {
 
                     {/* ── Nav arrows (decorative) ──────────────────── */}
                     <div className="absolute top-1/2 left-5 -translate-y-1/2 z-30 hidden md:block">
-                        <button onClick={() => scrollToPhase('prev')} className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
+                        <a href="#" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
                             <ChevronLeft size={24} />
-                        </button>
+                        </a>
                     </div>
                     <div className="absolute top-1/2 right-5 -translate-y-1/2 z-30 hidden md:block">
-                        <button onClick={() => scrollToPhase('next')} className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
+                        <a href="/projects/beverages/oreo-chocolate" className="w-12 h-12 pointer-events-auto rounded-full border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/60 transition-colors backdrop-blur-sm bg-white/5 cursor-pointer z-50 relative">
                             <ChevronRight size={24} />
-                        </button>
+                        </a>
                     </div>
 
                     {/* ── Flavor pill selector (bottom) ────────────── */}

@@ -129,24 +129,8 @@ export const ChocoCanvas = ({
                 // Draw frame 0 as soon as it arrives so the user sees something immediately
                 if (i === 0 && img.complete && img.naturalWidth > 0) {
                     imagesRef.current = images;
-                    const canvas = canvasRef.current;
-                    if (canvas) {
-                        const ctx = canvas.getContext("2d", { alpha: false });
-                        if (ctx) {
-                            const dpr = window.devicePixelRatio || 1;
-                            const rect = canvas.getBoundingClientRect();
-                            const bw = Math.round(rect.width * dpr);
-                            const bh = Math.round(rect.height * dpr);
-                            if (bw > 0 && bh > 0) {
-                                canvas.width = bw;
-                                canvas.height = bh;
-                                const scale = Math.max(bw / img.naturalWidth, bh / img.naturalHeight);
-                                const dw = img.naturalWidth * scale;
-                                const dh = img.naturalHeight * scale;
-                                ctx.drawImage(img, (bw - dw) / 2, (bh - dh) / 2, dw, dh);
-                            }
-                        }
-                    }
+                    lastFrameRef.current = 0; // Set to 0 so we know it's drawn
+                    drawFrame(0, true);       // Force the draw immediately
                 }
 
                 if (loaded === count) {

@@ -429,7 +429,7 @@ export default function ChocoStrawberryVelvetDemo() {
                             <span className="text-white/20 text-xs">★</span>
                             <span className="text-white/30 text-[10px] ml-1">(86)</span>
                         </div>
-                        <h4 className="text-xl font-bold text-white mb-1">Aadarsh Pandit Silk Oreo</h4>
+                        <h4 className="text-xl font-bold text-white mb-1">Silk Oreo</h4>
                         <p className="text-white/35 text-center text-sm mb-4 leading-relaxed">
                             Premium Dutch cocoa blended with rich oat milk and real Oreo crumble.
                         </p>
@@ -442,7 +442,7 @@ export default function ChocoStrawberryVelvetDemo() {
                             <div>
                                 <span className="text-2xl font-black text-white">₹150</span>
                             </div>
-                            <button onClick={() => addToCart('Aadarsh Pandit Oreo', 150)} className="bg-amber-600 hover:bg-amber-500 text-white px-6 py-2.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-colors cursor-pointer shadow-lg shadow-amber-600/20">
+                            <button onClick={() => addToCart('Silk Oreo', 150)} className="bg-amber-600 hover:bg-amber-500 text-white px-6 py-2.5 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-colors cursor-pointer shadow-lg shadow-amber-600/20">
                                 Add to Cart
                             </button>
                         </div>

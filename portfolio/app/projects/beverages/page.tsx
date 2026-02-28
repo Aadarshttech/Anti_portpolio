@@ -22,6 +22,8 @@ export default function BeveragesDemo() {
     const [cart, setCart] = useState<CartItem[]>([]);
     const [showCart, setShowCart] = useState(false);
     const [toast, setToast] = useState<string | null>(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [loadProgress, setLoadProgress] = useState(0);
 
     const addToCart = (name: string, price: number) => {
         setCart((prev) => {
@@ -74,6 +76,32 @@ export default function BeveragesDemo() {
 
     return (
         <main className="w-full bg-black text-white font-sans">
+
+            {/* ── Global Loading Screen ─────────────────────────────── */}
+            <AnimatePresence>
+                {!isLoaded && (
+                    <motion.div
+                        initial={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8, ease: "easeInOut" }}
+                        className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black"
+                    >
+                        <Zap className="text-orange-500 fill-orange-500 mb-6 animate-pulse" size={48} />
+                        <p className="mb-4 text-sm font-bold tracking-[0.3em] text-white/70 uppercase">
+                            Loading experience
+                        </p>
+                        <div className="w-64 h-1.5 overflow-hidden rounded-full bg-white/10">
+                            <div
+                                className="h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400 transition-all duration-200 ease-out"
+                                style={{ width: `${loadProgress}%` }}
+                            />
+                        </div>
+                        <p className="mt-4 text-xs tabular-nums text-white/50 font-bold tracking-wider">
+                            {loadProgress}%
+                        </p>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             {/* ── Fixed Navbar ──────────────────────────────────────── */}
             <header className="fixed top-0 left-0 w-full z-[60] flex items-center justify-between px-6 md:px-10 py-4 bg-black/60 backdrop-blur-xl border-b border-white/5">
@@ -166,6 +194,8 @@ export default function BeveragesDemo() {
                     <MangoCanvas
                         scrollYProgress={scrollYProgress}
                         className="absolute top-0 left-0 w-full h-full z-0"
+                        onLoadComplete={() => setIsLoaded(true)}
+                        onLoadProgress={setLoadProgress}
                     />
 
                     {/* Subtle gradient overlays for text legibility */}
@@ -208,34 +238,36 @@ export default function BeveragesDemo() {
                         {/* ── Phase 1 : Hero ────────────────────────── */}
                         <motion.div
                             style={{ opacity: op1, y: y1, scale: s1 }}
-                            className="absolute inset-0 flex flex-col items-center justify-center text-center px-4"
+                            className="absolute inset-0 pt-20 pb-28 md:pt-24 md:pb-32 flex flex-col items-center justify-center text-center px-4"
                         >
-                            <p className="text-[10px] md:text-xs font-bold tracking-[0.45em] uppercase mb-5"
-                               style={{ color: '#fbbf24' }}>
-                                Introducing
-                            </p>
-                            <h1 className="text-7xl sm:text-[9rem] md:text-[12rem] lg:text-[14rem] font-black tracking-[-0.04em] leading-[0.82]"
-                                style={{ color: '#fff', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
-                                <span className="block">Mango</span>
-                                <span className="block">Pandit</span>
-                            </h1>
-                            <p className="mt-5 md:mt-7 text-base md:text-xl lg:text-2xl font-light tracking-[0.06em] italic"
-                               style={{ color: 'rgba(255,255,255,0.75)', textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
-                                Where flavor meets purity.
-                            </p>
-                            <div className="mt-8 md:mt-10 flex items-center gap-4 md:gap-6 rounded-2xl px-6 md:px-8 py-4 md:py-5 border"
-                                 style={{
-                                     background: 'linear-gradient(135deg, rgba(251,191,36,0.15) 0%, rgba(245,158,11,0.08) 100%)',
-                                     borderColor: 'rgba(251,191,36,0.25)',
-                                     backdropFilter: 'blur(16px)',
-                                     boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
-                                 }}>
-                                <span className="text-3xl md:text-4xl font-extrabold" style={{ color: '#fbbf24' }}>₹120</span>
-                                <div className="w-px h-12" style={{ background: 'rgba(251,191,36,0.3)' }} />
-                                <div className="text-[10px] md:text-xs font-bold text-left space-y-1 uppercase tracking-[0.18em]" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                                    <p>100 % Fruit</p>
-                                    <p>No Preservatives</p>
-                                    <p>Rich in Vitamin C</p>
+                            <div className="flex flex-col items-center">
+                                <p className="text-[10px] md:text-xs font-bold tracking-[0.45em] uppercase mb-3 md:mb-4 text-white"
+                                    style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}>
+                                    Introducing
+                                </p>
+                                <h1 className="text-6xl sm:text-[7.5rem] md:text-[9.5rem] lg:text-[11rem] font-black tracking-[-0.04em] leading-[0.82]"
+                                    style={{ color: '#fff', textShadow: '0 4px 30px rgba(0,0,0,0.5)' }}>
+                                    <span className="block">Mango</span>
+                                    <span className="block">Pandit</span>
+                                </h1>
+                                <p className="mt-5 md:mt-7 text-base md:text-xl lg:text-2xl font-light tracking-[0.06em] italic"
+                                    style={{ color: 'rgba(255,255,255,0.75)', textShadow: '0 2px 12px rgba(0,0,0,0.4)' }}>
+                                    Where flavor meets purity.
+                                </p>
+                                <div className="mt-8 md:mt-10 flex items-center gap-4 md:gap-6 rounded-2xl px-6 md:px-8 py-4 md:py-5 border"
+                                    style={{
+                                        background: 'linear-gradient(135deg, rgba(251,191,36,0.15) 0%, rgba(245,158,11,0.08) 100%)',
+                                        borderColor: 'rgba(251,191,36,0.25)',
+                                        backdropFilter: 'blur(16px)',
+                                        boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05)',
+                                    }}>
+                                    <span className="text-3xl md:text-4xl font-extrabold" style={{ color: '#fbbf24' }}>₹120</span>
+                                    <div className="w-px h-12" style={{ background: 'rgba(251,191,36,0.3)' }} />
+                                    <div className="text-[10px] md:text-xs font-bold text-left space-y-1 uppercase tracking-[0.18em]" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                                        <p>100 % Fruit</p>
+                                        <p>No Preservatives</p>
+                                        <p>Rich in Vitamin C</p>
+                                    </div>
                                 </div>
                             </div>
                         </motion.div>
@@ -258,8 +290,8 @@ export default function BeveragesDemo() {
                                     <span style={{ color: '#fbbf24' }}>with fresh</span><br />
                                     mango.
                                 </h2>
-                                <p className="mt-6 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md" 
-                                   style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
+                                <p className="mt-6 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md"
+                                    style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
                                     Hand-picked Alphonso mangoes, perfectly ripened
                                     under the summer sun — processed within hours to
                                     preserve every drop of natural goodness.
@@ -284,7 +316,7 @@ export default function BeveragesDemo() {
                                     <span style={{ color: '#34d399' }}>Vitamin</span>-packed<br />refreshment.
                                 </h2>
                                 <p className="mt-6 text-base md:text-lg lg:text-xl font-light leading-relaxed max-w-md ml-auto"
-                                   style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
+                                    style={{ color: 'rgba(255,255,255,0.6)', textShadow: '0 2px 10px rgba(0,0,0,0.3)' }}>
                                     A natural energy boost packed with Vitamin A & C
                                     that revitalises your body and mind — without a
                                     single drop of added sugar.
@@ -292,8 +324,8 @@ export default function BeveragesDemo() {
                                 {/* Benefit pills */}
                                 <div className="flex flex-wrap gap-2 mt-6 justify-end">
                                     {['Vitamin A', 'Vitamin C', 'Zero Sugar', 'No Preservatives'].map(b => (
-                                        <span key={b} className="text-[10px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full border" 
-                                              style={{ borderColor: 'rgba(52,211,153,0.3)', color: '#34d399', background: 'rgba(52,211,153,0.08)', backdropFilter: 'blur(8px)' }}>
+                                        <span key={b} className="text-[10px] font-bold tracking-[0.15em] uppercase px-4 py-2 rounded-full border"
+                                            style={{ borderColor: 'rgba(52,211,153,0.3)', color: '#34d399', background: 'rgba(52,211,153,0.08)', backdropFilter: 'blur(8px)' }}>
                                             {b}
                                         </span>
                                     ))}
@@ -318,15 +350,15 @@ export default function BeveragesDemo() {
                                 }}>Revolution.</span>
                             </h2>
                             <p className="mt-5 text-base md:text-lg lg:text-xl font-medium max-w-lg"
-                               style={{ color: '#fff', textShadow: '0 2px 16px rgba(0,0,0,0.6)' }}>
+                                style={{ color: '#fff', textShadow: '0 2px 16px rgba(0,0,0,0.6)' }}>
                                 Available now in stores & online — delivered fresh to your doorstep.
                             </p>
                             <a href="#shop" className="pointer-events-auto mt-8 md:mt-10 inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase px-10 py-5 rounded-full transition-all duration-300 hover:scale-105"
-                               style={{
-                                   background: 'linear-gradient(135deg, #f97316 0%, #f59e0b 100%)',
-                                   color: '#fff',
-                                   boxShadow: '0 8px 30px rgba(249,115,22,0.4), 0 2px 8px rgba(0,0,0,0.2)',
-                               }}>
+                                style={{
+                                    background: 'linear-gradient(135deg, #f97316 0%, #f59e0b 100%)',
+                                    color: '#fff',
+                                    boxShadow: '0 8px 30px rgba(249,115,22,0.4), 0 2px 8px rgba(0,0,0,0.2)',
+                                }}>
                                 <ShoppingCart size={16} />
                                 Shop Now
                             </a>
@@ -356,7 +388,7 @@ export default function BeveragesDemo() {
 
                 {/* Product Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl mx-auto">
-                    
+
                     {/* Product Card 1 — Mango Pandit */}
                     <div className="relative bg-gradient-to-b from-white/[0.06] to-white/[0.02] border border-white/10 rounded-3xl p-6 md:p-8 flex flex-col items-center hover:border-orange-500/30 hover:shadow-[0_0_40px_rgba(249,115,22,0.08)] transition-all duration-500 group overflow-hidden">
                         {/* Bestseller badge */}

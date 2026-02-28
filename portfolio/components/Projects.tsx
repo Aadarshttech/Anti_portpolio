@@ -11,7 +11,7 @@ const projects = [
         category: "Creative Dev",
         description: "An Awwwards-inspired scrollytelling product page with 194-frame canvas animation synced to scroll via Framer Motion. Features a full e-commerce UI with cart, toast notifications, and dark-mode shop section.",
         tags: ["Next.js", "Framer Motion", "Canvas API", "Scroll Animation"],
-        image: "/projects/beverages/mango-frames/frame_00090.jpg",
+        image: "/projects/beverages/mango_thumbnail.jpg",
         fit: "cover",
         links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
     },

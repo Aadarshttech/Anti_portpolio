@@ -6,6 +6,8 @@ import { useMotionValueEvent, MotionValue } from "framer-motion";
 interface MangoCanvasProps {
     scrollYProgress: MotionValue<number>;
     className?: string;
+    onLoadComplete?: () => void;
+    onLoadProgress?: (progress: number) => void;
 }
 
 const TOTAL_FRAMES = 194;
@@ -14,11 +16,11 @@ const TOTAL_FRAMES = 194;
 function getFrameConfig() {
     if (typeof window === "undefined") return { count: TOTAL_FRAMES, step: 1, dir: "mango-frames" };
     const isMobile = window.innerWidth < 768;
-    // Mobile: load every 2nd frame from the smaller directory → 97 frames (~2 MB)
+    // Mobile: load 40 optimized frames compressed at 5fps
     // Desktop: load all 194 frames from full-res directory  → 11 MB
     return {
-        count: isMobile ? Math.ceil(TOTAL_FRAMES / 2) : TOTAL_FRAMES,
-        step: isMobile ? 2 : 1,
+        count: isMobile ? 40 : TOTAL_FRAMES,
+        step: 1,
         dir: isMobile ? "mango-frames-mobile" : "mango-frames",
     };
 }
@@ -26,6 +28,8 @@ function getFrameConfig() {
 export const MangoCanvas = ({
     scrollYProgress,
     className = "",
+    onLoadComplete,
+    onLoadProgress,
 }: MangoCanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const imagesRef = useRef<HTMLImageElement[]>([]);
@@ -109,7 +113,9 @@ export const MangoCanvas = ({
 
             const onDone = () => {
                 loaded++;
-                setLoadProgress(Math.round((loaded / count) * 100));
+                const progressPercentage = Math.round((loaded / count) * 100);
+                setLoadProgress(progressPercentage);
+                if (onLoadProgress) onLoadProgress(progressPercentage);
 
                 // Draw frame 0 as soon as it arrives so the user sees something immediately
                 if (i === 0 && img.complete && img.naturalWidth > 0) {
@@ -138,6 +144,7 @@ export const MangoCanvas = ({
                     imagesRef.current = images;
                     loadedRef.current = true;
                     setReady(true);
+                    if (onLoadComplete) onLoadComplete();
                     requestAnimationFrame(() => updateFrame(true));
                 }
             };
@@ -173,31 +180,10 @@ export const MangoCanvas = ({
     /*  Render                                                            */
     /* ------------------------------------------------------------------ */
     return (
-        <>
-            {/* The canvas fills whichever parent the className defines */}
-            <canvas
-                ref={canvasRef}
-                className={`block ${className}`}
-                style={{ width: "100%", height: "100%" }}
-            />
-
-            {/* Loading overlay — sits over the same parent via portal-free absolute */}
-            {!ready && (
-                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-gradient-to-b from-amber-800 to-amber-950">
-                    <p className="mb-4 text-sm font-semibold tracking-widest text-white/70 uppercase">
-                        Loading frames
-                    </p>
-                    <div className="w-56 h-1.5 overflow-hidden rounded-full bg-white/10">
-                        <div
-                            className="h-full rounded-full bg-orange-400 transition-all duration-200 ease-out"
-                            style={{ width: `${loadProgress}%` }}
-                        />
-                    </div>
-                    <p className="mt-2 text-xs tabular-nums text-white/50">
-                        {loadProgress}%
-                    </p>
-                </div>
-            )}
-        </>
+        <canvas
+            ref={canvasRef}
+            className={`block ${className}`}
+            style={{ width: "100%", height: "100%" }}
+        />
     );
 };

@@ -12,7 +12,7 @@ const caseStudies = [
         challenge: "Creating a scroll-driven product page with cinema-quality frame animation and a full e-commerce UI.",
         approach: "Rendered 194 frames on HTML5 Canvas synced to scroll via Framer Motion, with cart, toasts, and dark shop section.",
         tags: ["Next.js", "Framer Motion", "Canvas API"],
-        image: "/projects/beverages/mango-frames/frame_00090.jpg",
+        image: "/projects/beverages/mango_thumbnail.jpg",
         fit: "cover" as const,
         gradient: "from-orange-500 to-amber-400",
         links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }

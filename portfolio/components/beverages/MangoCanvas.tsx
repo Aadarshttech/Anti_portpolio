@@ -12,14 +12,13 @@ interface MangoCanvasProps {
 
 const TOTAL_FRAMES = 194;
 
-/** Determine whether to use mobile-optimized assets */
 function getFrameConfig() {
     if (typeof window === "undefined") return { count: TOTAL_FRAMES, step: 1, dir: "mango-frames" };
     const isMobile = window.innerWidth < 768;
-    // Mobile: load 40 optimized frames compressed at 5fps
-    // Desktop: load all 194 frames from full-res directory  → 11 MB
+    // Mobile: load all 194 frames but from the mobile-optimized (640px) directory
+    // Desktop: load all 194 frames from the full-res directory
     return {
-        count: isMobile ? 40 : TOTAL_FRAMES,
+        count: TOTAL_FRAMES,
         step: 1,
         dir: isMobile ? "mango-frames-mobile" : "mango-frames",
     };

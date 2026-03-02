@@ -16,6 +16,15 @@ const projects = [
         links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
     },
     {
+        title: "JCB Backhoe",
+        category: "Creative Dev / Industrial",
+        description: "A high-octane scrollytelling experience for the JCB Backhoe Loader. Features a custom canvas-based frame animation system synced to smooth scroll progress with technical spec overlays.",
+        tags: ["Next.js", "Framer Motion", "Canvas API", "Industrial Design"],
+        image: "/projects/jcb/jcb_thumbnail_clean.jpg",
+        fit: "cover",
+        links: { demo: "/projects/jcb", code: "https://github.com/Aadarshttech" }
+    },
+    {
         title: "Reward-Guided Finetuning for Nepali ASR",
         category: "AI / NLP Research",
         description: "A speech-to-text pipeline for Nepali built on OpenAI Whisper, fine-tuned with 50k+ audio pairs and optimized through reward-guided RLHF training to push accuracy on a low-resource language.",

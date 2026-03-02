@@ -18,6 +18,18 @@ const caseStudies = [
         links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
     },
     {
+        title: "JCB Backhoe",
+        client: "Industrial Hardware",
+        category: "Creative Dev",
+        challenge: "Visualizing heavy machinery with cinema-quality precision and interactive technical specifications in a web environment.",
+        approach: "Implemented a 3-phase scrollytelling engine using 150+ high-res frames on HTML5 Canvas, driven by scroll-linked transforms and spec-card overlays.",
+        tags: ["Next.js", "Framer Motion", "Canvas API"],
+        image: "/projects/jcb/jcb_thumbnail_clean.jpg",
+        fit: "cover" as const,
+        gradient: "from-yellow-400 to-orange-500",
+        links: { demo: "/projects/jcb", code: "https://github.com/Aadarshttech" }
+    },
+    {
         title: "Reward-Guided Finetuning",
         client: "University AI Research",
         category: "Machine Learning",

@@ -103,9 +103,9 @@ export const JCBCanvas = ({
             const batchSize = endIdx - startIdx;
 
             for (let i = startIdx; i < endIdx; i++) {
-                const frameNum = i + 1; // 1-indexed: frame_0001.jpg → frame_0200.jpg
+                const frameNum = i + 1; // 1-indexed: frame_0001.webp → frame_0200.webp
                 const img = new window.Image();
-                img.src = `/projects/jcb/jcb-frames/frame_${String(frameNum).padStart(4, "0")}.jpg`;
+                img.src = `/projects/jcb/webp-frames/frame_${String(frameNum).padStart(4, "0")}.webp`;
 
                 const onDone = () => {
                     totalLoaded++;

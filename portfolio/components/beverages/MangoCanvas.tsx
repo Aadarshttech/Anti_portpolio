@@ -118,7 +118,7 @@ export const MangoCanvas = ({
         for (let i = 0; i < count; i++) {
             const originalIndex = i * step; // maps back to original frame number
             const img = new window.Image();
-            img.src = `/projects/beverages/${dir}/frame_${String(originalIndex).padStart(5, "0")}.jpg`;
+            img.src = `/projects/beverages/${dir}/frame_${String(originalIndex).padStart(5, "0")}.webp`;
 
             const onDone = () => {
                 loaded++;

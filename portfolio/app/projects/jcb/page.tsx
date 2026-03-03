@@ -197,7 +197,7 @@ export default function JCBShowcase() {
                         {/* Phase 1: START */}
                         <motion.div
                             style={{ opacity: op1, y: y1 }}
-                            className="absolute inset-0 flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-20 md:pb-32"
+                            className="absolute inset-0 flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-12 md:pb-20"
                         >
                             <div className="w-full flex flex-col lg:flex-row justify-between items-end gap-12 lg:gap-20">
 
@@ -214,7 +214,7 @@ export default function JCBShowcase() {
                                         </p>
                                     </motion.div>
 
-                                    <h1 className="text-6xl sm:text-7xl md:text-[8rem] lg:text-[10rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col">
+                                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[8rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col">
                                         <span className="text-[#FFD100] drop-shadow-[0_0_50px_rgba(255,209,0,0.3)] pr-4">JCB</span>
                                         <span
                                             className="text-transparent pr-4 relative"
@@ -226,8 +226,8 @@ export default function JCBShowcase() {
                                         </span>
                                     </h1>
 
-                                    <div className="mt-12 md:mt-16 flex flex-col sm:flex-row items-start sm:items-center gap-8 max-w-2xl">
-                                        <p className="text-xs md:text-sm font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-l-2 border-white/20 pl-5 py-1">
+                                    <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8 max-w-xl">
+                                        <p className="text-[10px] md:text-xs font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-l-2 border-white/20 pl-5 py-1">
                                             ENGINEERED TO CONQUER THE TOUGHEST TERRAINS ON THE PLANET.
                                         </p>
                                         <a href="#specs"
@@ -247,7 +247,7 @@ export default function JCBShowcase() {
                                     <p className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-3">
                                         LEGENDARY DURABILITY
                                     </p>
-                                    <p className="text-5xl md:text-7xl font-black tracking-tighter text-white leading-none mb-6">
+                                    <p className="text-3xl md:text-5xl font-black tracking-tighter text-white leading-none mb-6">
                                         EST. <span className="text-[#FFD100]">1945</span>
                                     </p>
                                     <div className="flex flex-col items-start lg:items-end gap-3">
@@ -263,17 +263,17 @@ export default function JCBShowcase() {
                             style={{ opacity: op2, y: y2 }}
                             className="absolute inset-0 flex items-center justify-end px-8 md:px-20 lg:px-32 text-right"
                         >
-                            <div className="max-w-2xl w-full flex flex-col items-end relative border-r-4 border-[#FFD100] pr-6 md:pr-10 py-2">
+                            <div className="max-w-xl w-full flex flex-col items-end relative border-r-4 border-[#FFD100] pr-6 md:pr-10 py-2">
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    className="flex items-center gap-4 mb-6 md:mb-10 justify-end w-full"
+                                    className="flex items-center gap-4 mb-4 md:mb-6 justify-end w-full"
                                 >
                                     <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-[#FFD100]">02 — HEART OF THE MACHINE</p>
                                     <span className="w-8 md:w-16 h-px bg-[#FFD100]"></span>
                                 </motion.div>
 
-                                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col items-end mb-8">
+                                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col items-end mb-6">
                                     <span className="text-[#FFD100] drop-shadow-[0_0_20px_rgba(255,209,0,0.2)] pr-4">ECOMAX</span>
                                     <span
                                         className="text-transparent pr-4 relative break-normal"
@@ -283,21 +283,21 @@ export default function JCBShowcase() {
                                         <span className="absolute inset-0 text-white/5 blur-sm -z-10" style={{ WebkitTextStroke: '0' }}>POWER.</span>
                                     </span>
                                 </h2>
-                                <p className="text-xs md:text-sm font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-r-2 border-white/20 pr-5 py-1 mb-12 max-w-md text-right w-full">
+                                <p className="text-[10px] md:text-xs font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-r-2 border-white/20 pr-5 py-1 mb-8 max-w-sm text-right w-full">
                                     THE JCB ECOMAX ENGINE IS BUILT FOR MAXIMUM TORQUE AND MINIMUM EMISSIONS. NO DPF, NO ADBLUE, NO COMPROMISE.
                                 </p>
 
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-5 w-full">
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
                                     {[
                                         { l: 'DISPLACEMENT', v: '4.4', u: 'LTR', icon: '⚡' },
                                         { l: 'POWER', v: '97', u: 'HP', icon: '🔥' },
                                         { l: 'TORQUE', v: '400', u: 'NM', icon: '⚙️' },
                                     ].map(spec => (
-                                        <div key={spec.l} className="p-6 rounded-2xl border border-[#FFD100]/20 bg-white/[0.02] backdrop-blur-xl group hover:border-[#FFD100]/50 transition-all duration-500 shadow-[0_0_15px_rgba(255,209,0,0.05)] text-center">
-                                            <p className="text-[9px] font-bold tracking-[0.2em] opacity-30 mb-4 uppercase">{spec.l}</p>
+                                        <div key={spec.l} className="p-4 rounded-xl border border-[#FFD100]/20 bg-white/[0.02] backdrop-blur-xl group hover:border-[#FFD100]/50 transition-all duration-500 shadow-[0_0_15px_rgba(255,209,0,0.05)] text-center">
+                                            <p className="text-[8px] font-bold tracking-[0.2em] opacity-30 mb-3 uppercase">{spec.l}</p>
                                             <div className="flex items-baseline justify-center gap-1">
-                                                <span className="text-3xl font-black italic">{spec.v}</span>
-                                                <span className="text-[10px] font-black text-[#FFD100]">{spec.u}</span>
+                                                <span className="text-2xl font-black italic">{spec.v}</span>
+                                                <span className="text-[9px] font-black text-[#FFD100]">{spec.u}</span>
                                             </div>
                                         </div>
                                     ))}
@@ -310,17 +310,17 @@ export default function JCBShowcase() {
                             style={{ opacity: op3, y: y3 }}
                             className="absolute inset-0 flex items-center px-8 md:px-20 lg:px-32"
                         >
-                            <div className="max-w-2xl w-full relative border-l-4 border-[#FFD100] pl-6 md:pl-10 py-2">
+                            <div className="max-w-xl w-full relative border-l-4 border-[#FFD100] pl-6 md:pl-10 py-2">
                                 <motion.div
                                     initial={{ y: 20, opacity: 0 }}
                                     animate={{ y: 0, opacity: 1 }}
-                                    className="flex items-center gap-4 mb-6 md:mb-10"
+                                    className="flex items-center gap-4 mb-4 md:mb-6"
                                 >
                                     <span className="w-8 md:w-16 h-px bg-[#FFD100]"></span>
                                     <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-[#FFD100]">03 — PERFORMANCE SPECS</p>
                                 </motion.div>
 
-                                <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-[8rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col mb-8">
+                                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col mb-6">
                                     <span className="text-[#FFD100] drop-shadow-[0_0_30px_rgba(255,209,0,0.3)] pr-4">MASTER</span>
                                     <span
                                         className="text-transparent pr-4 relative"
@@ -330,21 +330,21 @@ export default function JCBShowcase() {
                                         <span className="absolute inset-0 text-white/5 blur-sm -z-10" style={{ WebkitTextStroke: '0' }}>DEPTH.</span>
                                     </span>
                                 </h2>
-                                <p className="text-xs md:text-sm font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-l-2 border-white/20 pl-5 py-1 mb-12 max-w-md">
+                                <p className="text-[10px] md:text-xs font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-l-2 border-white/20 pl-5 py-1 mb-8 max-w-sm">
                                     UNMATCHED EXCAVATION PRECISION AND CLASS-LEADING LIFT CAPACITY. BUILT TO HANDLE THE IMPOSSIBLE.
                                 </p>
 
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-5">
+                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                                     {[
                                         { l: 'DIG DEPTH', v: '5.4', u: 'M' },
                                         { l: 'MAX SPEED', v: '40', u: 'K/H' },
                                         { l: 'LIFT CAP.', v: '3.2', u: 'T' },
                                     ].map(spec => (
-                                        <div key={spec.l} className="p-6 rounded-2xl border border-[#FFD100]/20 bg-white/[0.02] backdrop-blur-xl hover:border-[#FFD100]/50 transition-all duration-500 shadow-[0_0_15px_rgba(255,209,0,0.05)]">
-                                            <p className="text-[9px] font-bold tracking-[0.2em] opacity-30 mb-4 uppercase">{spec.l}</p>
+                                        <div key={spec.l} className="p-4 rounded-xl border border-[#FFD100]/20 bg-white/[0.02] backdrop-blur-xl hover:border-[#FFD100]/50 transition-all duration-500 shadow-[0_0_15px_rgba(255,209,0,0.05)]">
+                                            <p className="text-[8px] font-bold tracking-[0.2em] opacity-30 mb-3 uppercase">{spec.l}</p>
                                             <div className="flex items-baseline gap-1">
-                                                <span className="text-3xl font-black italic">{spec.v}</span>
-                                                <span className="text-[10px] font-black text-[#FFD100]">{spec.u}</span>
+                                                <span className="text-2xl font-black italic">{spec.v}</span>
+                                                <span className="text-[9px] font-black text-[#FFD100]">{spec.u}</span>
                                             </div>
                                         </div>
                                     ))}

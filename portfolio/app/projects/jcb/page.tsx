@@ -143,12 +143,13 @@ export default function JCBShowcase() {
 
                 {/* Right: CTA */}
                 <a href="#contact"
-                    className="px-8 py-3 rounded-full text-[10px] font-black tracking-[0.2em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-lg shadow-yellow-500/10"
+                    className="px-4 md:px-8 py-2 md:py-3 rounded-full text-[9px] md:text-[10px] font-black tracking-[0.15em] md:tracking-[0.2em] uppercase transition-all duration-500 hover:scale-105 active:scale-95 shadow-lg shadow-yellow-500/10"
                     style={{
                         backgroundColor: '#FFD100',
                         color: '#000',
                     }}>
-                    INQUIRE NOW
+                    <span className="hidden sm:inline">INQUIRE NOW</span>
+                    <span className="sm:hidden">INQUIRE</span>
                 </a>
             </header>
 
@@ -199,34 +200,70 @@ export default function JCBShowcase() {
                             style={{ opacity: op1, y: y1 }}
                             className="absolute inset-0 flex flex-col justify-end px-6 md:px-16 lg:px-24 pb-12 md:pb-20"
                         >
-                            <div className="w-full flex flex-col lg:flex-row justify-between items-end gap-12 lg:gap-20">
+                            <div key={isLoaded ? "loaded" : "init"} className="w-full flex flex-col lg:flex-row justify-between items-end gap-6 lg:gap-20">
 
                                 {/* Left Side: Title Lockup */}
-                                <div className="flex-1 relative border-l-4 border-[#FFD100] pl-6 md:pl-10 py-2">
+                                <div className="flex-1 relative pl-6 md:pl-10 py-2 overflow-hidden">
+
+                                    {/* Animated left yellow border */}
                                     <motion.div
-                                        initial={{ y: 20, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
+                                        initial={{ scaleY: 0, originY: 1 }}
+                                        animate={isLoaded ? { scaleY: 1 } : {}}
+                                        transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
+                                        className="absolute left-0 top-0 bottom-0 w-1 bg-[#FFD100] origin-bottom"
+                                    />
+
+                                    {/* Subtitle tag */}
+                                    <motion.div
+                                        initial={{ x: -40, opacity: 0 }}
+                                        animate={isLoaded ? { x: 0, opacity: 1 } : {}}
+                                        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.2 }}
                                         className="flex items-center gap-4 mb-6 md:mb-10"
                                     >
-                                        <span className="w-8 md:w-16 h-px bg-[#FFD100]"></span>
+                                        <motion.span
+                                            initial={{ scaleX: 0 }}
+                                            animate={isLoaded ? { scaleX: 1 } : {}}
+                                            transition={{ duration: 0.4, ease: 'easeOut', delay: 0.35 }}
+                                            className="w-8 md:w-16 h-px bg-[#FFD100] origin-left block"
+                                        />
                                         <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-white/50">
                                             THE APEX PREDATOR
                                         </p>
                                     </motion.div>
 
-                                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[8rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col">
-                                        <span className="text-[#FFD100] drop-shadow-[0_0_50px_rgba(255,209,0,0.3)] pr-4">JCB</span>
-                                        <span
-                                            className="text-transparent pr-4 relative"
+                                    {/* JCB — slides in from far left */}
+                                    <div className="overflow-hidden">
+                                        <motion.span
+                                            initial={{ x: -200, opacity: 0 }}
+                                            animate={isLoaded ? { x: 0, opacity: 1 } : {}}
+                                            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+                                            className="block text-4xl sm:text-5xl md:text-6xl lg:text-[8rem] font-black tracking-tighter leading-[0.85] uppercase text-[#FFD100] drop-shadow-[0_0_50px_rgba(255,209,0,0.35)] pr-4"
+                                        >
+                                            JCB
+                                        </motion.span>
+                                    </div>
+
+                                    {/* BACKHOE — slides in slightly after */}
+                                    <div className="overflow-hidden">
+                                        <motion.span
+                                            initial={{ x: -260, opacity: 0 }}
+                                            animate={isLoaded ? { x: 0, opacity: 1 } : {}}
+                                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
+                                            className="block text-4xl sm:text-5xl md:text-6xl lg:text-[8rem] font-black tracking-tighter leading-[0.85] uppercase text-transparent pr-4 relative"
                                             style={{ WebkitTextStroke: '2px rgba(255,255,255,0.9)' }}
                                         >
                                             BACKHOE
-                                            {/* Slight inline glow for the hollow text */}
                                             <span className="absolute inset-0 text-white/5 blur-sm -z-10" style={{ WebkitTextStroke: '0' }}>BACKHOE</span>
-                                        </span>
-                                    </h1>
+                                        </motion.span>
+                                    </div>
 
-                                    <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8 max-w-xl">
+                                    {/* Tagline + arrow */}
+                                    <motion.div
+                                        initial={{ y: 20, opacity: 0 }}
+                                        animate={isLoaded ? { y: 0, opacity: 1 } : {}}
+                                        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.5 }}
+                                        className="mt-8 md:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8 max-w-xl"
+                                    >
                                         <p className="text-[10px] md:text-xs font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-l-2 border-white/20 pl-5 py-1">
                                             ENGINEERED TO CONQUER THE TOUGHEST TERRAINS ON THE PLANET.
                                         </p>
@@ -235,14 +272,15 @@ export default function JCBShowcase() {
                                         >
                                             <ArrowRight size={18} className="text-white group-hover:text-black" />
                                         </a>
-                                    </div>
+                                    </motion.div>
                                 </div>
 
-                                {/* Right Side: Est 1945 Stats */}
+                                {/* Right Side: Est 1945 — slides from right, hidden on mobile */}
                                 <motion.div
-                                    initial={{ x: 30, opacity: 0 }}
-                                    animate={{ x: 0, opacity: 1 }}
-                                    className="flex flex-col items-start lg:items-end text-left lg:text-right"
+                                    initial={{ x: 60, opacity: 0 }}
+                                    animate={isLoaded ? { x: 0, opacity: 1 } : {}}
+                                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
+                                    className="hidden lg:flex flex-col items-start lg:items-end text-left lg:text-right"
                                 >
                                     <p className="text-[10px] tracking-[0.4em] uppercase text-white/40 mb-3">
                                         LEGENDARY DURABILITY
@@ -252,101 +290,182 @@ export default function JCBShowcase() {
                                     </p>
                                     <div className="flex flex-col items-start lg:items-end gap-3">
                                         <p className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/50">WORLDWIDE SERVICE</p>
-                                        <div className="w-24 lg:w-32 h-[2px] bg-gradient-to-r lg:bg-gradient-to-l from-[#FFD100] to-transparent opacity-80" />
+                                        <motion.div
+                                            initial={{ scaleX: 0 }}
+                                            animate={isLoaded ? { scaleX: 1 } : {}}
+                                            transition={{ duration: 0.5, ease: 'easeOut', delay: 0.6 }}
+                                            className="w-24 lg:w-32 h-[2px] bg-gradient-to-r lg:bg-gradient-to-l from-[#FFD100] to-transparent opacity-80 origin-left lg:origin-right"
+                                        />
                                     </div>
                                 </motion.div>
                             </div>
                         </motion.div>
 
-                        {/* Phase 2: ENGINE */}
+                        {/* Phase 2: ENGINE SPECS */}
                         <motion.div
                             style={{ opacity: op2, y: y2 }}
-                            className="absolute inset-0 flex items-center justify-end px-8 md:px-20 lg:px-32 text-right"
+                            className="absolute inset-0 flex items-end px-4 md:px-16 lg:px-24 pb-10 md:pb-24"
                         >
-                            <div className="max-w-xl w-full flex flex-col items-end relative border-r-4 border-[#FFD100] pr-6 md:pr-10 py-2">
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    className="flex items-center gap-4 mb-4 md:mb-6 justify-end w-full"
-                                >
-                                    <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-[#FFD100]">02 — HEART OF THE MACHINE</p>
-                                    <span className="w-8 md:w-16 h-px bg-[#FFD100]"></span>
-                                </motion.div>
+                            <div key={activeSection === 1 ? 'eng-active' : 'eng-idle'} className="w-full flex flex-col lg:flex-row justify-between items-end gap-4 lg:gap-20">
 
-                                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col items-end mb-6">
-                                    <span className="text-[#FFD100] drop-shadow-[0_0_20px_rgba(255,209,0,0.2)] pr-4">ECOMAX</span>
-                                    <span
-                                        className="text-transparent pr-4 relative break-normal"
-                                        style={{ WebkitTextStroke: '2px rgba(255,255,255,0.9)' }}
+                                {/* Left: Section tag + Big heading + Description */}
+                                <div className="flex-1 flex flex-col overflow-hidden">
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 16 }}
+                                        animate={activeSection === 1 ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ duration: 0.45, ease: 'easeOut', delay: 0.05 }}
+                                        className="text-[9px] md:text-xs font-bold tracking-[0.4em] uppercase text-[#FFD100] mb-2 md:mb-3"
                                     >
-                                        POWER<span className="text-white">.</span>
-                                        <span className="absolute inset-0 text-white/5 blur-sm -z-10" style={{ WebkitTextStroke: '0' }}>POWER.</span>
-                                    </span>
-                                </h2>
-                                <p className="text-[10px] md:text-xs font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-r-2 border-white/20 pr-5 py-1 mb-8 max-w-sm text-right w-full">
-                                    THE JCB ECOMAX ENGINE IS BUILT FOR MAXIMUM TORQUE AND MINIMUM EMISSIONS. NO DPF, NO ADBLUE, NO COMPROMISE.
-                                </p>
+                                        HEART OF THE MACHINE.
+                                    </motion.p>
 
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 w-full">
+                                    <div className="overflow-hidden">
+                                        <motion.h2
+                                            initial={{ x: -120, opacity: 0 }}
+                                            animate={activeSection === 1 ? { x: 0, opacity: 1 } : {}}
+                                            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                                            className="relative inline-block text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[0.8] uppercase"
+                                        >
+                                            <span className="relative z-10 text-white drop-shadow-[0_0_40px_rgba(0,0,0,0.9)]">
+                                                Engine
+                                            </span>
+                                            <span
+                                                className="pointer-events-none select-none absolute inset-0 translate-y-2 text-white/5"
+                                                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.5)" }}
+                                            >
+                                                ENGINE
+                                            </span>
+                                        </motion.h2>
+                                    </div>
+
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 12 }}
+                                        animate={activeSection === 1 ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+                                        className="hidden md:block mt-4 text-[10px] md:text-xs font-light tracking-[0.15em] text-white/40 leading-relaxed max-w-md"
+                                    >
+                                        The JCB EcoMAX engine is built for maximum torque
+                                        and minimum emissions. No DPF, no AdBlue, no compromise.
+                                    </motion.p>
+                                </div>
+
+                                {/* Right: 2-col grid on mobile, vertical stack on desktop */}
+                                <div className="grid grid-cols-2 lg:grid-cols-1 gap-2 md:gap-3 lg:gap-4 w-full lg:w-auto">
                                     {[
-                                        { l: 'DISPLACEMENT', v: '4.4', u: 'LTR', icon: '⚡' },
-                                        { l: 'POWER', v: '97', u: 'HP', icon: '🔥' },
-                                        { l: 'TORQUE', v: '400', u: 'NM', icon: '⚙️' },
-                                    ].map(spec => (
-                                        <div key={spec.l} className="p-4 rounded-xl border border-[#FFD100]/20 bg-white/[0.02] backdrop-blur-xl group hover:border-[#FFD100]/50 transition-all duration-500 shadow-[0_0_15px_rgba(255,209,0,0.05)] text-center">
-                                            <p className="text-[8px] font-bold tracking-[0.2em] opacity-30 mb-3 uppercase">{spec.l}</p>
-                                            <div className="flex items-baseline justify-center gap-1">
-                                                <span className="text-2xl font-black italic">{spec.v}</span>
-                                                <span className="text-[9px] font-black text-[#FFD100]">{spec.u}</span>
+                                        { value: 'ECOMAX', unit: '', label: 'ENGINE' },
+                                        { value: '4400', unit: 'cc', label: 'DISPLACEMENT' },
+                                        { value: '97', unit: 'HP', label: 'POWER' },
+                                        { value: '400', unit: 'NM', label: 'TORQUE' },
+                                    ].map((spec, idx) => (
+                                        <motion.div
+                                            key={spec.label}
+                                            initial={{ opacity: 0, x: 50, y: 8 }}
+                                            animate={activeSection === 1 ? { opacity: 1, x: 0, y: 0 } : {}}
+                                            whileHover={{ scale: 1.04, boxShadow: "0 0 30px rgba(255,209,0,0.4)", borderColor: "rgba(255,209,0,0.7)" }}
+                                            whileTap={{ scale: 0.98 }}
+                                            transition={{ delay: 0.15 + idx * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                                            style={{ border: "1px solid rgba(255,209,0,0.25)" }}
+                                            className="relative flex flex-col items-end text-right px-3 py-2 md:px-4 md:py-4 lg:w-64 rounded-xl md:rounded-2xl bg-white/[0.03] backdrop-blur-[3px] shadow-[0_0_25px_rgba(0,0,0,0.7)]"
+                                        >
+                                            <div className="flex items-baseline gap-1 md:gap-2">
+                                                <span className="text-xl md:text-3xl lg:text-5xl font-black tracking-tight text-white">
+                                                    {spec.value}
+                                                </span>
+                                                {spec.unit && (
+                                                    <span className="text-xs md:text-sm lg:text-base font-bold text-[#FFD100] drop-shadow-[0_0_15px_rgba(255,209,0,0.6)]">
+                                                        {spec.unit}
+                                                    </span>
+                                                )}
                                             </div>
-                                        </div>
+                                            <p className="mt-0.5 text-[7px] md:text-[8px] lg:text-[9px] font-bold tracking-[0.3em] text-white/40 uppercase">
+                                                {spec.label}
+                                            </p>
+                                            <div className="mt-1 md:mt-2 h-px w-full bg-gradient-to-l from-[#FFD100] via-[#FFD100]/40 to-transparent opacity-80" />
+                                        </motion.div>
                                     ))}
                                 </div>
                             </div>
                         </motion.div>
 
-                        {/* Phase 3: PERFORMANCE */}
+                        {/* Phase 3: PERFORMANCE SPECS */}
                         <motion.div
                             style={{ opacity: op3, y: y3 }}
-                            className="absolute inset-0 flex items-center px-8 md:px-20 lg:px-32"
+                            className="absolute inset-0 flex items-end px-4 md:px-16 lg:px-24 pb-10 md:pb-24"
                         >
-                            <div className="max-w-xl w-full relative border-l-4 border-[#FFD100] pl-6 md:pl-10 py-2">
-                                <motion.div
-                                    initial={{ y: 20, opacity: 0 }}
-                                    animate={{ y: 0, opacity: 1 }}
-                                    className="flex items-center gap-4 mb-4 md:mb-6"
-                                >
-                                    <span className="w-8 md:w-16 h-px bg-[#FFD100]"></span>
-                                    <p className="text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase text-[#FFD100]">03 — PERFORMANCE SPECS</p>
-                                </motion.div>
+                            <div key={activeSection === 2 ? 'perf-active' : 'perf-idle'} className="w-full flex flex-col lg:flex-row justify-between items-end gap-4 lg:gap-20">
 
-                                <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] font-black tracking-tighter leading-[0.8] uppercase flex flex-col mb-6">
-                                    <span className="text-[#FFD100] drop-shadow-[0_0_30px_rgba(255,209,0,0.3)] pr-4">MASTER</span>
-                                    <span
-                                        className="text-transparent pr-4 relative"
-                                        style={{ WebkitTextStroke: '2px rgba(255,255,255,0.9)' }}
+                                {/* Left: Section tag + Big heading + Description */}
+                                <div className="flex-1 flex flex-col overflow-hidden">
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 16 }}
+                                        animate={activeSection === 2 ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ duration: 0.45, ease: 'easeOut', delay: 0.05 }}
+                                        className="text-[9px] md:text-xs font-bold tracking-[0.4em] uppercase text-[#FFD100] mb-2 md:mb-3"
                                     >
-                                        DEPTH<span className="text-white">.</span>
-                                        <span className="absolute inset-0 text-white/5 blur-sm -z-10" style={{ WebkitTextStroke: '0' }}>DEPTH.</span>
-                                    </span>
-                                </h2>
-                                <p className="text-[10px] md:text-xs font-light tracking-[0.2em] text-white/60 leading-relaxed uppercase border-l-2 border-white/20 pl-5 py-1 mb-8 max-w-sm">
-                                    UNMATCHED EXCAVATION PRECISION AND CLASS-LEADING LIFT CAPACITY. BUILT TO HANDLE THE IMPOSSIBLE.
-                                </p>
+                                        CLASS-LEADING EXCAVATION.
+                                    </motion.p>
 
-                                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div className="overflow-hidden">
+                                        <motion.h2
+                                            initial={{ x: -120, opacity: 0 }}
+                                            animate={activeSection === 2 ? { x: 0, opacity: 1 } : {}}
+                                            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+                                            className="relative inline-block text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-black tracking-tight leading-[0.8] uppercase"
+                                        >
+                                            <span className="relative z-10 text-white drop-shadow-[0_0_40px_rgba(0,0,0,0.9)]">
+                                                Performance
+                                            </span>
+                                            <span
+                                                className="pointer-events-none select-none absolute inset-0 translate-y-2 text-white/5"
+                                                style={{ WebkitTextStroke: "1px rgba(255,255,255,0.5)" }}
+                                            >
+                                                PERFORMANCE
+                                            </span>
+                                        </motion.h2>
+                                    </div>
+
+                                    <motion.p
+                                        initial={{ opacity: 0, y: 12 }}
+                                        animate={activeSection === 2 ? { opacity: 1, y: 0 } : {}}
+                                        transition={{ duration: 0.5, ease: 'easeOut', delay: 0.3 }}
+                                        className="hidden md:block mt-4 text-[10px] md:text-xs font-light tracking-[0.15em] text-white/40 leading-relaxed max-w-md"
+                                    >
+                                        Unmatched excavation precision and class-leading
+                                        lift capacity. Built to handle the impossible.
+                                    </motion.p>
+                                </div>
+
+                                {/* Right: 2-col grid on mobile, vertical stack on desktop */}
+                                <div className="grid grid-cols-2 lg:grid-cols-1 gap-2 md:gap-3 lg:gap-4 w-full lg:w-auto">
                                     {[
-                                        { l: 'DIG DEPTH', v: '5.4', u: 'M' },
-                                        { l: 'MAX SPEED', v: '40', u: 'K/H' },
-                                        { l: 'LIFT CAP.', v: '3.2', u: 'T' },
-                                    ].map(spec => (
-                                        <div key={spec.l} className="p-4 rounded-xl border border-[#FFD100]/20 bg-white/[0.02] backdrop-blur-xl hover:border-[#FFD100]/50 transition-all duration-500 shadow-[0_0_15px_rgba(255,209,0,0.05)]">
-                                            <p className="text-[8px] font-bold tracking-[0.2em] opacity-30 mb-3 uppercase">{spec.l}</p>
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-2xl font-black italic">{spec.v}</span>
-                                                <span className="text-[9px] font-black text-[#FFD100]">{spec.u}</span>
+                                        { value: '5.46', unit: 'M', label: 'DIG DEPTH' },
+                                        { value: '>40', unit: 'km/h', label: 'TOP SPEED' },
+                                        { value: '3228', unit: 'kg', label: 'LIFT CAPACITY' },
+                                        { value: '1.0', unit: 'M³', label: 'BUCKET CAP.' },
+                                    ].map((spec, idx) => (
+                                        <motion.div
+                                            key={spec.label}
+                                            initial={{ opacity: 0, x: 50, y: 8 }}
+                                            animate={activeSection === 2 ? { opacity: 1, x: 0, y: 0 } : {}}
+                                            whileHover={{ scale: 1.04, boxShadow: "0 0 30px rgba(255,209,0,0.4)", borderColor: "rgba(255,209,0,0.7)" }}
+                                            whileTap={{ scale: 0.98 }}
+                                            transition={{ delay: 0.15 + idx * 0.1, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                                            style={{ border: "1px solid rgba(255,209,0,0.25)" }}
+                                            className="relative flex flex-col items-end text-right px-3 py-2 md:px-4 md:py-4 lg:w-64 rounded-xl md:rounded-2xl bg-white/[0.03] backdrop-blur-[3px] shadow-[0_0_25px_rgba(0,0,0,0.7)]"
+                                        >
+                                            <div className="flex items-baseline gap-1 md:gap-2">
+                                                <span className="text-xl md:text-3xl lg:text-5xl font-black tracking-tight text-white">
+                                                    {spec.value}
+                                                </span>
+                                                <span className="text-xs md:text-sm lg:text-base font-bold text-[#FFD100] drop-shadow-[0_0_15px_rgba(255,209,0,0.6)]">
+                                                    {spec.unit}
+                                                </span>
                                             </div>
-                                        </div>
+                                            <p className="mt-0.5 text-[7px] md:text-[8px] lg:text-[9px] font-bold tracking-[0.3em] text-white/40 uppercase">
+                                                {spec.label}
+                                            </p>
+                                            <div className="mt-1 md:mt-2 h-px w-full bg-gradient-to-l from-[#FFD100] via-[#FFD100]/40 to-transparent opacity-80" />
+                                        </motion.div>
                                     ))}
                                 </div>
                             </div>

@@ -17,6 +17,21 @@ const fontImports = `
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap');
 `;
 
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Aadarsh Travels — Explore Nepal",
+    description: "A cinematic visual journey through Nepal featuring Mount Everest, Rara Lake, Upper Mustang, and Sarangkot Pokhara.",
+    url: "https://aadarshttech.github.io/projects/nepal",
+    author: { "@type": "Person", name: "Aadarsh Pandit" },
+    about: [
+        { "@type": "Place", name: "Mount Everest", description: "The highest peak on Earth at 8,848.86 m" },
+        { "@type": "Place", name: "Rara Lake", description: "Nepal's largest and deepest freshwater lake" },
+        { "@type": "Place", name: "Upper Mustang", description: "The last forbidden kingdom of Nepal" },
+        { "@type": "Place", name: "Sarangkot, Pokhara", description: "Paragliding viewpoint above the Annapurna range" },
+    ],
+};
+
 const NAV_ITEMS = [
     { label: "Everest", vh: 0 },
     { label: "Rara", vh: 150 },
@@ -70,6 +85,7 @@ export default function NepalShowcase() {
     return (
         <>
             <style dangerouslySetInnerHTML={{ __html: fontImports }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <main className="w-full text-white bg-[#020202] selection:bg-white selection:text-black font-['Montserrat',sans-serif]">
 
                 {/* ── Premium Loading Screen ─────────────────────────── */}

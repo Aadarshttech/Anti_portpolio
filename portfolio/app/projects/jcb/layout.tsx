@@ -1,49 +1,55 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-    title: 'JCB Backhoe Loader - Interactive Scrollytelling | Aadarsh Pandit',
-    description: 'Experience the JCB Backhoe Loader through an immersive scrollytelling showcase. Explore the design, engine specs, and performance of this legendary construction machine.',
-    keywords: ['JCB', 'Backhoe Loader', 'Construction Equipment', 'Scrollytelling', 'Interactive Web Design', 'Aadarsh Pandit Portfolio', 'Next.js Demo'],
+    title: 'JCB Backhoe Loader | Premium Scrollytelling Showcase',
+    description: 'A high-octane scrollytelling experience for the JCB Backhoe Loader. Explore the apex predator of earthmoving with interactive specifications and cinema-quality frame animation.',
+    keywords: ['JCB', 'Backhoe Loader', 'Scrollytelling', 'Creative Web Development', 'Next.js', 'Framer Motion', 'Canvas Animation', 'Industrial Design', 'Aadarsh Pandit Portfolio'],
+    authors: [{ name: 'Aadarsh Pandit' }],
+    creator: 'Aadarsh Pandit',
+    publisher: 'Aadarsh Pandit',
     openGraph: {
-        title: 'JCB Backhoe Loader - Interactive Scrollytelling',
-        description: 'Experience the JCB Backhoe Loader through an immersive scrollytelling showcase.',
+        title: 'JCB Backhoe Loader | Premium Scrollytelling Showcase',
+        description: 'A high-octane scrollytelling experience for the JCB Backhoe Loader. Explore the apex predator of earthmoving with interactive specifications and cinema-quality frame animation.',
+        url: 'https://aadarshttech.github.io/projects/jcb', // Update if the live domain changes
+        siteName: 'Aadarsh Pandit Portfolio',
         images: [
             {
-                url: '/projects/jcb/jcb-frames/frame_0001.jpg',
-                width: 1280,
-                height: 720,
-                alt: 'JCB Backhoe Loader',
+                url: '/projects/jcb/jcb_thumbnail_clean.jpg',
+                width: 1920,
+                height: 1080,
+                alt: 'JCB Backhoe Loader Scrollytelling Interface',
             },
         ],
+        locale: 'en_US',
         type: 'website',
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'JCB Backhoe Loader - Interactive Scrollytelling',
-        description: 'Experience the JCB Backhoe Loader through an immersive scrollytelling showcase.',
-        images: ['/projects/jcb/jcb-frames/frame_0001.jpg'],
+        title: 'JCB Backhoe Loader | Premium Scrollytelling Showcase',
+        description: 'A high-octane scrollytelling experience for the JCB Backhoe Loader.',
+        images: ['/projects/jcb/jcb_thumbnail_clean.jpg'],
+        creator: '@aadarshttech', // Replace with actual Twitter handle if needed
+    },
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            'max-video-preview': -1,
+            'max-image-preview': 'large',
+            'max-snippet': -1,
+        },
     },
 };
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-    const jsonLd = {
-        '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        name: 'JCB Backhoe Loader - Interactive Scrollytelling',
-        description: 'An immersive scrollytelling showcase of the JCB Backhoe Loader, demonstrating interactive web design and animation techniques.',
-        author: {
-            '@type': 'Person',
-            name: 'Aadarsh Pandit',
-            url: 'https://aadarshapandit.com.np',
-        },
-    };
-
+export default function JCBLayout({
+    children,
+}: {
+    children: React.ReactNode;
+}) {
     return (
         <>
-            <script
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
             {children}
         </>
     );

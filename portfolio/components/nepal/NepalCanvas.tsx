@@ -86,6 +86,10 @@ export const NepalCanvas = ({
         imagesRef.current = images;
         let totalLoaded = 0;
 
+        // Serve smaller frames on mobile for faster loading
+        const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
+        const frameDir = isMobile ? "frames_mobile" : "frames";
+
         const loadBatch = (startIdx: number) => {
             const endIdx = Math.min(startIdx + BATCH_SIZE, TOTAL_FRAMES);
             let batchLoaded = 0;
@@ -94,7 +98,7 @@ export const NepalCanvas = ({
             for (let i = startIdx; i < endIdx; i++) {
                 const frameNum = i + 1;
                 const img = new window.Image();
-                img.src = `/projects/nepal/frames/frame_${String(frameNum).padStart(3, "0")}.webp`;
+                img.src = `/projects/nepal/${frameDir}/frame_${String(frameNum).padStart(3, "0")}.webp`;
 
                 const onDone = () => {
                     totalLoaded++;

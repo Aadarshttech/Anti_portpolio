@@ -16,6 +16,15 @@ const projects = [
         links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
     },
     {
+        title: "Aadarsh Travels — Nepal",
+        category: "Creative Design",
+        description: "A highly cinematic, luxury web experience showcasing the magnificent landscapes of Nepal. Features 4K video backgrounds overlaid with high-fashion, symmetrical typography for a breathtaking visual journey.",
+        tags: ["Next.js", "Cinematic UI", "Luxury Design", "Typography"],
+        image: "/projects/nepal/thumbnail.jpg",
+        fit: "cover",
+        links: { demo: "/projects/nepal", code: "https://github.com/Aadarshttech" }
+    },
+    {
         title: "JCB Backhoe",
         category: "Creative Dev / Industrial",
         description: "A high-octane scrollytelling experience for the JCB Backhoe Loader. Features a custom canvas-based frame animation system synced to smooth scroll progress with technical spec overlays.",

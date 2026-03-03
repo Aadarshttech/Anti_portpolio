@@ -18,6 +18,18 @@ const caseStudies = [
         links: { demo: "/projects/beverages", code: "https://github.com/Aadarshttech" }
     },
     {
+        title: "Aadarsh Travels",
+        client: "Concept Travel Agency",
+        category: "Creative Web Design",
+        challenge: "Designing a premium, highly immersive digital journey that captures the extreme beauty of the Himalayas and untouched terrains.",
+        approach: "Engineered a cinematic viewport with heavy emphasis on perfect symmetrical typography, high-contrast frosted glass elements, and flawless layout hierarchy.",
+        tags: ["Next.js", "Framer Motion", "Cinematic UI"],
+        image: "/projects/nepal/thumbnail.jpg",
+        fit: "cover" as const,
+        gradient: "from-blue-100 to-blue-300",
+        links: { demo: "/projects/nepal", code: "https://github.com/Aadarshttech" }
+    },
+    {
         title: "JCB Backhoe",
         client: "Industrial Hardware",
         category: "Creative Dev",

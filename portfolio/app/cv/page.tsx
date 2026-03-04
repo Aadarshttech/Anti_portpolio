@@ -91,7 +91,8 @@ export default function ResumesPage() {
     const handlePrint = () => window.print();
 
     return (
-        <div className="print-container min-h-screen bg-neutral-200 py-12 px-4 font-['Inter',sans-serif] selection:bg-[#1a4a8c] selection:text-white flex justify-center items-start">
+        <div className="print-container min-h-screen bg-neutral-200 py-12 px-4 font-['Inter',sans-serif] selection:bg-[#1a4a8c] selection:text-white flex justify-center items-start overflow-x-hidden">
+
 
             <div className="print-btn-container no-print gap-3">
                 <Link href="/" className="bg-white text-black px-4 py-2 rounded-full font-medium text-sm shadow-md hover:bg-gray-50 border border-gray-200 transition-colors flex items-center gap-2">
@@ -102,10 +103,13 @@ export default function ResumesPage() {
                 </button>
             </div>
 
-            <div className="cv-sheet w-full max-w-[21cm] min-h-[29.7cm] bg-white shadow-2xl flex text-gray-800 text-sm mx-auto">
+            <div className="cv-sheet w-full max-w-[21cm] md:min-h-[29.7cm] bg-white shadow-2xl flex flex-col md:flex-row text-gray-800 text-sm mx-auto">
+
+
 
                 {/* LEFT SIDEBAR */}
-                <div className="w-[33%] bg-[#eef2f6] shrink-0 border-r border-[#d1dce8] flex flex-col pt-12 relative min-h-full pb-12">
+                <div className="w-full md:w-[33%] bg-[#eef2f6] shrink-0 border-b md:border-b-0 md:border-r border-[#d1dce8] flex flex-col pt-8 md:pt-12 relative min-h-full pb-8 md:pb-12">
+
 
                     <div className="w-full flex justify-center mb-8">
                         <div className="w-[150px] h-[150px] rounded-full overflow-hidden border-[5px] border-[#d1dce8] shadow-md bg-white">
@@ -179,10 +183,11 @@ export default function ResumesPage() {
                 </div>
 
                 {/* RIGHT CONTENT */}
-                <div className="w-[67%] bg-white pt-[55px] px-[40px] flex flex-col relative pb-12">
+                <div className="w-full md:w-[67%] bg-white pt-8 md:pt-[55px] px-6 md:px-[40px] flex flex-col relative pb-12">
+
 
                     <div className="mb-6 relative z-10 w-full overflow-hidden">
-                        <h1 className="text-[52px] leading-[0.95] font-black text-[#1a4a8c] uppercase font-['Outfit'] tracking-[0.05em] mb-3">
+                        <h1 className="text-4xl md:text-[52px] leading-[0.95] font-black text-[#1a4a8c] uppercase font-['Outfit'] tracking-[0.05em] mb-3">
                             AADARSH<br />PANDIT
                         </h1>
                         <h2 className="text-[20px] text-gray-700 font-bold tracking-[0.14em] uppercase">

@@ -1,32 +1,86 @@
 "use client";
 
-import { MapPin, Mail, Phone, ExternalLink, Github, Linkedin, Printer } from "lucide-react";
-import Link from "next/link";
 import { useEffect } from "react";
+import Link from "next/link";
+import { Printer } from "lucide-react";
 
-export default function CVPage() {
+export default function ResumesPage() {
 
-    // Hide global navbars and chatbots for a pristine CV view
     useEffect(() => {
         const style = document.createElement("style");
         style.innerHTML = `
-            /* Hide global site elements on the CV page */
             header, footer, nav, .fixed { display: none !important; }
-            /* Exception for our print button, keep it visible until printing */
             .print-btn-container { display: flex !important; position: fixed !important; top: 1.5rem; right: 1.5rem; z-index: 50; }
             
+            .ribbon {
+                position: relative;
+                width: calc(100% + 15px);
+                background-color: #1a4a8c;
+                color: white;
+                padding: 10px 20px;
+                font-weight: bold;
+                letter-spacing: 0.05em;
+                margin-left: -15px;
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+            .ribbon::after {
+                content: '';
+                position: absolute;
+                top: 100%;
+                right: 0;
+                border-width: 15px 15px 0 0;
+                border-style: solid;
+                border-color: #0f2c54 transparent transparent transparent;
+            }
+            .ribbon::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: -15px;
+                width: 15px;
+                background-color: #1a4a8c;
+                clip-path: polygon(0 0, 100% 0, 0 100%);
+            }
+            
+            /* Multi-page Print optimizations */
             @media print {
-                @page { margin: 0; size: A4 portrait; }
-                body { background: white !important; margin: 0 !important; padding: 0 !important; }
+                @page { margin: 0.8cm 0; size: A4 portrait; }
+                body { 
+                    -webkit-print-color-adjust: exact !important; 
+                    print-color-adjust: exact !important; 
+                    background: white !important; 
+                    margin: 0 !important; 
+                    padding: 0 !important; 
+                }
                 .no-print { display: none !important; }
+                
+                .print-container {
+                     background: white !important;
+                     padding: 0 !important;
+                     margin: 0 !important;
+                     width: 100% !important;
+                }
+                
                 .cv-sheet { 
                     box-shadow: none !important; 
                     margin: 0 !important; 
-                    padding: 8mm 12mm !important; 
+                    padding: 0 !important;
                     width: 100% !important; 
-                    max-width: 100% !important; 
+                    max-width: 100% !important;
+                    min-height: 29.7cm !important;
                     border: none !important; 
-                    min-height: auto !important;
+                    border-radius: 0 !important;
+                    background: linear-gradient(to right, #eef2f6 0%, #eef2f6 33%, white 33%, white 100%) !important;
+                }
+                
+                .timeline-item, .skill-block {
+                    page-break-inside: avoid;
+                }
+                
+                .ribbon {
+                    page-break-after: avoid;
                 }
             }
         `;
@@ -34,151 +88,264 @@ export default function CVPage() {
         return () => { document.head.removeChild(style); };
     }, []);
 
-    const handlePrint = () => {
-        window.print();
-    };
+    const handlePrint = () => window.print();
 
     return (
-        <div className="min-h-screen bg-neutral-100 py-12 px-4 font-['Inter',sans-serif] selection:bg-black selection:text-white">
+        <div className="print-container min-h-screen bg-neutral-200 py-12 px-4 font-['Inter',sans-serif] selection:bg-[#1a4a8c] selection:text-white flex justify-center items-start">
 
-            {/* Download / Print Button */}
             <div className="print-btn-container no-print gap-3">
                 <Link href="/" className="bg-white text-black px-4 py-2 rounded-full font-medium text-sm shadow-md hover:bg-gray-50 border border-gray-200 transition-colors flex items-center gap-2">
                     Back to Portfolio
                 </Link>
-                <button
-                    onClick={handlePrint}
-                    className="bg-black text-white px-5 py-2 rounded-full font-medium text-sm shadow-xl hover:bg-gray-800 transition-colors flex items-center gap-2"
-                >
+                <button onClick={handlePrint} className="bg-[#1a4a8c] text-white px-5 py-2 rounded-full font-medium text-sm shadow-xl hover:bg-blue-900 transition-colors flex items-center gap-2">
                     <Printer size={16} /> Save as PDF
                 </button>
             </div>
 
-            {/* A4 Sheet Container */}
-            <div className="cv-sheet max-w-[21cm] min-h-[29.7cm] bg-white mx-auto shadow-2xl border border-gray-200 p-[1.5cm] md:p-[2cm] text-gray-900 rounded-sm">
+            <div className="cv-sheet w-full max-w-[21cm] min-h-[29.7cm] bg-white shadow-2xl flex text-gray-800 text-sm mx-auto">
 
-                {/* Header */}
-                <header className="border-b border-gray-300 pb-6 mb-6">
-                    <h1 className="text-4xl font-extrabold tracking-tight mb-2 text-black uppercase font-['Outfit',sans-serif]">Aadarsh Pandit</h1>
-                    <h2 className="text-xl text-gray-600 font-medium mb-4">AI & Full-Stack Web Developer</h2>
+                {/* LEFT SIDEBAR */}
+                <div className="w-[33%] bg-[#eef2f6] shrink-0 border-r border-[#d1dce8] flex flex-col pt-12 relative min-h-full pb-12">
 
-                    <div className="flex flex-wrap gap-y-2 gap-x-6 text-sm text-gray-600">
-                        <span className="flex items-center gap-1.5"><Mail size={14} /> aadarshapandit@gmail.com</span>
-                        <span className="flex items-center gap-1.5"><Phone size={14} /> +977 9860334317</span>
-                        <span className="flex items-center gap-1.5"><MapPin size={14} /> Kathmandu, Nepal</span>
-                        <a href="https://linkedin.com/in/aadarsh-pandit" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-black transition-colors"><Linkedin size={14} /> linkedin.com/in/aadarsh-pandit</a>
-                        <a href="https://github.com/Aadarshttech" target="_blank" rel="noreferrer" className="flex items-center gap-1.5 hover:text-black transition-colors"><Github size={14} /> github.com/Aadarshttech</a>
-                    </div>
-                </header>
-
-                {/* Profile */}
-                <section className="mb-6">
-                    <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-3 border-l-2 border-black pl-3">Professional Summary</h3>
-                    <p className="text-sm leading-relaxed text-gray-700">
-                        Results-driven AI & Full-Stack Web Developer combining machine learning precision with premium front-end architectural design. Specialized in NLP, predictive modeling, and building high-performance, SEO-optimized web applications using Next.js. Experienced in delivering full-stack solutions with top-tier UI/UX, cinematic framer animations, and complex data infrastructures.
-                    </p>
-                </section>
-
-                {/* Skills */}
-                <section className="mb-6">
-                    <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-3 border-l-2 border-black pl-3">Technical Skills</h3>
-                    <div className="grid grid-cols-[140px_1fr] gap-y-2 text-sm">
-                        <span className="font-semibold text-gray-800">Languages:</span>
-                        <span className="text-gray-700">Python, TypeScript, JavaScript, HTML5/CSS3</span>
-
-                        <span className="font-semibold text-gray-800">AI & Machine Learning:</span>
-                        <span className="text-gray-700">PyTorch, TensorFlow, Scikit-learn, OpenAI Whisper, NLP, RLHF, Random Forest</span>
-
-                        <span className="font-semibold text-gray-800">Web & Mobile:</span>
-                        <span className="text-gray-700">React, Next.js, React Native, Tailwind CSS, Framer Motion, Node.js, FastAPI</span>
-
-                        <span className="font-semibold text-gray-800">Tools & Ops:</span>
-                        <span className="text-gray-700">Git, Vercel, Figma, ffmpeg (Asset Optimization), Make/Zapier</span>
-                    </div>
-                </section>
-
-                {/* Experience */}
-                <section className="mb-6">
-                    <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-4 border-l-2 border-black pl-3">Key Projects & Experience</h3>
-
-                    <div className="space-y-5">
-                        {/* Project 1 */}
-                        <div>
-                            <div className="flex justify-between items-baseline mb-1">
-                                <h4 className="text-sm font-bold text-black flex items-center gap-2">
-                                    Nepali ASR System <span className="text-xs font-normal text-white bg-black px-2 py-0.5 rounded-full">AI/Research</span>
-                                </h4>
-                            </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                                Developed a highly accurate speech-to-text pipeline for the low-resource Nepali language using OpenAI Whisper. Processed a custom dataset of 50k+ audio pairs and implemented Reward-Guided Fine-Tuning (RLHF) and Proximal Policy Optimization (PPO) to significantly push transcription accuracy.
-                            </p>
-                        </div>
-
-                        {/* Project 2 */}
-                        <div>
-                            <div className="flex justify-between items-baseline mb-1">
-                                <h4 className="text-sm font-bold text-black flex items-center gap-2">
-                                    Aadarsh Travels — Cinematic Web Experience <a href="https://aadarshapandit.com.np/projects/nepal" target="_blank" className="text-gray-400 hover:text-black no-print"><ExternalLink size={12} /></a>
-                                </h4>
-                            </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                                Architected a luxury, high-performance web experience leveraging Next.js and HTML5 Canvas API. Engineered a custom scroll-synced 4K WebP frame animation system (253 frames), conditionally rendering 960x540 mobile assets to reduce payload by 83%. Implemented robust JSON-LD structured data and Open Graph SEO.
-                            </p>
-                        </div>
-
-                        {/* Project 3 */}
-                        <div>
-                            <div className="flex justify-between items-baseline mb-1">
-                                <h4 className="text-sm font-bold text-black flex items-center gap-2">
-                                    Mango Pandit Beverages <a href="https://aadarshapandit.com.np/projects/beverages" target="_blank" className="text-gray-400 hover:text-black no-print"><ExternalLink size={12} /></a>
-                                </h4>
-                            </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                                Built an Awwwards-inspired scrollytelling e-commerce product page. Developed dark-mode logic, complex UI state management (cart, toast notifications), and premium GSAP/Framer Motion micro-interactions synced to a 194-frame canvas sequence.
-                            </p>
-                        </div>
-
-                        {/* Project 4 */}
-                        <div>
-                            <div className="flex justify-between items-baseline mb-1">
-                                <h4 className="text-sm font-bold text-black flex items-center gap-2">
-                                    Nepal Cricket Match Predictor <a href="https://aadarshapandit.com.np/nepal-cricket/index.html" target="_blank" className="text-gray-400 hover:text-black no-print"><ExternalLink size={12} /></a>
-                                </h4>
-                            </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                                Engineered a real-time web dashboard using a Python FastAPI backend and React frontend. Trained and deployed a Random Forest classification model using Scikit-learn to predict match outcomes based on toss, venue, and opposition statistics.
-                            </p>
-                        </div>
-
-                        {/* Project 5 */}
-                        <div>
-                            <div className="flex justify-between items-baseline mb-1">
-                                <h4 className="text-sm font-bold text-black flex items-center gap-2">
-                                    Karyantra Hive Corporate Website <a href="https://karyantrahive.com.np/" target="_blank" className="text-gray-400 hover:text-black no-print"><ExternalLink size={12} /></a>
-                                </h4>
-                            </div>
-                            <p className="text-sm text-gray-700 leading-relaxed">
-                                Freelance web developer for Karyantra. Designed and coded a highly responsive, performance-optimized corporate architecture using React and Tailwind CSS, integrating custom CMS solutions.
-                            </p>
+                    <div className="w-full flex justify-center mb-8">
+                        <div className="w-[150px] h-[150px] rounded-full overflow-hidden border-[5px] border-[#d1dce8] shadow-md bg-white">
+                            <img src="/hero.png" alt="Aadarsh Pandit" className="w-full h-full object-cover object-center" />
                         </div>
                     </div>
-                </section>
 
-                {/* Education */}
-                <section>
-                    <h3 className="text-sm font-bold tracking-widest uppercase text-black mb-3 border-l-2 border-black pl-3">Education</h3>
-                    <div className="flex justify-between items-start">
-                        <div>
-                            <h4 className="text-sm font-bold text-gray-900">Kathmandu University</h4>
-                            <p className="text-sm text-gray-700">BTech in Artificial Intelligence</p>
+                    <div className="ribbon text-xl font-['Outfit'] uppercase">Contact</div>
+                    <div className="px-6 mb-8 text-[13px]">
+                        <div className="mb-4">
+                            <h4 className="font-bold text-gray-900 mb-0.5">Phone</h4>
+                            <p className="text-gray-700 font-medium">+977 9860334317</p>
                         </div>
-                        <div className="text-right">
-                            <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">Expected Graduation</span>
-                            <p className="text-xs text-gray-500 mt-1">Kathmandu, Nepal</p>
+                        <div className="mb-4">
+                            <h4 className="font-bold text-gray-900 mb-0.5">Email</h4>
+                            <p className="text-gray-700 font-medium break-all">aadarshapandit@gmail.com</p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900 mb-0.5">Address</h4>
+                            <p className="text-gray-700 font-medium">Kathmandu, Nepal</p>
                         </div>
                     </div>
-                </section>
 
+                    <div className="ribbon text-xl font-['Outfit'] uppercase">Education</div>
+                    <div className="px-6 mb-8 text-[13px] space-y-4">
+                        <div>
+                            <h4 className="font-bold text-gray-900 mb-0.5 leading-snug">BTech in Artificial Intelligence</h4>
+                            <p className="text-gray-700 leading-tight">Kathmandu University</p>
+                            <p className="text-gray-500 text-xs italic mt-0.5">2024 – Present</p>
+                            <p className="text-[#1a4a8c] text-xs font-bold mt-0.5">GPA: 3.95 / 4.0</p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900 mb-0.5 leading-snug">Science (+2)</h4>
+                            <p className="text-gray-700 leading-tight">Kathmandu Bernhardt College</p>
+                            <p className="text-gray-500 text-xs italic mt-0.5">2022 - 2024</p>
+                        </div>
+                    </div>
+
+                    <div className="ribbon text-xl font-['Outfit'] uppercase">Skills</div>
+                    <div className="px-6 mb-8 text-[13px] space-y-4">
+                        <div className="skill-block">
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Programming</h4>
+                            <p className="text-gray-700 leading-tight">Python, JavaScript, TypeScript, SQL, Dart</p>
+                        </div>
+                        <div className="skill-block">
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Data &amp; AI</h4>
+                            <p className="text-gray-700 leading-tight">Machine Learning, NLP, Data Analysis, Data Engineering</p>
+                        </div>
+                        <div className="skill-block">
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Web Development</h4>
+                            <p className="text-gray-700 leading-tight">React, Next.js, Node.js, WordPress</p>
+                        </div>
+                        <div className="skill-block">
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Optimization &amp; Automation</h4>
+                            <p className="text-gray-700 leading-tight">SEO, Performance Optimization, Workflow Automation</p>
+                        </div>
+                        <div className="skill-block">
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Mobile Development</h4>
+                            <p className="text-gray-700 leading-tight">Flutter</p>
+                        </div>
+                    </div>
+
+                    <div className="ribbon text-xl font-['Outfit'] uppercase">Language</div>
+                    <div className="px-6 text-[13px]">
+                        <ul className="list-disc pl-4 space-y-2 text-gray-700 marker:text-[#1a4a8c] font-medium">
+                            <li>English</li>
+                            <li>Nepali</li>
+                            <li>Hindi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {/* RIGHT CONTENT */}
+                <div className="w-[67%] bg-white pt-[55px] px-[40px] flex flex-col relative pb-12">
+
+                    <div className="mb-6 relative z-10 w-full overflow-hidden">
+                        <h1 className="text-[52px] leading-[0.95] font-black text-[#1a4a8c] uppercase font-['Outfit'] tracking-[0.05em] mb-3">
+                            AADARSH<br />PANDIT
+                        </h1>
+                        <h2 className="text-[20px] text-gray-700 font-bold tracking-[0.14em] uppercase">
+                            AI &amp; Web Developer
+                        </h2>
+                        <p className="text-gray-500 text-[13px] leading-relaxed mt-3 font-medium max-w-[340px]">
+                            BTech AI student at Kathmandu University. Specializes in low-resource NLP for Nepali (ASR, code-switching) and ships production-grade ML systems alongside high-performance creative web experiences.
+                        </p>
+                    </div>
+
+                    <h3 className="text-[22px] font-bold text-[#1a4a8c] mb-6 font-['Outfit'] tracking-wide">Professional Experience</h3>
+
+                    <div className="relative z-10 text-[13px]">
+
+                        {/* Kurly Brains */}
+                        <div className="timeline-item flex mb-6 relative group">
+                            <div className="w-[18px] shrink-0 relative">
+                                <div className="w-[2px] bg-[#d1dce8] absolute left-[8px] top-[14px] bottom-[-15px]"></div>
+                                <div className="w-[10px] h-[10px] rounded-full bg-[#1a4a8c] absolute left-[4px] top-[6px] shadow-[0_0_0_4px_white]"></div>
+                            </div>
+
+                            <div className="pl-4 w-full pb-2">
+                                <span className="text-[11px] font-bold text-[#1a4a8c] tracking-wide uppercase">Feb 2026 – Present</span>
+                                <div className="flex items-center gap-2 mt-0.5 mb-0.5">
+                                    <h4 className="font-bold text-[16px] text-gray-900">AI Lead</h4>
+                                    <span className="text-[10px] font-semibold bg-[#1a4a8c]/10 text-[#1a4a8c] px-2 py-0.5 rounded-full">Contract</span>
+                                </div>
+                                <p className="text-[#1a4a8c] font-medium mb-2 text-[13px]">
+                                    <a href="https://kurlybrains.com/" target="_blank" className="hover:underline">Kurly Brains</a>
+                                </p>
+                                <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
+                                    <li>Delivered 3+ client-commissioned AI projects including custom chatbots (with WordPress plugin integration), domain-specific predictors, and fine-tuned LLMs.</li>
+                                    <li>Lead model fine-tuning pipelines end-to-end: data curation, training, evaluation, and production handoff for business clients.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Nepali ASR System */}
+                        <div className="timeline-item flex mb-6 relative">
+                            <div className="w-[18px] shrink-0 relative">
+                                <div className="w-[2px] bg-[#d1dce8] absolute left-[8px] top-[14px] bottom-[-15px]"></div>
+                                <div className="w-[10px] h-[10px] rounded-full bg-[#1a4a8c] absolute left-[4px] top-[6px] shadow-[0_0_0_4px_white]"></div>
+                            </div>
+
+                            <div className="pl-4 w-full pb-2">
+                                <span className="text-[11px] font-bold text-gray-500 tracking-wide uppercase">Jun 2025 – Nov 2025</span>
+                                <div className="flex items-center gap-2 mt-0.5 mb-0.5">
+                                    <h4 className="font-bold text-[16px] text-gray-900">AI Researcher — Nepali ASR</h4>
+                                    <span className="text-[10px] font-semibold bg-purple-100 text-purple-700 px-2 py-0.5 rounded-full">Research Paper</span>
+                                </div>
+                                <p className="text-gray-500 mb-2 italic text-[12px]">Independent Research</p>
+                                <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
+                                    <li>Developed a reward-guided fine-tuning framework for Whisper, utilizing a Random Forest model (81% accuracy) to filter noisy samples from a 70+ hour Nepali speech dataset.</li>
+                                    <li>Achieved an 11–12% <em>relative</em> improvement in transcription accuracy, reducing WER from 5.55% to 4.89% and CER from 5.04% to 4.52%.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Karyantra Hive */}
+                        <div className="timeline-item flex mb-6 relative">
+                            <div className="w-[18px] shrink-0 relative">
+                                <div className="w-[2px] bg-[#d1dce8] absolute left-[8px] top-[14px] bottom-[-15px]"></div>
+                                <div className="w-[10px] h-[10px] rounded-full bg-[#1a4a8c] absolute left-[4px] top-[6px] shadow-[0_0_0_4px_white]"></div>
+                            </div>
+
+                            <div className="pl-4 w-full pb-2">
+                                <span className="text-[11px] font-bold text-gray-500 tracking-wide uppercase">Jan 2026</span>
+                                <div className="flex items-center gap-2 mt-0.5 mb-0.5">
+                                    <h4 className="font-bold text-[16px] text-gray-900">Web Developer</h4>
+                                    <span className="text-[10px] font-semibold bg-[#1a4a8c]/10 text-[#1a4a8c] px-2 py-0.5 rounded-full">Contract</span>
+                                </div>
+                                <p className="text-[#1a4a8c] font-medium mb-2 text-[12px]">
+                                    <a href="https://karyantrahive.com.np/" target="_blank" className="hover:underline">Karyantra Hive</a>
+                                </p>
+                                <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
+                                    <li>Built and deployed corporate website using WordPress and Elementor with custom page templates and responsive layouts.</li>
+                                    <li>Configured hosting, SEO metadata, and performance settings achieving fast page loads for a business-focused audience.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Aadarsh Travels */}
+                        <div className="timeline-item flex mb-6 relative">
+                            <div className="w-[18px] shrink-0 relative">
+                                <div className="w-[2px] bg-[#d1dce8] absolute left-[8px] top-[14px] bottom-[-15px]"></div>
+                                <div className="w-[10px] h-[10px] rounded-full bg-[#1a4a8c] absolute left-[4px] top-[6px] shadow-[0_0_0_4px_white]"></div>
+                            </div>
+
+                            <div className="pl-4 w-full pb-2">
+                                <span className="text-[11px] font-bold text-gray-500 tracking-wide uppercase">Feb 2026</span>
+                                <div className="flex items-center gap-2 mt-0.5 mb-0.5">
+                                    <h4 className="font-bold text-[16px] text-gray-900">Creative Front-End Engineer</h4>
+                                    <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Side Project</span>
+                                </div>
+                                <div className="flex items-center gap-3 mb-2">
+                                    <a href="https://aadarshapandit.com.np/projects/nepal" target="_blank" className="text-[#1a4a8c] font-medium text-[12px] hover:underline">Aadarsh Travels ↗</a>
+                                    <a href="https://github.com/Aadarshttech/nepal-travels-showcase" target="_blank" className="text-gray-400 font-medium text-[11px] hover:underline">GitHub ↗</a>
+                                </div>
+                                <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
+                                    <li>Architected luxury, high-performance web experience showcasing travel routes using Next.js.</li>
+                                    <li>Engineered custom scroll-synced 4K WebP frame animation system (253 frames), conditionally rendering mobile sizes to cut weight by 83%.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Match Predictor */}
+                        <div className="timeline-item flex mb-6 relative">
+                            <div className="w-[18px] shrink-0 relative">
+                                <div className="w-[2px] bg-[#d1dce8] absolute left-[8px] top-[14px] bottom-[-15px]"></div>
+                                <div className="w-[10px] h-[10px] rounded-full bg-[#1a4a8c] absolute left-[4px] top-[6px] shadow-[0_0_0_4px_white]"></div>
+                            </div>
+
+                            <div className="pl-4 w-full">
+                                <span className="text-[11px] font-bold text-gray-500 tracking-wide uppercase">Jan 2026</span>
+                                <div className="flex items-center gap-2 mt-0.5 mb-0.5">
+                                    <h4 className="font-bold text-[16px] text-gray-900">Data &amp; ML Developer</h4>
+                                    <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Side Project</span>
+                                </div>
+                                <div className="flex items-center gap-3 mb-2">
+                                    <a href="https://aadarshapandit.com.np/nepal-cricket/index.html" target="_blank" className="text-[#1a4a8c] font-medium text-[12px] hover:underline">Nepal Cricket Match Predictor ↗</a>
+                                    <a href="https://github.com/Aadarshttech/nepal-cricket-predictor" target="_blank" className="text-gray-400 font-medium text-[11px] hover:underline">GitHub ↗</a>
+                                </div>
+                                <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
+                                    <li>Deployed a real-time predictive dashboard (FastAPI + React) using opponent, venue, and toss as features; model achieves 85% prediction accuracy.</li>
+                                    <li>Trained a Random Forest classifier on historical T20I data, surface-level and match-condition features for Nepal national team fixtures.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* Publications */}
+                    <div className="mt-6 pt-5 border-t border-gray-200">
+                        <h3 className="text-[16px] font-bold text-[#1a4a8c] mb-3 font-['Outfit'] tracking-wide uppercase">Publications &amp; Research</h3>
+                        <div className="text-[13px]">
+                            <div className="flex items-start gap-2">
+                                <span className="text-[10px] font-semibold bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full mt-0.5 shrink-0">Under Review</span>
+                                <div>
+                                    <p className="font-semibold text-gray-900 leading-snug">Reward-Guided Fine-Tuning of Whisper for <span className="whitespace-nowrap">Low-Resource</span> Nepali ASR</p>
+                                    <p className="text-gray-500 text-[12px] mt-0.5">Random Forest reward model · 70+ hr dataset · 11–12% relative WER improvement</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="mt-6 pt-5 border-t border-gray-200">
+                        <div className="flex justify-between text-[13px]">
+                            <div className="w-1/2 pr-4">
+                                <h4 className="font-bold text-[#1a4a8c] mb-1 font-['Outfit'] uppercase tracking-wider">GitHub</h4>
+                                <a href="https://github.com/Aadarshttech" target="_blank" className="text-gray-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis hover:underline hover:text-[#1a4a8c] transition-colors">
+                                    github.com/Aadarshttech
+                                </a>
+                            </div>
+                            <div className="w-1/2">
+                                <h4 className="font-bold text-[#1a4a8c] mb-1 font-['Outfit'] uppercase tracking-wider">LinkedIn</h4>
+                                <a href="https://www.linkedin.com/in/aadarsh-pandit" target="_blank" className="text-gray-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis hover:underline hover:text-[#1a4a8c] transition-colors">
+                                    linkedin.com/in/aadarsh-pandit
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     );

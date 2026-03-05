@@ -73,7 +73,10 @@ export default function ResumesPage() {
                     border: none !important; 
                     border-radius: 0 !important;
                     background: linear-gradient(to right, #eef2f6 0%, #eef2f6 33%, white 33%, white 100%) !important;
+                    display: flex !important;
+                    flex-direction: row !important;
                 }
+
                 
                 .timeline-item, .skill-block {
                     page-break-inside: avoid;
@@ -103,12 +106,14 @@ export default function ResumesPage() {
                 </button>
             </div>
 
-            <div className="cv-sheet w-full max-w-[21cm] md:min-h-[29.7cm] bg-white shadow-2xl flex flex-col md:flex-row text-gray-800 text-sm mx-auto">
+            <div className="cv-sheet w-full max-w-[21cm] md:min-h-[29.7cm] bg-white shadow-2xl flex flex-col md:flex-row print:flex-row text-gray-800 text-sm mx-auto">
+
 
 
 
                 {/* LEFT SIDEBAR */}
-                <div className="w-full md:w-[33%] bg-[#eef2f6] shrink-0 border-b md:border-b-0 md:border-r border-[#d1dce8] flex flex-col pt-8 md:pt-12 relative min-h-full pb-8 md:pb-12">
+                <div className="w-full md:w-[33%] print:w-[33%] bg-[#eef2f6] shrink-0 border-b md:border-b-0 md:border-r print:border-b-0 print:border-r border-[#d1dce8] flex flex-col pt-8 md:pt-12 print:pt-12 relative min-h-full pb-8 md:pb-12 print:pb-12">
+
 
 
                     <div className="w-full flex justify-center mb-8">
@@ -187,11 +192,12 @@ export default function ResumesPage() {
                 </div>
 
                 {/* RIGHT CONTENT */}
-                <div className="w-full md:w-[67%] bg-white pt-8 md:pt-[55px] px-6 md:px-[40px] flex flex-col relative pb-12">
+                <div className="w-full md:w-[67%] print:w-[67%] bg-white pt-8 md:pt-[55px] print:pt-[55px] px-6 md:px-[40px] print:px-[40px] flex flex-col relative pb-12">
+
 
 
                     <div className="mb-6 relative z-10 w-full overflow-hidden">
-                        <h1 className="text-4xl md:text-[52px] leading-[0.95] font-black text-[#1a4a8c] uppercase font-['Outfit'] tracking-[0.05em] mb-3">
+                        <h1 className="text-4xl md:text-[52px] print:text-[52px] leading-[0.95] font-black text-[#1a4a8c] uppercase font-['Outfit'] tracking-[0.05em] mb-3">
                             AADARSH<br />PANDIT
                         </h1>
                         <h2 className="text-[20px] text-gray-700 font-bold tracking-[0.14em] uppercase">

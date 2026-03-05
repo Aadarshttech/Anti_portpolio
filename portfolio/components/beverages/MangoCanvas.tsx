@@ -10,17 +10,17 @@ interface MangoCanvasProps {
     onLoadProgress?: (progress: number) => void;
 }
 
-const TOTAL_FRAMES = 194;
+const DESKTOP_TOTAL_FRAMES = 194;
+const MOBILE_TOTAL_FRAMES = 89;
+
 
 function getFrameConfig() {
-    if (typeof window === "undefined") return { count: TOTAL_FRAMES, step: 1, dir: "mango-frames" };
     const isMobile = window.innerWidth < 768;
-    // Mobile: load all 194 frames but from the mobile-optimized (640px) directory
-    // Desktop: load all 194 frames from the full-res directory
     return {
-        count: TOTAL_FRAMES,
+        count: isMobile ? MOBILE_TOTAL_FRAMES : DESKTOP_TOTAL_FRAMES,
         step: 1,
         dir: isMobile ? "mango-frames-mobile" : "mango-frames",
+        ext: isMobile ? "webp" : "jpg",
     };
 }
 
@@ -35,7 +35,8 @@ export const MangoCanvas = ({
     const loadedRef = useRef(false);
     const rafRef = useRef<number>(0);
     const lastFrameRef = useRef(-1);
-    const frameCountRef = useRef(TOTAL_FRAMES);
+    const frameCountRef = useRef(DESKTOP_TOTAL_FRAMES);
+
     const [loadProgress, setLoadProgress] = useState(0);
     const [ready, setReady] = useState(false);
 
@@ -109,16 +110,17 @@ export const MangoCanvas = ({
     /*  Preload frames (responsive: mobile gets fewer, smaller frames)    */
     /* ------------------------------------------------------------------ */
     useEffect(() => {
-        const { count, step, dir } = getFrameConfig();
+        const { count, step, dir, ext } = getFrameConfig();
         frameCountRef.current = count;
 
         let loaded = 0;
         const images: HTMLImageElement[] = new Array(count);
 
         for (let i = 0; i < count; i++) {
-            const originalIndex = i * step; // maps back to original frame number
+            const originalIndex = i * step + (ext === "webp" ? 1 : 0); // ffmpeg starts at 1
             const img = new window.Image();
-            img.src = `/projects/beverages/${dir}/frame_${String(originalIndex).padStart(5, "0")}.jpg`;
+            img.src = `/projects/beverages/${dir}/frame_${String(originalIndex).padStart(5, "0")}.${ext}`;
+
 
             const onDone = () => {
                 loaded++;

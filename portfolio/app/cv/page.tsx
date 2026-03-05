@@ -127,9 +127,13 @@ export default function ResumesPage() {
                             <h4 className="font-bold text-gray-900 mb-0.5">Email</h4>
                             <p className="text-gray-700 font-medium break-all">aadarshapandit@gmail.com</p>
                         </div>
-                        <div>
+                        <div className="mb-4">
                             <h4 className="font-bold text-gray-900 mb-0.5">Address</h4>
                             <p className="text-gray-700 font-medium">Kathmandu, Nepal</p>
+                        </div>
+                        <div>
+                            <h4 className="font-bold text-gray-900 mb-0.5">Website</h4>
+                            <a href="https://aadarshapandit.com.np" target="_blank" className="text-[#1a4a8c] font-medium hover:underline">aadarshapandit.com.np</a>
                         </div>
                     </div>
 
@@ -334,16 +338,16 @@ export default function ResumesPage() {
                     </div>
 
                     <div className="mt-6 pt-5 border-t border-gray-200">
-                        <div className="flex justify-between text-[13px]">
-                            <div className="w-1/2 pr-4">
+                        <div className="flex flex-col sm:flex-row sm:justify-between gap-6 sm:gap-4 text-[13px]">
+                            <div className="flex-1 min-w-0">
                                 <h4 className="font-bold text-[#1a4a8c] mb-1 font-['Outfit'] uppercase tracking-wider">GitHub</h4>
-                                <a href="https://github.com/Aadarshttech" target="_blank" className="text-gray-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis hover:underline hover:text-[#1a4a8c] transition-colors">
+                                <a href="https://github.com/Aadarshttech" target="_blank" className="text-gray-600 font-medium block truncate hover:underline hover:text-[#1a4a8c] transition-colors">
                                     github.com/Aadarshttech
                                 </a>
                             </div>
-                            <div className="w-1/2">
+                            <div className="flex-1 min-w-0">
                                 <h4 className="font-bold text-[#1a4a8c] mb-1 font-['Outfit'] uppercase tracking-wider">LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/aadarsh-pandit" target="_blank" className="text-gray-600 font-medium whitespace-nowrap overflow-hidden text-ellipsis hover:underline hover:text-[#1a4a8c] transition-colors">
+                                <a href="https://www.linkedin.com/in/aadarsh-pandit" target="_blank" className="text-gray-600 font-medium block truncate hover:underline hover:text-[#1a4a8c] transition-colors">
                                     linkedin.com/in/aadarsh-pandit
                                 </a>
                             </div>

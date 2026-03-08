@@ -244,7 +244,7 @@ function MenuScreen({ onSelect }: { onSelect: (comp: ComponentItem) => void }) {
                             }}
                             onMouseEnter={() => comp.isAvailable && setHoveredId(comp.id)}
                             onMouseLeave={() => setHoveredId(null)}
-                            onClick={() => comp.isAvailable && onSelect(comp)}
+                            onClick={() => comp.isAvailable && (hoveredId === comp.id ? onSelect(comp) : setHoveredId(comp.id))}
                         >
                             {/* Layer 1: Ambient Background Color Glow */}
                             <div
@@ -342,6 +342,15 @@ function ShowcaseScreen({
     const [splineApp, setSplineApp] = useState<any>(null);
     const [spinPaused, setSpinPaused] = useState(false);
     const [isFullscreen, setIsFullscreen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Sync screen size for responsive 3D scaling
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile(); // initial
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
     const isIdleRef = useRef(true);
     const spinPausedRef = useRef(false);
 
@@ -499,8 +508,8 @@ function ShowcaseScreen({
                 </span>
             </motion.button>
 
-            {/* Side HUD Panels — only for 'ai-robot' */}
-            {sceneLoaded && comp.id === 'ai-robot' && (
+            {/* Side HUD Panels — only for 'ai-robot' on Desktop */}
+            {sceneLoaded && comp.id === 'ai-robot' && !isMobile && (
                 <>
                     <LeftHUDPanel />
                     <RightHUDPanel />
@@ -589,8 +598,11 @@ function ShowcaseScreen({
                         position: 'relative',
                         zIndex: 10,
                         cursor: comp.id === 'scene-4' ? 'pointer' : 'default',
-                        opacity: sceneLoaded ? 1 : 0, // Ensure invisible while loading shaders
-                        transform: `scale(${comp.id === 'ai-robot' ? 1.15 : comp.id === 'scene-3' ? 1.1 : comp.id === 'scene-4' ? 1.45 : 1.6})`, // scale adjustments
+                        opacity: sceneLoaded ? 1 : 0,
+                        transform: `scale(${isMobile
+                                ? (comp.id === 'ai-robot' ? 0.75 : comp.id === 'scene-3' ? 0.8 : comp.id === 'scene-4' ? 0.9 : 0.8)
+                                : (comp.id === 'ai-robot' ? 1.15 : comp.id === 'scene-3' ? 1.1 : comp.id === 'scene-4' ? 1.45 : 1.6)
+                            })`,
                         transformOrigin: 'center center',
                         transition: 'transform 1s ease-in-out, opacity 1s ease-in-out'
                     }}>

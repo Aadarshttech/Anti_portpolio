@@ -6,6 +6,19 @@ import Image from "next/image";
 
 const caseStudies = [
     {
+        title: "NEXUS | Interactive 3D Hub",
+        client: "Personal Project",
+        category: "Creative Dev / 3D",
+        challenge: "Designing a radical interactive hub that breaks traditional grid layouts with a horizontal accordion experience.",
+        approach: "Engineered a cinematic 3D gallery using Spline, utilizing flex-grow transitions and dynamic state management to reveal high-fidelity modules (AI, Sports, Neural tech).",
+        tags: ["Next.js", "Spline 3D", "Framer Motion"],
+        image: "/projects/nexus/thumbnail.png",
+        fit: "cover" as const,
+        objectPosition: "center 15%",
+        gradient: "from-orange-600 to-red-500",
+        links: { demo: "/projects/nexus", code: "https://github.com/Aadarshttech" }
+    },
+    {
         title: "Mango Pandit — Scrollytelling",
         client: "Personal Project",
         category: "Creative Dev",
@@ -135,6 +148,7 @@ export function CaseStudies() {
                                     alt={project.title}
                                     fill
                                     className={`${project.fit === 'contain' ? 'object-contain p-8' : 'object-cover'} group-hover:scale-105 transition-transform duration-700 ease-[0.22,1,0.36,1] z-10`}
+                                    style={{ objectPosition: (project as any).objectPosition || 'center' }}
                                 />
                                 {project.fit === 'cover' && <div className="absolute inset-0 bg-gradient-to-t from-[#0F1219] via-[#0F1219]/20 to-transparent opacity-80 z-10" />}
 

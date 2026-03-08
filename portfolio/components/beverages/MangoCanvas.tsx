@@ -15,6 +15,7 @@ const MOBILE_TOTAL_FRAMES = 89;
 
 
 function getFrameConfig() {
+    if (typeof window === "undefined") return { count: DESKTOP_TOTAL_FRAMES, step: 1, dir: "mango-frames", ext: "jpg" };
     const isMobile = window.innerWidth < 768;
     return {
         count: isMobile ? MOBILE_TOTAL_FRAMES : DESKTOP_TOTAL_FRAMES,

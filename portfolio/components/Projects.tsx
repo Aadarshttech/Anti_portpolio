@@ -7,6 +7,16 @@ import { Button } from "./ui/button";
 
 const projects = [
     {
+        title: "NEXUS | Interactive 3D Hub",
+        category: "Creative Dev / 3D",
+        description: "A radical, horizontal accordion-style immersive gallery featuring interactive 3D modules (AI Solutions, 3D Cricket Jersey, Neural Core). Built with Next.js, Spline, and high-end WebGL shaders.",
+        tags: ["Next.js", "Spline 3D", "Framer Motion", "Interactive UI"],
+        image: "/projects/nexus/thumbnail.png",
+        fit: "cover",
+        objectPosition: "center 15%",
+        links: { demo: "/projects/nexus", code: "https://github.com/Aadarshttech" }
+    },
+    {
         title: "Mango Pandit — Scrollytelling",
         category: "Creative Dev",
         description: "An Awwwards-inspired scrollytelling product page with 194-frame canvas animation synced to scroll via Framer Motion. Features a full e-commerce UI with cart, toast notifications, and dark-mode shop section.",
@@ -110,6 +120,7 @@ export function Projects() {
                                     alt={`${project.title} — ${project.category} Portfolio Project by Aadarsh Pandit`}
                                     fill
                                     className={`${project.fit === 'contain' ? 'object-contain p-4' : 'object-cover'} group-hover:scale-110 transition-transform duration-500`}
+                                    style={{ objectPosition: (project as any).objectPosition || 'center' }}
                                 />
                                 {project.fit === 'cover' && <div className="absolute inset-0 bg-black/5 group-hover:bg-black/10 transition-colors" />}
                             </div>

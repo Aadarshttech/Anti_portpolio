@@ -34,7 +34,25 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             url: 'https://aadarshapandit.com.np/playground',
             lastModified: new Date(),
             changeFrequency: 'monthly',
-            priority: 0.5,
+            priority: 0.7,
+        },
+        {
+            url: 'https://aadarshapandit.com.np/projects/nexus',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://aadarshapandit.com.np/projects/nepal',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
+        },
+        {
+            url: 'https://aadarshapandit.com.np/projects/jcb',
+            lastModified: new Date(),
+            changeFrequency: 'monthly',
+            priority: 0.8,
         },
         {
             url: 'https://aadarshapandit.com.np/projects/beverages',

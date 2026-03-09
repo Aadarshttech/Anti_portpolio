@@ -947,7 +947,7 @@ function ShowcaseScreen({
             )}
 
             {/* Neural Core Theme Objects (Replacement for text) */}
-            {comp.id === 'scene-2' && sceneLoaded && (
+            {comp.id === 'scene-2' && sceneLoaded && !isMobile && (
                 <motion.div
                     className="absolute bottom-10 right-10 z-40 flex flex-col items-end gap-4 pointer-events-none"
                     initial={{ opacity: 0, x: 50 }}

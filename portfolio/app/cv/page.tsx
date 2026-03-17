@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { Printer } from "lucide-react";
+import { Printer, Phone, Mail, MapPin, Globe, Github, Linkedin } from "lucide-react";
 
 export default function ResumesPage() {
 
@@ -124,21 +124,33 @@ export default function ResumesPage() {
 
                     <div className="ribbon text-xl font-['Outfit'] uppercase">Contact</div>
                     <div className="px-6 mb-8 text-[13px]">
-                        <div className="mb-4">
-                            <h4 className="font-bold text-gray-900 mb-0.5">Phone</h4>
-                            <p className="text-gray-700 font-medium">+977 9860334317</p>
+                        <div className="mb-4 flex gap-3 items-start">
+                            <Phone className="w-4 h-4 text-[#1a4a8c] mt-0.5 shrink-0" />
+                            <div>
+                                <h4 className="font-bold text-gray-900 mb-0.5">Phone</h4>
+                                <p className="text-gray-700 font-medium">+977 9860334317</p>
+                            </div>
                         </div>
-                        <div className="mb-4">
-                            <h4 className="font-bold text-gray-900 mb-0.5">Email</h4>
-                            <p className="text-gray-700 font-medium break-all">aadarshapandit@gmail.com</p>
+                        <div className="mb-4 flex gap-3 items-start">
+                            <Mail className="w-4 h-4 text-[#1a4a8c] mt-0.5 shrink-0" />
+                            <div>
+                                <h4 className="font-bold text-gray-900 mb-0.5">Email</h4>
+                                <p className="text-gray-700 font-medium break-all">aadarshapandit@gmail.com</p>
+                            </div>
                         </div>
-                        <div className="mb-4">
-                            <h4 className="font-bold text-gray-900 mb-0.5">Address</h4>
-                            <p className="text-gray-700 font-medium">Kathmandu, Nepal</p>
+                        <div className="mb-4 flex gap-3 items-start">
+                            <MapPin className="w-4 h-4 text-[#1a4a8c] mt-0.5 shrink-0" />
+                            <div>
+                                <h4 className="font-bold text-gray-900 mb-0.5">Address</h4>
+                                <p className="text-gray-700 font-medium">Kathmandu, Nepal</p>
+                            </div>
                         </div>
-                        <div>
-                            <h4 className="font-bold text-gray-900 mb-0.5">Website</h4>
-                            <a href="https://aadarshapandit.com.np" target="_blank" className="text-[#1a4a8c] font-medium hover:underline">aadarshapandit.com.np</a>
+                        <div className="flex gap-3 items-start">
+                            <Globe className="w-4 h-4 text-[#1a4a8c] mt-0.5 shrink-0" />
+                            <div>
+                                <h4 className="font-bold text-gray-900 mb-0.5">Website</h4>
+                                <a href="https://aadarshapandit.com.np" target="_blank" className="text-[#1a4a8c] font-medium hover:underline">aadarshapandit.com.np</a>
+                            </div>
                         </div>
                     </div>
 
@@ -161,33 +173,42 @@ export default function ResumesPage() {
                     <div className="px-6 mb-8 text-[13px] space-y-4">
                         <div className="skill-block">
                             <h4 className="font-bold text-[#1a4a8c] mb-1">Programming</h4>
-                            <p className="text-gray-700 leading-tight">Python, JavaScript, TypeScript, SQL, Dart</p>
+                            <p className="text-gray-700 leading-tight">Python, JavaScript, TypeScript, SQL</p>
                         </div>
                         <div className="skill-block">
-                            <h4 className="font-bold text-[#1a4a8c] mb-1">Data &amp; AI</h4>
-                            <p className="text-gray-700 leading-tight">Machine Learning, NLP, Data Analysis, Data Engineering</p>
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">AI / ML</h4>
+                            <p className="text-gray-700 leading-tight">PyTorch, TensorFlow, Scikit-Learn, HuggingFace, Random Forest, Pandas, NumPy, NLP, ASR</p>
                         </div>
                         <div className="skill-block">
-                            <h4 className="font-bold text-[#1a4a8c] mb-1">Web Development</h4>
-                            <p className="text-gray-700 leading-tight">React, Next.js, Node.js, WordPress</p>
-                        </div>
-                        <div className="skill-block">
-                            <h4 className="font-bold text-[#1a4a8c] mb-1">Optimization &amp; Automation</h4>
-                            <p className="text-gray-700 leading-tight">SEO, Performance Optimization, Workflow Automation</p>
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Web & Backend</h4>
+                            <p className="text-gray-700 leading-tight">React, Next.js, Node.js, FastAPI, WordPress</p>
                         </div>
                         <div className="skill-block">
                             <h4 className="font-bold text-[#1a4a8c] mb-1">Mobile Development</h4>
                             <p className="text-gray-700 leading-tight">Flutter</p>
                         </div>
+                        <div className="skill-block">
+                            <h4 className="font-bold text-[#1a4a8c] mb-1">Tools &amp; Platform</h4>
+                            <p className="text-gray-700 leading-tight">Git, Docker, Linux, Blender</p>
+                        </div>
                     </div>
 
                     <div className="ribbon text-xl font-['Outfit'] uppercase">Language</div>
-                    <div className="px-6 text-[13px]">
-                        <ul className="list-disc pl-4 space-y-2 text-gray-700 marker:text-[#1a4a8c] font-medium">
-                            <li>English</li>
-                            <li>Nepali</li>
-                            <li>Hindi</li>
-                        </ul>
+                    <div className="px-6 text-[13px] pb-6">
+                        <div className="space-y-3 text-gray-700 font-medium">
+                            <div className="flex justify-between items-center border-b border-gray-300 pb-1">
+                                <span className="text-gray-900 font-bold">Nepali</span>
+                                <span className="text-gray-500 italic text-[11px]">Native</span>
+                            </div>
+                            <div className="flex justify-between items-center border-b border-gray-300 pb-1">
+                                <span className="text-gray-900 font-bold">English</span>
+                                <span className="text-gray-500 italic text-[11px]">Professional</span>
+                            </div>
+                            <div className="flex justify-between items-center pb-1">
+                                <span className="text-gray-900 font-bold">Hindi</span>
+                                <span className="text-gray-500 italic text-[11px]">Conversational</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -279,6 +300,11 @@ export default function ResumesPage() {
                             </div>
                         </div>
 
+                    </div>
+
+                    <h3 className="text-[22px] font-bold text-[#1a4a8c] mb-6 font-['Outfit'] tracking-wide border-t border-gray-200 pt-6 mt-2">Projects</h3>
+
+                    <div className="relative z-10 text-[13px]">
                         {/* Aadarsh Travels */}
                         <div className="timeline-item flex mb-6 relative">
                             <div className="w-[18px] shrink-0 relative">
@@ -287,13 +313,13 @@ export default function ResumesPage() {
                             </div>
 
                             <div className="pl-4 w-full pb-2">
-                                <span className="text-[11px] font-bold text-gray-500 tracking-wide uppercase">Feb 2026</span>
+                                <span className="text-[11px] font-bold text-[#1a4a8c] tracking-wide uppercase">Feb 2026</span>
                                 <div className="flex items-center gap-2 mt-0.5 mb-0.5">
-                                    <h4 className="font-bold text-[16px] text-gray-900">Creative Front-End Engineer</h4>
-                                    <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Side Project</span>
+                                    <h4 className="font-bold text-[16px] text-gray-900">Aadarsh Travels</h4>
+                                    <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Next.js, UI/UX</span>
                                 </div>
                                 <div className="flex items-center gap-3 mb-2">
-                                    <a href="https://aadarshapandit.com.np/projects/nepal" target="_blank" className="text-[#1a4a8c] font-medium text-[12px] hover:underline">Aadarsh Travels ↗</a>
+                                    <a href="https://aadarshapandit.com.np/projects/nepal" target="_blank" className="text-[#1a4a8c] font-medium text-[12px] hover:underline">Live Demo ↗</a>
                                     <a href="https://github.com/Aadarshttech/nepal-travels-showcase" target="_blank" className="text-gray-400 font-medium text-[11px] hover:underline">GitHub ↗</a>
                                 </div>
                                 <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
@@ -311,18 +337,18 @@ export default function ResumesPage() {
                             </div>
 
                             <div className="pl-4 w-full">
-                                <span className="text-[11px] font-bold text-gray-500 tracking-wide uppercase">Jan 2026</span>
+                                <span className="text-[11px] font-bold text-[#1a4a8c] tracking-wide uppercase">Jan 2026</span>
                                 <div className="flex items-center gap-2 mt-0.5 mb-0.5">
-                                    <h4 className="font-bold text-[16px] text-gray-900">Data &amp; ML Developer</h4>
-                                    <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Side Project</span>
+                                    <h4 className="font-bold text-[16px] text-gray-900">Nepal Cricket Predictor</h4>
+                                    <span className="text-[10px] font-semibold bg-gray-100 text-gray-500 px-2 py-0.5 rounded-full">Scikit-Learn, FastAPI</span>
                                 </div>
                                 <div className="flex items-center gap-3 mb-2">
-                                    <a href="https://aadarshapandit.com.np/nepal-cricket/index.html" target="_blank" className="text-[#1a4a8c] font-medium text-[12px] hover:underline">Nepal Cricket Match Predictor ↗</a>
+                                    <a href="https://aadarshapandit.com.np/nepal-cricket/index.html" target="_blank" className="text-[#1a4a8c] font-medium text-[12px] hover:underline">Live Demo ↗</a>
                                     <a href="https://github.com/Aadarshttech/nepal-cricket-predictor" target="_blank" className="text-gray-400 font-medium text-[11px] hover:underline">GitHub ↗</a>
                                 </div>
                                 <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
                                     <li>Deployed a real-time predictive dashboard (FastAPI + React) using opponent, venue, and toss as features; model achieves 85% prediction accuracy.</li>
-                                    <li>Trained a Random Forest classifier on historical T20I data, surface-level and match-condition features for Nepal national team fixtures.</li>
+                                    <li>Trained a Random Forest classifier on historical T20I and ODI data, surface-level and match-condition features for Nepal national team fixtures.</li>
                                 </ul>
                             </div>
                         </div>
@@ -344,17 +370,19 @@ export default function ResumesPage() {
                     </div>
 
                     <div className="mt-6 pt-5 border-t border-gray-200">
-                        <div className="flex flex-col sm:flex-row sm:justify-between gap-6 sm:gap-4 text-[13px]">
-                            <div className="flex-1 min-w-0">
-                                <h4 className="font-bold text-[#1a4a8c] mb-1 font-['Outfit'] uppercase tracking-wider">GitHub</h4>
-                                <a href="https://github.com/Aadarshttech" target="_blank" className="text-gray-600 font-medium block truncate hover:underline hover:text-[#1a4a8c] transition-colors">
-                                    github.com/Aadarshttech
+                        <div className="flex flex-col sm:flex-row sm:justify-between gap-4 text-[13px]">
+                            <div className="flex items-center gap-2">
+                                <Github className="w-4 h-4 text-[#1a4a8c]" />
+                                <span className="text-gray-900 font-bold uppercase tracking-wider">GitHub:</span>
+                                <a href="https://github.com/Aadarshttech" target="_blank" className="font-medium text-gray-700 hover:text-[#1a4a8c] hover:underline transition-colors tracking-wide">
+                                    Aadarshttech
                                 </a>
                             </div>
-                            <div className="flex-1 min-w-0">
-                                <h4 className="font-bold text-[#1a4a8c] mb-1 font-['Outfit'] uppercase tracking-wider">LinkedIn</h4>
-                                <a href="https://www.linkedin.com/in/aadarsh-pandit" target="_blank" className="text-gray-600 font-medium block truncate hover:underline hover:text-[#1a4a8c] transition-colors">
-                                    linkedin.com/in/aadarsh-pandit
+                            <div className="flex items-center gap-2">
+                                <Linkedin className="w-4 h-4 text-[#1a4a8c]" />
+                                <span className="text-gray-900 font-bold uppercase tracking-wider">LinkedIn:</span>
+                                <a href="https://www.linkedin.com/in/aadarsh-pandit" target="_blank" className="font-medium text-gray-700 hover:text-[#1a4a8c] hover:underline transition-colors tracking-wide">
+                                    Aadarsh-Pandit
                                 </a>
                             </div>
                         </div>

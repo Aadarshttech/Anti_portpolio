@@ -45,9 +45,9 @@ const projects = [
     },
     {
         title: "Reward-Guided Finetuning for Nepali ASR",
-        category: "AI / NLP Research",
-        description: "A speech-to-text pipeline for Nepali built on OpenAI Whisper, fine-tuned with 50k+ audio pairs and optimized through reward-guided RLHF training to push accuracy on a low-resource language.",
-        tags: ["Python", "PyTorch", "Whisper", "RLHF", "PPO"],
+        category: "Published Research · CHiPSAL 2026",
+        description: "A speech-to-text pipeline for Nepali built on OpenAI Whisper, fine-tuned with 50k+ audio pairs and optimized through reward-guided training. Published at CHiPSAL 2026 (LREC-COLING 2026, Mallorca, Spain, pp. 169–175).",
+        tags: ["Python", "PyTorch", "Whisper", "RLHF", "CHiPSAL 2026"],
         image: "/images/asr-hero-light.svg",
         fit: "cover",
         links: { demo: "", code: "https://github.com/Aadarshttech" }

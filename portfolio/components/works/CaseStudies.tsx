@@ -64,7 +64,8 @@ const caseStudies = [
         image: "/images/asr-hero.svg",
         fit: "cover" as const,
         gradient: "from-emerald-500 to-teal-400",
-        links: { code: "https://github.com/Aadarshttech" }
+        links: { demo: "http://lrec-conf.org/proceedings/lrec2026/workshops/chipsal/2026.chipsal-1.0.pdf", code: "https://github.com/Aadarshttech" },
+        demoLabel: "Read Paper"
     },
     {
         title: "Karyantra Hive",

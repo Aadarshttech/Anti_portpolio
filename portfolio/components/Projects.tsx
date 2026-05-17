@@ -50,7 +50,8 @@ const projects = [
         tags: ["Python", "PyTorch", "Whisper", "RLHF", "CHiPSAL 2026"],
         image: "/images/asr-hero-light.svg",
         fit: "cover",
-        links: { demo: "", code: "https://github.com/Aadarshttech" }
+        links: { demo: "http://lrec-conf.org/proceedings/lrec2026/workshops/chipsal/2026.chipsal-1.0.pdf", code: "https://github.com/Aadarshttech" },
+        demoLabel: "Read Paper"
     },
     {
         title: "Nepal Cricket Match Predictor",

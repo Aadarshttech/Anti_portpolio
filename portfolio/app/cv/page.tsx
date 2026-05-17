@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import { Printer, Phone, Mail, MapPin, Globe, Github, Linkedin } from "lucide-react";
+import { Printer, Phone, Mail, MapPin, Globe, Github, Linkedin, ExternalLink } from "lucide-react";
 
 export default function ResumesPage() {
 
@@ -362,7 +362,10 @@ export default function ResumesPage() {
                             <div className="flex items-start gap-2">
                                 <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-2 py-0.5 rounded-full mt-0.5 shrink-0">Published</span>
                                 <div>
-                                    <p className="font-semibold text-gray-900 leading-snug">Reward-Guided Fine-Tuning of Whisper for <span className="whitespace-nowrap">Low-Resource</span> Nepali ASR</p>
+                                    <a href="http://lrec-conf.org/proceedings/lrec2026/workshops/chipsal/2026.chipsal-1.0.pdf" target="_blank" rel="noopener noreferrer" className="font-semibold text-gray-900 leading-snug hover:text-[#1a4a8c] hover:underline transition-colors inline-flex items-center gap-1.5 group">
+                                        Reward-Guided Fine-Tuning of Whisper for <span className="whitespace-nowrap">Low-Resource</span> Nepali ASR
+                                        <ExternalLink className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#1a4a8c] transition-colors shrink-0" />
+                                    </a>
                                     <p className="text-gray-600 text-[12px] mt-0.5 font-medium">CHiPSAL 2026 Workshop · LREC 2026 · Mallorca, Spain · pp. 169–175</p>
                                     <p className="text-gray-500 text-[11px] mt-0.5">Random Forest reward model · 70+ hr dataset · 11–12% relative WER improvement</p>
                                 </div>

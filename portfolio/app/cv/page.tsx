@@ -269,7 +269,7 @@ export default function ResumesPage() {
                                     <h4 className="font-bold text-[16px] text-gray-900">AI Researcher — Nepali ASR</h4>
                                     <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-2 py-0.5 rounded-full">Published · CHiPSAL 2026</span>
                                 </div>
-                                <p className="text-gray-500 mb-2 italic text-[12px]">Independent Research · Presented at LREC-COLING 2026, Mallorca, Spain</p>
+                                <p className="text-gray-500 mb-2 italic text-[12px]">Independent Research · Presented at CHiPSAL 2026, Mallorca, Spain</p>
                                 <ul className="list-disc pl-4 space-y-1.5 text-gray-700 marker:text-gray-400 leading-relaxed font-medium">
                                     <li>Developed a reward-guided fine-tuning framework for Whisper, utilizing a Random Forest model (81% accuracy) to filter noisy samples from a 70+ hour Nepali speech dataset.</li>
                                     <li>Achieved an 11–12% <em>relative</em> improvement in transcription accuracy, reducing WER from 5.55% to 4.89% and CER from 5.04% to 4.52%.</li>
@@ -363,7 +363,7 @@ export default function ResumesPage() {
                                 <span className="text-[10px] font-semibold bg-green-100 text-green-700 px-2 py-0.5 rounded-full mt-0.5 shrink-0">Published</span>
                                 <div>
                                     <p className="font-semibold text-gray-900 leading-snug">Reward-Guided Fine-Tuning of Whisper for <span className="whitespace-nowrap">Low-Resource</span> Nepali ASR</p>
-                                    <p className="text-gray-600 text-[12px] mt-0.5 font-medium">CHiPSAL 2026 Workshop @ LREC-COLING 2026 · Mallorca, Spain · pp. 169–175</p>
+                                    <p className="text-gray-600 text-[12px] mt-0.5 font-medium">CHiPSAL 2026 Workshop · LREC 2026 · Mallorca, Spain · pp. 169–175</p>
                                     <p className="text-gray-500 text-[11px] mt-0.5">Random Forest reward model · 70+ hr dataset · 11–12% relative WER improvement</p>
                                 </div>
                             </div>

@@ -37,7 +37,7 @@ An Awwwards-inspired product page with a 194-frame canvas animation synced to sc
 A high-octane visual experience for the JCB Backhoe Loader. Features a custom canvas-based frame animation system synced to smooth scroll progress with technical spec overlays. Optimized for performance by converting 200 high-res frames to WebP, reducing load weight by 54% (from 21MB to 9MB). Includes full SEO with Open Graph, Twitter Cards, and robots directives. Live at /projects/jcb.
 
 ### Nepali ASR System (Automatic Speech Recognition) — Published Research
-An AI-powered speech recognition system specifically for the Nepali language. Built using OpenAI Whisper and fine-tuned with 50k+ custom audio pairs. Utilized Reward-Guided Fine-tuning to push accuracy on low-resource language data. The research paper "Reward-Guided Fine-Tuning of Whisper for Low-Resource Nepali ASR" was officially published in the CHiPSAL 2026 Workshop proceedings at LREC-COLING 2026, Mallorca, Spain (pp. 169–175, May 2026).
+An AI-powered speech recognition system specifically for the Nepali language. Built using OpenAI Whisper and fine-tuned with 50k+ custom audio pairs. Utilized Reward-Guided Fine-tuning to push accuracy on low-resource language data. The research paper "Reward-Guided Fine-Tuning of Whisper for Low-Resource Nepali ASR" was officially published in the CHiPSAL 2026 Workshop proceedings at LREC 2026, Mallorca, Spain (pp. 169–175, May 2026).
 
 ### Nepal Cricket Match Predictor
 A real-time dashboard that predicts Nepal cricket match outcomes using a Random Forest model trained on toss, venue, and opposition stats, paired with interactive data visualizations. Built with React, FastAPI, and Scikit-learn.

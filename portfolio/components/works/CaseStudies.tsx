@@ -59,7 +59,7 @@ const caseStudies = [
         client: "Published @ CHiPSAL 2026",
         category: "Published Research",
         challenge: "Building an accurate Nepali speech-to-text system despite extremely limited labeled training data.",
-        approach: "Fine-tuned OpenAI Whisper on 50k+ custom audio pairs, then applied reward-guided training to boost accuracy. Published at LREC-COLING 2026, Mallorca, Spain (pp. 169–175).",
+        approach: "Fine-tuned OpenAI Whisper on 50k+ custom audio pairs, then applied reward-guided training to boost accuracy. Published at CHiPSAL 2026, Mallorca, Spain (pp. 169–175).",
         tags: ["Python", "PyTorch", "Whisper", "CHiPSAL 2026"],
         image: "/images/asr-hero.svg",
         fit: "cover" as const,

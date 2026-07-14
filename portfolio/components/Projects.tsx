@@ -50,8 +50,7 @@ const projects = [
         tags: ["Python", "PyTorch", "Whisper", "RLHF", "CHiPSAL 2026"],
         image: "/images/asr-hero-light.svg",
         fit: "cover",
-        links: { demo: "http://lrec-conf.org/proceedings/lrec2026/workshops/chipsal/2026.chipsal-1.0.pdf", code: "https://github.com/Aadarshttech" },
-        demoLabel: "Read Paper"
+        links: { demo: "", code: "https://github.com/Aadarshttech" }
     },
     {
         title: "Nepal Cricket Match Predictor",
@@ -71,6 +70,15 @@ const projects = [
         fit: "contain",
         links: { demo: "https://karyantrahive.com.np/", code: "https://github.com/Aadarshttech" },
         demoLabel: "Visit Site"
+    },
+    {
+        title: "Nepali-English Code-Switched Whisper",
+        category: "Machine Learning / ASR",
+        description: "A fine-tuned Whisper model for automatic speech recognition of Nepali-English code-switched audio. Designed to handle bilingual speech patterns natively.",
+        tags: ["Python", "Whisper", "ASR", "Code-switching"],
+        image: "/images/asr.png",
+        fit: "cover",
+        links: { demo: "", code: "https://github.com/Aadarshttech/nepali-english-codeswitched-whisper" }
     }
 ];
 

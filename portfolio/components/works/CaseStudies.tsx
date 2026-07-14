@@ -6,6 +6,18 @@ import Image from "next/image";
 
 const caseStudies = [
     {
+        title: "Nepali-English Code-Switched Whisper",
+        client: "Personal Project",
+        category: "Machine Learning / ASR",
+        challenge: "Building a speech recognition model that can seamlessly handle conversational code-switching between Nepali and English.",
+        approach: "Fine-tuned OpenAI's Whisper model specifically for bilingual audio, enabling accurate transcription of mixed-language speech patterns.",
+        tags: ["Python", "Whisper", "ASR", "Machine Learning"],
+        image: "/images/whisper_asr_cover.png",
+        fit: "cover" as const,
+        gradient: "from-cyan-500 to-orange-500",
+        links: { code: "https://github.com/Aadarshttech/nepali-english-codeswitched-whisper" }
+    },
+    {
         title: "NEXUS | Interactive 3D Hub",
         client: "Personal Project",
         category: "Creative Dev / 3D",
@@ -64,8 +76,7 @@ const caseStudies = [
         image: "/images/asr-hero.svg",
         fit: "cover" as const,
         gradient: "from-emerald-500 to-teal-400",
-        links: { demo: "http://lrec-conf.org/proceedings/lrec2026/workshops/chipsal/2026.chipsal-1.0.pdf", code: "https://github.com/Aadarshttech" },
-        demoLabel: "Read Paper"
+        links: { code: "https://github.com/Aadarshttech" }
     },
     {
         title: "Karyantra Hive",

@@ -7,6 +7,15 @@ import { Button } from "./ui/button";
 
 const projects = [
     {
+        title: "Nepali-English Code-Switched Whisper",
+        category: "Machine Learning / ASR",
+        description: "A fine-tuned Whisper model for automatic speech recognition of Nepali-English code-switched audio. Designed to handle bilingual speech patterns natively.",
+        tags: ["Python", "Whisper", "ASR", "Code-switching"],
+        image: "/images/whisper_asr_cover.png",
+        fit: "cover",
+        links: { demo: "", code: "https://github.com/Aadarshttech/nepali-english-codeswitched-whisper" }
+    },
+    {
         title: "NEXUS | Interactive 3D Hub",
         category: "Creative Dev / 3D",
         description: "A radical, horizontal accordion-style immersive gallery featuring interactive 3D modules (AI Solutions, 3D Cricket Jersey, Neural Core). Built with Next.js, Spline, and high-end WebGL shaders.",
@@ -70,15 +79,6 @@ const projects = [
         fit: "contain",
         links: { demo: "https://karyantrahive.com.np/", code: "https://github.com/Aadarshttech" },
         demoLabel: "Visit Site"
-    },
-    {
-        title: "Nepali-English Code-Switched Whisper",
-        category: "Machine Learning / ASR",
-        description: "A fine-tuned Whisper model for automatic speech recognition of Nepali-English code-switched audio. Designed to handle bilingual speech patterns natively.",
-        tags: ["Python", "Whisper", "ASR", "Code-switching"],
-        image: "/images/asr.png",
-        fit: "cover",
-        links: { demo: "", code: "https://github.com/Aadarshttech/nepali-english-codeswitched-whisper" }
     }
 ];
 

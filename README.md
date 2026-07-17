@@ -1,41 +1,57 @@
-# Anti Portfolio
+<div align="center">
+  <h1>Aadarsh Pandit — Anti Portfolio</h1>
+  <p>A modern, high-performance portfolio website built to showcase creative development, web solutions, and machine learning projects.</p>
+</div>
 
-Welcome to the Anti Portfolio project! This is a modern, high-performance portfolio website built to showcase my creative development, web solutions, and machine learning projects.
+---
 
-## Features
+## ✦ Overview
 
-- **Dynamic Animations**: Implemented using Framer Motion and canvas-based animations.
-- **Modern UI/UX**: Designed with a sleek, dark-mode aesthetic and glassmorphism elements.
-- **Responsive Design**: fully responsive across all device sizes using Tailwind CSS.
-- **Project Showcase**: Detailed case studies covering web development, 3D interactive hubs, and ML research.
+Welcome to the **Anti Portfolio** repository. This project serves as a central hub for my digital presence, featuring detailed case studies of my work in interactive 3D web experiences, corporate web development, and applied machine learning research. It is built with a focus on modern UI/UX principles, featuring a sleek dark-mode aesthetic, dynamic micro-interactions, and glassmorphism elements.
 
-## Tech Stack
+## ✨ Key Highlights
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/motion/)
-- **Language**: TypeScript
+- **Dynamic Animations:** Fluid scroll-driven and canvas-based animations engineered using Framer Motion.
+- **Modern UI/UX:** A premium, dark-mode aesthetic with interactive elements that provide a seamless user experience.
+- **Responsive Architecture:** Fully responsive layouts across all device form factors utilizing Tailwind CSS.
+- **Project Showcase:** Comprehensive breakdowns of recent works including web development, interactive 3D hubs, and ML research (e.g., Nepali-English Code-Switched Whisper).
 
-## Project Structure
+## 🛠 Tech Stack
 
-- **`portfolio/`**: Contains the main Next.js application source code for the portfolio website.
-- **`Nepalcricket_MLprediction-main/`**: Contains machine learning prediction scripts and data for the Nepal Cricket project.
+- **Framework:** [Next.js](https://nextjs.org/) (App Router)
+- **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Language:** TypeScript
 
-## Getting Started
+## 📂 Repository Structure
 
-1. Navigate to the portfolio directory:
+- **`portfolio/`**: Contains the core Next.js application source code for the portfolio interface.
+- **`Nepalcricket_MLprediction-main/`**: Contains machine learning prediction scripts and datasets related to the Nepal Cricket match predictor project.
+
+## 🚀 Quick Start
+
+To run the portfolio locally, follow these steps:
+
+1. **Navigate to the portfolio directory:**
    ```bash
    cd portfolio
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
+   *(or `yarn install` / `pnpm install` depending on your package manager)*
 
-3. Run the development server:
+3. **Start the development server:**
    ```bash
    npm run dev
    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
+
+---
+
+<div align="center">
+  <p>Built with passion by <a href="https://github.com/Aadarshttech">Aadarsh Pandit</a>.</p>
+</div>

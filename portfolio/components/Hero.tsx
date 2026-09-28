@@ -107,7 +107,7 @@ export function Hero() {
                             </div>
                             <div>
                                 <p className="text-xs text-gray-500">Experience</p>
-                                <p className="font-bold text-gray-900">1+ Years</p>
+                                <p className="font-bold text-gray-900">3 Years</p>
                             </div>
                         </motion.div>
 

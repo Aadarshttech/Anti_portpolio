@@ -64,7 +64,7 @@ export function About() {
 
                     <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="grid grid-cols-3 gap-6 mt-8">
                         <div className="text-center">
-                            <h4 className="text-3xl font-bold text-primary font-heading">1+</h4>
+                            <h4 className="text-3xl font-bold text-primary font-heading">3</h4>
                             <span className="text-sm text-gray-500">Years Experience</span>
                         </div>
                         <div className="text-center">

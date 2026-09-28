@@ -43,10 +43,10 @@ export function Hero() {
 
                     <motion.h1
                         variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-                        className="text-5xl md:text-7xl font-bold font-heading leading-tight text-gray-900"
+                        className="text-5xl sm:text-6xl md:text-7xl font-extrabold font-heading tracking-tight leading-[1.08] text-slate-900"
                     >
-                        Hy! I Am <br />
-                        <span className="text-primary">Aadarsh Pandit</span>
+                        Hi, I&apos;m <br />
+                        <span className="text-primary tracking-tight">Aadarsh Pandit</span>
                     </motion.h1>
 
                     <motion.p
@@ -93,46 +93,56 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="relative flex justify-center"
+                    className="relative flex justify-center mt-16 md:mt-8 translate-y-8 md:translate-y-12"
                 >
-                    <div className="relative w-[350px] h-[450px] md:w-[450px] md:h-[550px]">
-                        {/* Decorative Elements around image */}
-                        <motion.div
-                            animate={{ y: [-10, 10, -10] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute top-10 -left-10 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-3 border border-gray-100"
-                        >
-                            <div className="bg-orange-100 p-2 rounded-lg text-orange-600">
-                                <Sparkles size={24} />
-                            </div>
-                            <div>
-                                <p className="text-xs text-gray-500">Experience</p>
-                                <p className="font-bold text-gray-900">3 Years</p>
-                            </div>
-                        </motion.div>
+                    {/* Visual Group - Scaled up */}
+                    <div className="relative w-[350px] h-[450px] md:w-[450px] md:h-[550px] flex items-end justify-center scale-110 md:scale-125 lg:scale-[1.35] origin-center">
+                        
+                        {/* Exact Precision Orange Background SVG */}
+                        <div className="absolute inset-0 z-0 flex items-center justify-center pointer-events-none transform -translate-y-6">
+                            <svg viewBox="0 0 500 500" className="w-[130%] h-[130%] text-[#FF9A3D]" xmlns="http://www.w3.org/2000/svg">
+                                {/* Light orange blob underneath for depth (optional, based on design) */}
+                                <path d="M364.5 135.5C402.5 176 434.5 230.5 415.5 274.5C396.5 318.5 326.5 352 262.5 368.5C198.5 385 140.5 384.5 93 354C45.5 323.5 8.5 263 7 203.5C5.5 144 39.5 85.5 97.5 54C155.5 22.5 237.5 18 294.5 42.5C351.5 67 326.5 95 364.5 135.5Z" 
+                                      fill="#FFF0E0" transform="translate(10, 40) scale(1.1)"/>
 
-                        <motion.div
-                            animate={{ y: [10, -10, 10] }}
-                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                            className="absolute bottom-20 right-0 sm:-right-5 z-20 bg-white p-4 rounded-2xl shadow-xl flex items-center flex-wrap gap-2 sm:gap-3 border border-gray-100 max-w-[140px] sm:max-w-none"
-                        >
-                            <div className="bg-green-100 p-2 rounded-lg text-green-600">
-                                <Code size={24} />
-                            </div>
-                            <div>
-                                <p className="text-xs text-gray-500">Projects</p>
-                                <p className="font-bold text-gray-900">10+ Done</p>
-                            </div>
-                        </motion.div>
+                                {/* Left curved swoosh */}
+                                <path d="M 120 280 C 50 250, 40 150, 110 100" stroke="currentColor" strokeWidth="4" fill="none" />
+                                
+                                {/* Right curved swoosh */}
+                                <path d="M 370 340 C 460 360, 490 250, 420 200" stroke="currentColor" strokeWidth="4" fill="none" />
+                                {/* Right swoosh arrow head */}
+                                <path d="M 458 318 L 472 334 M 458 318 L 444 322" stroke="currentColor" strokeWidth="4" fill="none" />
+
+                                {/* Main Orange Blob */}
+                                <path d="M374.5 125.5C412.5 166 444.5 220.5 425.5 264.5C406.5 308.5 336.5 342 272.5 358.5C208.5 375 150.5 374.5 103 344C55.5 313.5 18.5 253 17 193.5C15.5 134 49.5 75.5 107.5 44C165.5 12.5 247.5 8 304.5 32.5C361.5 57 336.5 85 374.5 125.5Z" 
+                                      fill="currentColor" transform="translate(20, 30) scale(1.05)"/>
+                                      
+                                {/* Dots top right */}
+                                <g fill="#D3C1B5" opacity="0.6" transform="translate(420, 60)">
+                                    <circle cx="0" cy="0" r="3"/><circle cx="20" cy="0" r="3"/><circle cx="40" cy="0" r="3"/><circle cx="60" cy="0" r="3"/>
+                                    <circle cx="0" cy="20" r="3"/><circle cx="20" cy="20" r="3"/><circle cx="40" cy="20" r="3"/><circle cx="60" cy="20" r="3"/>
+                                    <circle cx="0" cy="40" r="3"/><circle cx="20" cy="40" r="3"/><circle cx="40" cy="40" r="3"/><circle cx="60" cy="40" r="3"/>
+                                    <circle cx="0" cy="60" r="3"/><circle cx="20" cy="60" r="3"/><circle cx="40" cy="60" r="3"/><circle cx="60" cy="60" r="3"/>
+                                </g>
+                                
+                                {/* Sparks top center */}
+                                <g stroke="currentColor" strokeWidth="5" strokeLinecap="round" transform="translate(260, 30)">
+                                    <line x1="-20" y1="20" x2="-35" y2="0" />
+                                    <line x1="5" y1="5" x2="25" y2="-20" />
+                                    <line x1="30" y1="30" x2="55" y2="30" />
+                                </g>
+                            </svg>
+                        </div>
+
+
 
                         {/* Main Image Container */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-orange-200 to-orange-50 rounded-[40px] rotate-3 transform transition-transform hover:rotate-0 duration-500"></div>
-                        <div className="relative h-full w-full overflow-hidden rounded-[40px] border-4 border-white shadow-2xl bg-white/50 backdrop-blur-sm">
+                        <div className="absolute z-10 inset-0 w-full h-full pointer-events-none">
                             <Image
-                                src="/transparent2.png"
-                                alt="Aadarsh Pandit — Freelance AI Developer and Full Stack Web Engineer in Kathmandu, Nepal"
+                                src="/images/hero-new.png"
+                                alt="Aadarsh Pandit"
                                 fill
-                                className="object-cover object-top hover:scale-105 transition-transform duration-700"
+                                className="object-contain object-center scale-[1.35] -translate-y-12 drop-shadow-2xl pointer-events-auto"
                                 priority
                             />
                         </div>

@@ -22,7 +22,7 @@ const projects = [
         description: "A free, real-time expense splitting web app for flatmates and travel groups. Features fair-share splitting, debt simplification, and visual spending analytics. No app download required.",
         tags: ["React", "Expense Tracker", "Real-time", "UI/UX"],
         image: "/projects/hisabify/thumbnail.png",
-        fit: "cover",
+        fit: "contain",
         links: { demo: "https://hisabify.aadarshapandit.com.np/", code: "https://github.com/Aadarshttech" },
         demoLabel: "Visit Site"
     },

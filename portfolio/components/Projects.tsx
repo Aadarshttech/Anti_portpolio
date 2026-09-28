@@ -7,6 +7,26 @@ import { Button } from "./ui/button";
 
 const projects = [
     {
+        title: "Smart NID Helper",
+        category: "Browser Extension / AI",
+        description: "An open-source, AI-powered browser extension for Nepal's National ID enrollment. Features automated citizenship-card data extraction, Roman-to-Nepali transliteration, and 1-click autofill with local caching.",
+        tags: ["React", "Gemini API", "OCR", "Browser Extension"],
+        image: "/projects/nid/thumbnail.png",
+        fit: "contain",
+        links: { demo: "https://microsoftedge.microsoft.com/addons/detail/smart-nid-helper/gakoiaflpofkoadcmbdeejpmhgnapbfm", code: "https://github.com/Aadarshttech/Smart-NID-Nepal" },
+        demoLabel: "Edge Add-ons"
+    },
+    {
+        title: "Hisabify — Split Expenses",
+        category: "Web App / Finance",
+        description: "A free, real-time expense splitting web app for flatmates and travel groups. Features fair-share splitting, debt simplification, and visual spending analytics. No app download required.",
+        tags: ["React", "Expense Tracker", "Real-time", "UI/UX"],
+        image: "/projects/hisabify/thumbnail.png",
+        fit: "cover",
+        links: { demo: "https://hisabify.aadarshapandit.com.np/", code: "https://github.com/Aadarshttech" },
+        demoLabel: "Visit Site"
+    },
+    {
         title: "Nepali-English Code-Switched Whisper",
         category: "Machine Learning / ASR",
         description: "A fine-tuned Whisper model for automatic speech recognition of Nepali-English code-switched audio. Designed to handle bilingual speech patterns natively.",
